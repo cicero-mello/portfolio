@@ -1,0 +1,67 @@
+:root {
+    --color-cloud: #F6F6F6;
+    --color-stone: #79797C;
+    --color-onyx: #2A2D36;
+    --color-fawn: #474447;
+    --color-toast: #AD9686;
+    --color-lavender: #8B6D9C;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Cascadia Code";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../public/fonts/CascadiaCode-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Cascadia Code Bold";
+    font-style: bold;
+    font-weight: 700;
+    src: url("../fonts/CascadiaCode-Bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Henny Penny";
+    font-style: cursive;
+    font-weight: 400;
+    src: url("../fonts/HennyPenny-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Engravers MT";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/EngraversMT-Regular.woff2") format("woff2");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: unset;
+}
+
+section {
+    min-height: 100svh;
+    min-width: 100svw;
+    max-width: 100svw;
+}
+
+body {
+    background-color: var(--color-onyx);
+    color: var(--color-cloud);
+    font-family: "Cascadia Code Bold";
+    overflow-x: hidden;
+}
