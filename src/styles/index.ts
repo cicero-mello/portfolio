@@ -6,3 +6,8 @@ export enum Colors {
     Toast = "#AD9686",
     Lavender = "#8B6D9C"
 }
+
+export enum Breakpoints {
+    Mobile = "max-width: 30rem", // 480px
+    SmallHeight = "max-height: 42rem" //672px
+}

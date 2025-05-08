@@ -3,8 +3,8 @@ import { component$ } from "@builder.io/qwik"
 export const Hero = component$(() => {
 
     return (
-        <section>
+        <div>
             Hero
-        </section>
+        </div>
     )
 })

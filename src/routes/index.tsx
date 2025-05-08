@@ -10,7 +10,7 @@ import {
     QuestionSection,
     ReactSection,
     ReposSection
-} from "~/components/sections/"
+} from "~/components"
 
 export default component$(() => {
     return (
