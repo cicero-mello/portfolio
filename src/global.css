@@ -88,3 +88,9 @@ body {
         display: none;
     }
 }
+
+::selection {
+    background: var(--color-lavender);
+    color: var(--color-cloud);
+    -webkit-text-stroke-color: var(--color-cloud);
+}

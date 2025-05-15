@@ -11,6 +11,7 @@ export const ScrollDownButton = styled.button`
     position: absolute;
     bottom: 2.5rem;
     right: 1rem;
+    user-select: none;
 
     font-family: "Grechen Fuemen";
     color: ${Colors.Cloud};

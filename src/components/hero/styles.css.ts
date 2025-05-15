@@ -20,6 +20,7 @@ export const Image = styled.img`
     max-width: 15rem;
     width: 100%;
     border-radius: 50%;
+    user-select: none;
 
     // 0 4px 4px
     filter: drop-shadow(

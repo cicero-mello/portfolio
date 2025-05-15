@@ -8,10 +8,10 @@ export const Content = styled.div`
     z-index: -1;
     overflow: hidden;
     white-space: nowrap;
+    user-select: none;
 
     font-family: "Engravers MT";
-    color: ${Colors.Cloud};
-    opacity: 3%;
+    color: ${Colors.Cloud3};
     font-size: 4rem;
 `
 

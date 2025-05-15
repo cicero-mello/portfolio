@@ -1,5 +1,6 @@
 import { style, styled } from "styled-vanilla-extract/qwik"
 import { keyframes } from "@vanilla-extract/css"
+import { Colors } from "~/styles"
 
 export const Section = styled.section`
     display: flex;
@@ -51,7 +52,7 @@ export const MainText = styled.p`
 export const DescriptionText = styled.p`
     display: flex;
     flex-direction: column;
-    opacity: 15%;
+    color: ${Colors.Cloud15};
     transform: skewX(-26deg);
     font-family: "Cascadia Code";
     font-size: 1.2rem;

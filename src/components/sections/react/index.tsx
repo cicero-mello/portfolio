@@ -12,8 +12,7 @@ export const ReactSection = component$(() => {
                 <S.ReactShadowContainer>
                     <ReactSVG
                         class={S.reactSvgClass}
-                        pathColor={Colors.Toast}
-                        pathOpacity="0.09"
+                        pathColor={Colors.Toast9}
                     />
                 </S.ReactShadowContainer>
             </S.ReactContainer>
