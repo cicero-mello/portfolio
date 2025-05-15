@@ -12,7 +12,7 @@
     font-family: "Cascadia Code";
     font-style: normal;
     font-weight: 400;
-    src: url("../public/fonts/CascadiaCode-Regular.woff2") format("woff2");
+    src: url("../assets/fonts/CascadiaCode-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -20,7 +20,7 @@
     font-family: "Cascadia Code Bold";
     font-style: bold;
     font-weight: 700;
-    src: url("../fonts/CascadiaCode-Bold.woff2") format("woff2");
+    src: url("../assets/fonts/CascadiaCode-Bold.woff2") format("woff2");
 }
 
 @font-face {
@@ -28,7 +28,7 @@
     font-family: "Henny Penny";
     font-style: cursive;
     font-weight: 400;
-    src: url("../fonts/HennyPenny-Regular.woff2") format("woff2");
+    src: url("../assets/fonts/HennyPenny-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -36,7 +36,7 @@
     font-family: "Engravers MT";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/EngraversMT-Regular.woff2") format("woff2");
+    src: url("../assets/fonts/EngraversMT-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -44,7 +44,7 @@
     font-family: "Grechen Fuemen";
     font-style: cursive;
     font-weight: 400;
-    src: url("../fonts/GrechenFuemen-Regular.woff2") format("woff2");
+    src: url("../assets/fonts/GrechenFuemen-Regular.woff2") format("woff2");
 }
 
 * {

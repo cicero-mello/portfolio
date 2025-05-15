@@ -8,7 +8,7 @@ export const Hero = component$(() => {
         <S.Content>
             <S.Card>
                 <S.Image
-                    src="public/images/me-brown.webp"
+                    src="/assets/images/me-brown.webp"
                 />
                 <S.Text>
                     Hi<br />
