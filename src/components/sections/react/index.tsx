@@ -1,10 +1,34 @@
 import { component$ } from "@builder.io/qwik"
+import { ReactSVG } from "~/components/svg"
+import * as S from "./styles.css"
+import { Colors } from "~/styles"
 
 export const ReactSection = component$(() => {
 
     return (
-        <section>
-            (React)
-        </section>
+        <S.Section>
+            <S.ReactContainer>
+                <ReactSVG class={S.reactSvgClass} />
+                <S.ReactShadowContainer>
+                    <ReactSVG
+                        class={S.reactSvgClass}
+                        pathColor={Colors.Toast}
+                        pathOpacity="0.09"
+                    />
+                </S.ReactShadowContainer>
+            </S.ReactContainer>
+
+            <S.TextContainer>
+                <S.MainText>
+                    <span>I'm Frontend developer</span>
+                    <span>focused on REACT</span>
+                </S.MainText>
+                <S.DescriptionText>
+                    <span>But, in my scope I have</span>
+                    <span>HTML, CSS, JS, TS, Styled-Components, Tailwind</span>
+                    <span>Next.js, Qwik, Preact, Git, Vite, NodeJS, Fastify, Figma...</span>
+                </S.DescriptionText>
+            </S.TextContainer>
+        </S.Section>
     )
 })

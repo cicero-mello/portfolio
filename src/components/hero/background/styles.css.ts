@@ -11,7 +11,7 @@ export const Content = styled.div`
 
     font-family: "Engravers MT";
     color: ${Colors.Cloud};
-    opacity: 4%;
+    opacity: 3%;
     font-size: 4rem;
 `
 
