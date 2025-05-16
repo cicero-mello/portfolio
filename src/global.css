@@ -82,7 +82,6 @@ body {
     background-color: var(--color-onyx);
     color: var(--color-cloud);
     font-family: "Cascadia Code Bold";
-    overflow-x: hidden;
 
     &::-webkit-scrollbar {
         display: none;

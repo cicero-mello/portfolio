@@ -26,6 +26,7 @@
         "@builder.io/qwik": "^1.13.0",
         "@builder.io/qwik-city": "^1.13.0",
         "@types/eslint": "8.56.10",
+        "@types/gsap": "^3.0.0",
         "@types/node": "20.14.11",
         "@typescript-eslint/eslint-plugin": "7.16.1",
         "@typescript-eslint/parser": "7.16.1",
@@ -40,6 +41,7 @@
         "vite-tsconfig-paths": "^4.2.1"
     },
     "dependencies": {
-        "@vanilla-extract/vite-plugin": "^5.0.1"
+        "@vanilla-extract/vite-plugin": "^5.0.1",
+        "gsap": "^3.13.0"
     }
 }

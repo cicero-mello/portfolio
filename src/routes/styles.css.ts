@@ -7,7 +7,12 @@ export const Main = styled.main`
     width: 100%;
 `
 
-export const HorizontalWrapper = styled.div`
+export const HorizontalWrapper1 = styled.div`
     display: flex;
-    overflow-x: hidden;
+    margin-bottom: 3000px;
+`
+
+export const HorizontalWrapper2 = styled.div`
+    display: flex;
+    margin-bottom: 2000px;
 `

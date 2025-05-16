@@ -6,7 +6,7 @@ import { Colors } from "~/styles"
 export const ReactSection = component$(() => {
 
     return (
-        <S.Section>
+        <S.Section class="react-section">
             <S.ReactContainer>
                 <ReactSVG class={S.reactSvgClass} />
                 <S.ReactShadowContainer>
