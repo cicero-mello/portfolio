@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik"
-import { ReactSVG } from "~/components/svg"
+import { ReactBigSVG } from "~/components/svg"
 import * as S from "./styles.css"
 import { Colors } from "~/styles"
 
@@ -8,9 +8,9 @@ export const ReactSection = component$(() => {
     return (
         <S.Section class="react-section">
             <S.ReactContainer>
-                <ReactSVG class={S.reactSvgClass} />
+                <ReactBigSVG class={S.reactSvgClass} />
                 <S.ReactShadowContainer>
-                    <ReactSVG
+                    <ReactBigSVG
                         class={S.reactSvgClass}
                         pathColor={Colors.Toast9}
                     />

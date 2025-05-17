@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "@builder.io/qwik"
 
-export interface ReactSVGProps
+export interface SVGComponentProps
     extends HTMLAttributes<SVGElement> {
     pathColor?: string
-    pathOpacity?: string
+    bgColor?: string
 }
