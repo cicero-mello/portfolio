@@ -1,4 +1,5 @@
 export * from "./react-big"
+
 export * from "./axios"
 export * from "./c"
 export * from "./codepen"
@@ -29,3 +30,11 @@ export * from "./vite"
 export * from "./vitest"
 export * from "./zod"
 export * from "./zustand"
+
+export * from "./instagram"
+export * from "./linked-in"
+
+export * from "./bag"
+export * from "./rocket"
+export * from "./suitcase"
+export * from "./vitals"
