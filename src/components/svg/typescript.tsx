@@ -1,10 +1,10 @@
+import type { SVGComponentProps } from "./types"
 import { component$ } from "@builder.io/qwik"
 import { Colors } from "~/styles"
-import { SVGComponentProps } from "./types"
 
 export const TypescriptSVG = component$(({
     pathColor = Colors.Toast,
-    bgColor = Colors.Onyx,
+    bgColor = Colors.Onyx, // eslint-disable-line @typescript-eslint/no-unused-vars
     ...rest
 }: SVGComponentProps) => {
 

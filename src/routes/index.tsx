@@ -15,6 +15,7 @@ import { initScrollControl } from "~/gsap/scroll-control"
 
 export default component$(() => {
 
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(async () => {
         initScrollControl()
     })

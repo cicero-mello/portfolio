@@ -1,6 +1,6 @@
+import type { SVGComponentProps } from "./types"
 import { component$ } from "@builder.io/qwik"
 import { Colors } from "~/styles"
-import { SVGComponentProps } from "./types"
 
 export const PreactSVG = component$(({
     pathColor = Colors.Toast,

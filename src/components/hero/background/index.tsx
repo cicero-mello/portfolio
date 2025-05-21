@@ -1,4 +1,4 @@
-import { $, component$ } from "@builder.io/qwik"
+import { component$ } from "@builder.io/qwik"
 import * as S from "./styles.css"
 
 export const Background = component$(() => {
@@ -16,7 +16,7 @@ export const Background = component$(() => {
         "貫いた想いが未来を開く"
     )
 
-    const randomCutAndJoinText = $((text: string): string => {
+    const randomCutAndJoinText = ((text: string): string => {
         const cutIndex = Math.floor(Math.random() * (text.length - 1)) + 1
         const firstHalf = text.slice(0, cutIndex)
         const secondHalf = text.slice(cutIndex)

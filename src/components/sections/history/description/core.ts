@@ -1,7 +1,7 @@
 import { BagSVG, RocketSVG, SuitCaseSVG, VitalsSVG } from "../../../svg"
-import { DescriptionTexts, DescriptionType } from "./types"
-import { SVGComponentProps } from "../../../svg/types"
-import { Component } from "@builder.io/qwik"
+import type { DescriptionTexts, DescriptionType } from "./types"
+import type { SVGComponentProps } from "../../../svg/types"
+import type { Component } from "@builder.io/qwik"
 
 export const svgComponentByDescriptionType = (
     new Map<DescriptionType, Component<SVGComponentProps>>([
@@ -41,7 +41,7 @@ export const textByDescriptionType = (
             ),
             bottom: (
                 "(Gradually I returned to " +
-                "coding. ¯\_(ツ)_/¯ )"
+                "coding. ¯\\_(ツ)_/¯ )"
             )
         }],
         ["ascension", {

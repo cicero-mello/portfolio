@@ -1,6 +1,6 @@
+import type { SVGComponentProps } from "./types"
 import { component$ } from "@builder.io/qwik"
 import { Colors } from "~/styles"
-import { SVGComponentProps } from "./types"
 
 export const CSVG = component$(({
     pathColor = Colors.Toast,

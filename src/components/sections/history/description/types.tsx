@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "@builder.io/qwik"
+import type { HTMLAttributes } from "@builder.io/qwik"
 
 export type DescriptionType = (
     "school" |

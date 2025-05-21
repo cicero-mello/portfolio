@@ -1,7 +1,7 @@
 import { svgComponentByDescriptionType, textByDescriptionType } from "./core"
 import { component$ } from "@builder.io/qwik"
+import type { Props } from "./types"
 import * as S from "./styles.css"
-import { Props } from "./types"
 
 export const Description = component$<Props>(({
     type,
