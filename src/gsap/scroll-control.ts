@@ -1,12 +1,13 @@
 import { gsap } from "gsap"
+import { $ } from "@builder.io/qwik"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
 
-export const initScrollControl = async () => {
+export const initScrollControl = $(async () => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
     ScrollSmoother.create({
-        smooth: 1,
+        smooth: 0.4,
         effects: true,
         smoothTouch: 0.1,
     })
@@ -32,4 +33,4 @@ export const initScrollControl = async () => {
             scrub: 1,
         }
     })
-}
+})

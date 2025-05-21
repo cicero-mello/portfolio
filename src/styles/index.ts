@@ -11,6 +11,7 @@ export enum Colors {
     Cloud15 = "#F6F6F626",
     Cloud5 = "#F6F6F60D",
     Cloud3 = "#F6F6F608",
+    Cloud2 = "#F6F6F605",
 
     Toast22 = "#AD968638",
     Toast9 = "#AD968617"
