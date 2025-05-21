@@ -57,5 +57,4 @@ export const DescriptionText = styled.p`
     font-family: "Cascadia Code";
     font-size: 1.2rem;
     line-height: 140%;
-
 `

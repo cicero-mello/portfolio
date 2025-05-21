@@ -12,7 +12,7 @@ export const initScrollControl = async () => {
     })
 
     gsap.to(".h-section-1", {
-        x: "-200%",
+        x: "-400%",
         scrollTrigger: {
             pin: true,
             trigger: ".h-section-1",
@@ -28,7 +28,7 @@ export const initScrollControl = async () => {
             pin: true,
             trigger: ".h-section-2",
             start: "top top",
-            end: "+=2000",
+            end: "+=3000",
             scrub: 1,
         }
     })
