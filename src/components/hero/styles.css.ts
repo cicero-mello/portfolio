@@ -36,7 +36,11 @@ export const imageClass = style({
 })
 
 export const Text = styled.p`
+    display: flex;
+    flex-direction: column;
+
     font-size: 2.5rem;
-    margin-top: -2.4rem;
-    margin-right: -7rem;
+    margin-top: -2rem;
+    margin-right: -6rem;
+    min-width: 27.25rem;
 `
