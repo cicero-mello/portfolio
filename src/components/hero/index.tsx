@@ -1,7 +1,7 @@
-import Image from '../../../assets/images/me-brown.webp?w=3017&h=3017&jsx'
 import { component$, useId, useVisibleTask$ } from "@builder.io/qwik"
 import { startTyping } from "cm-typing-effect"
 import { Background } from "./background"
+import { MyPicture } from './my-picture'
 import * as S from "./styles.css"
 
 export const Hero = component$(() => {
@@ -29,9 +29,7 @@ export const Hero = component$(() => {
     return (
         <S.Content>
             <S.Card>
-                <S.ImageButton>
-                    <Image class={S.imageClass} />
-                </S.ImageButton>
+                <MyPicture />
                 <S.Text>
                     <span
                         children="Hi"

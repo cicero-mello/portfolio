@@ -44,6 +44,7 @@
     },
     "dependencies": {
         "@vanilla-extract/vite-plugin": "^5.0.1",
+        "cm-glitch": "^1.0.2",
         "cm-typing-effect": "^1.0.8",
         "gsap": "^3.13.0"
     }
