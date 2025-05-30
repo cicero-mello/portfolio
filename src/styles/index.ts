@@ -18,6 +18,7 @@ export enum Colors {
 }
 
 export enum Breakpoints {
+    SmallWidth = "max-width: 44rem", //704px
     Mobile = "max-width: 30rem", // 480px
     SmallHeight = "max-height: 42rem" //672px
 }
