@@ -9,6 +9,7 @@ export const Hero = component$(() => {
     const idText2 = useId()
     const idText3 = useId()
 
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(async () => {
         await startTyping(idText1, {
             startDelay: 2500,
