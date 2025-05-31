@@ -10,6 +10,7 @@ export const Main = styled.main`
 export const HorizontalWrapper1 = styled.div`
     display: flex;
     margin-bottom: 3000px;
+    right: -400%;
 `
 
 export const HorizontalWrapper2 = styled.div`

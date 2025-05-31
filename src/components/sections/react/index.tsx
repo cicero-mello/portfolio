@@ -1,22 +1,12 @@
 import { component$ } from "@builder.io/qwik"
-import { ReactBigSVG } from "~/components/svg"
 import * as S from "./styles.css"
-import { Colors } from "~/styles"
+import { SpinnerLogo } from "./spinner-logo"
 
 export const ReactSection = component$(() => {
 
     return (
         <S.Section class="react-section">
-            <S.ReactContainer>
-                <ReactBigSVG class={S.reactSvgClass} />
-                <S.ReactShadowContainer>
-                    <ReactBigSVG
-                        class={S.reactSvgClass}
-                        pathColor={Colors.Toast9}
-                    />
-                </S.ReactShadowContainer>
-            </S.ReactContainer>
-
+            <SpinnerLogo />
             <S.TextContainer>
                 <S.MainText>
                     <span>I'm Frontend developer</span>
