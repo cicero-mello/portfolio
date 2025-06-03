@@ -13,8 +13,6 @@ export const ReactBigSVG = component$(({
     return (
         <S.Wrapper>
             <svg
-                width="331"
-                height="299"
                 viewBox="0 0 331 299"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

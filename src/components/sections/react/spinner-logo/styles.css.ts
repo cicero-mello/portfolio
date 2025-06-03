@@ -4,13 +4,24 @@ import { styled } from "styled-vanilla-extract/qwik"
 export const Wrapper = styled.div`
     display: flex;
     position: relative;
-    max-height: 23rem;
-    height: 100%;
+
+    @media screen and (max-width: 1100px) {
+        max-width: 50%;
+    }
 `
 
 export const reactSvgClass = style({
-    maxHeight: "23rem",
-    userSelect: "none"
+    width: "20.6875rem",            // 331px
+    height: "auto",
+    userSelect: "none",
+    "@media": {
+        "(max-width: 68.75rem)": {  // 1100px
+            width: "100%",
+        },
+        "(max-height: 38rem)": {    // Breakpoints.SmallHeight
+            maxWidth: "13.75rem",   // 220px
+        }
+    }
 })
 
 export const ReactShadowContainer = styled.div`
@@ -18,7 +29,7 @@ export const ReactShadowContainer = styled.div`
     position: absolute;
     max-width: 23rem;
     width: 100%;
-    bottom: -6.1rem;
-    left: -6rem;
+    bottom: -33%;
+    left: -33%;
     z-index: -1;
 `
