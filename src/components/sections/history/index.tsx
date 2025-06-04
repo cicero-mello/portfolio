@@ -5,41 +5,44 @@ import * as S from "./styles.css"
 export const HistorySection = component$(() => {
 
     return (
-        <S.Section class="history-section">
+        <S.MainSection class="history-section">
             <S.TopGuide>
-                <S.Impacts>
-                    <S.ImpactItem> 1º IMPACT </S.ImpactItem>
-                    <S.ImpactItem> 2º IMPACT </S.ImpactItem>
-                    <S.ImpactItem> _________ </S.ImpactItem>
-                    <S.ImpactItem> 3º IMPACT </S.ImpactItem>
-                </S.Impacts>
-
-                <S.Years>
-                    <S.YearItem> 2017 </S.YearItem>
-                    <S.YearItem> 2020 </S.YearItem>
-                    <S.YearItem> 2022 </S.YearItem>
-                    <S.YearItem> 2024/2025 </S.YearItem>
-                </S.Years>
-
-                <S.Descriptions>
+                <S.YearSection>
+                    <S.ImpactText> 1º IMPACT </S.ImpactText>
+                    <S.YearText> 2017 </S.YearText>
                     <Description
                         type="school"
                         class={S.descriptionItemClass}
                     />
+                </S.YearSection>
+
+                <S.YearSection>
+                    <S.ImpactText> 2º IMPACT </S.ImpactText>
+                    <S.YearText> 2020 </S.YearText>
                     <Description
                         type="work"
                         class={S.descriptionItemClass}
                     />
+                </S.YearSection>
+
+                <S.YearSection>
+                    <S.ImpactText> _________ </S.ImpactText>
+                    <S.YearText> 2022 </S.YearText>
                     <Description
                         type="health"
                         class={S.descriptionItemClass}
                     />
+                </S.YearSection>
+
+                <S.YearSection>
+                    <S.ImpactText> 3º IMPACT </S.ImpactText>
+                    <S.YearText> 2024/2025 </S.YearText>
                     <Description
                         type="ascension"
                         class={S.descriptionItemClass}
                     />
-                </S.Descriptions>
+                </S.YearSection>
             </S.TopGuide>
-        </S.Section>
+        </S.MainSection>
     )
 })

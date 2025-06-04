@@ -1,3 +1,4 @@
+import { style } from "@vanilla-extract/css"
 import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
@@ -18,3 +19,9 @@ export const Text = styled.p`
     line-height: 140%;
     color: ${Colors.Cloud51};
 `
+
+export const SVGClass = style({
+    width: "4rem",
+    minWidth: "4rem",
+    height: "auto"
+})

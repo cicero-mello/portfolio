@@ -16,7 +16,7 @@ export const Description = component$<Props>(({
 
     return (
         <S.Component {...rest}>
-            <SVGComponent />
+            <SVGComponent class={S.SVGClass} />
             <S.TextWrapper>
                 <S.Text>{texts.top}</S.Text>
                 <S.Text>{texts.bottom}</S.Text>

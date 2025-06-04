@@ -2,43 +2,53 @@ import { style } from "@vanilla-extract/css"
 import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
-export const Section = styled.section`
-    min-width: 200vw;
+export const MainSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: max-content;
 `
 
 export const TopGuide = styled.div`
     display: flex;
-    flex-direction: column;
     background-color: ${Colors.Fawn};
-    width: 350vw;
-    height: 50vh;
-    border-radius: 0 0 4rem 4rem;
-    padding: 42px 100px;
+    padding: 24px 100px 42px 200px;
+    margin-right: 30rem;
+    width: fit-content;
+    gap: 300px;
 `
 
-export const Impacts = styled.div`
+export const YearSection = styled.div`
     display: flex;
+    flex-direction: column;
+    min-height: unset;
+    min-width: max-content;
+
+    border: 2px solid blue;
 `
 
-export const Years = styled.div`
-    display: flex;
+export const ImpactText = styled.span`
+    font-family: "Engravers MT";
+    font-size: 4rem;
+    color: ${Colors.Toast22};
+    transform: skewX(-33deg);
+    width: fit-content;
+    align-self: center;
+    padding-right: 50%;
+    white-space: nowrap;
 `
 
-export const Descriptions = styled.div`
-    display: flex;
-`
-
-export const ImpactItem = styled.div`
-    display: flex;
-    min-width: 100vw;
-`
-
-export const YearItem = styled.div`
-    display: flex;
-    min-width: 100vw;
+export const YearText = styled.span`
+    font-family: "Grechen Fuemen";
+    font-size: 2.5rem;
+    /* align-self: center; */
+    padding-left: 5.5rem;
+    justify-self: flex-end;
 `
 
 export const descriptionItemClass = style({
-    display: "flex",
-    minWidth: "100vw"
+    // display: "flex",
+    maxWidth: "30rem",
+    // width: "100%",
+    // paddingLeft: "40rem",
+    justifySelf: "flex-end"
 })

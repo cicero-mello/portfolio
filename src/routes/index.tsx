@@ -3,6 +3,7 @@ import { component$ } from "@builder.io/qwik"
 import * as S from "./styles.css"
 import {
     HelloSection,
+    HistorySection,
     ReactSection,
 } from "~/components"
 
@@ -12,6 +13,7 @@ export default component$(() => {
         <S.Main>
             <HelloSection />
             <ReactSection />
+            <HistorySection />
         </S.Main>
     )
 })

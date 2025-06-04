@@ -40,8 +40,8 @@ export const textByDescriptionType = (
                 "on health issues."
             ),
             bottom: (
-                "(Gradually I returned to " +
-                "coding. ¯\\_(ツ)_/¯ )"
+                "Gradually I returned to " +
+                "coding."
             )
         }],
         ["ascension", {
