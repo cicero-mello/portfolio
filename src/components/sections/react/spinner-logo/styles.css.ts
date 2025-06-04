@@ -14,6 +14,8 @@ export const reactSvgClass = style({
     width: "20.6875rem",            // 331px
     height: "auto",
     userSelect: "none",
+    willChange: "transform",
+    transformOrigin: "center center",
     "@media": {
         "(max-width: 68.75rem)": {  // 1100px
             width: "100%",

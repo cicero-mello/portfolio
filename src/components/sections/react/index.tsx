@@ -1,14 +1,14 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { SpinnerLogo } from "./spinner-logo"
 import { startTyping } from "cm-typing-effect"
 import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
+import { setupScrollTrigger } from "~/gsap/react-section"
 
 export const ReactSection = component$(() => {
     const descriptionRef = useSignal<HTMLElement>()
 
-    // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(async () => {
+    const startAnimations = $(async () => {
         await startTyping("react-text-1", {
             startDelay: 800,
             animationTime: 1400,
@@ -25,6 +25,11 @@ export const ReactSection = component$(() => {
                 distortionIntensity: 100,
             })
         }, 1000)
+    })
+
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(async () => {
+        setupScrollTrigger(startAnimations)
     })
 
     return (
