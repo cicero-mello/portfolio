@@ -17,37 +17,37 @@ export const textByDescriptionType = (
         ["school", {
             top: (
                 "First contact with Programming " +
-                "(with electronics) in High School."
+                "(with electronics) in High School"
             ),
             bottom: (
                 "Most of the time was focused on " +
-                "Microcontrollers."
+                "Microcontrollers"
             )
         }],
         ["work", {
             top: (
                 "Knowledge Expansion to Web  " +
-                "Development in Internship/Job."
+                "Development in Internship/Job"
             ),
             bottom: (
                 "Initially FullStack, after, focus on " +
-                "Frontend."
+                "Frontend"
             )
         }],
         ["health", {
             top: (
                 "Stopping work to focus " +
-                "on health issues."
+                "on health issues"
             ),
             bottom: (
                 "Gradually I returned to " +
-                "coding."
+                "coding"
             )
         }],
         ["ascension", {
             top: (
                 "Start projects with learning " +
-                "purposes by myself."
+                "purposes by myself"
             ),
             bottom: (
                 "(Even the classics are built with " +

@@ -6,6 +6,7 @@ export const Component = styled.div`
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    height: 100%;
 `
 
 export const TextWrapper = styled.div`
