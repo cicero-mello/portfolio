@@ -5,7 +5,10 @@ export const setupScrollTrigger = (
     historySectionRef: Signal<Element | undefined>
 ) => {
 
-    slideTopGuide(historySectionRef.value!)
+
+
+    const a = document.getElementsByClassName("top-guide")[0]!
+    slideTopGuide(a)
     pinTopGuide(historySectionRef.value!)
 }
 
@@ -15,8 +18,7 @@ const pinTopGuide = (historySection: Element) => {
             trigger: historySection,
             start: "top top",
             pin: true,
-            end: "+=5000",
-            scrub: true
+            end: "+=3300",
         }
     })
 }
@@ -24,17 +26,25 @@ const pinTopGuide = (historySection: Element) => {
 const slideTopGuide = (historySection: Element) => {
     const getX = () => {
         const elementWidth = historySection.scrollWidth
+
+        const style = window.getComputedStyle(historySection as HTMLElement)
+        const marginLeft = parseFloat(style.marginLeft) || 0
+
+        const totalWidth = elementWidth + marginLeft
         const viewportWidth = window.innerWidth
-        const distance = elementWidth - viewportWidth + 500
+
+        const distance = totalWidth - viewportWidth + 500
         return -distance
     }
+
     gsap.to(historySection, {
         x: getX,
         scrollTrigger: {
             trigger: historySection,
             scrub: 0.8,
-            start: "top 90%",
-            end: "+=3000",
+            start: "top 80%",
+            end: "+=3600",
+            markers: true,
             invalidateOnRefresh: true,
         }
     })
