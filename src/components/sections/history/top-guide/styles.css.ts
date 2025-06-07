@@ -1,7 +1,7 @@
 import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
-export const Component = styled.div`
+export const Wrapper = styled.div`
     gap: 37.5rem;                               // 600px
     border-radius: 0 2rem 2rem 0;               // 32px
     border-radius: 2rem;                        // 32px

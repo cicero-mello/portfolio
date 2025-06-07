@@ -12,10 +12,7 @@ export const TopGuide = component$(() => {
     const yearSection3Ref = useSignal<HTMLElement>()
     const yearSection4Ref = useSignal<HTMLElement>()
 
-    useOnWindow("scroll", $(() => {
-        if (isServer || animationSetupIsDone.value) return
-        animationSetupIsDone.value = true
-
+    const setupAnimations = $(() => {
         gsap.slideTopGuide(topGuideRef.value!)
 
         onElementHitWindow({
@@ -67,11 +64,16 @@ export const TopGuide = component$(() => {
                 yearSection4Ref.value!.style.opacity = "0.2"
             }
         })
+    })
+
+    useOnWindow("scroll", $(() => {
+        if (isServer || animationSetupIsDone.value) return
+        animationSetupIsDone.value = true
+        setupAnimations()
     }))
 
-
     return (
-        <S.Component ref={topGuideRef}>
+        <S.Wrapper ref={topGuideRef}>
             <S.PlaceHolder>TIMELINE</S.PlaceHolder>
             <S.YearSection ref={yearSection1Ref}>
                 <S.ImpactText
@@ -116,6 +118,6 @@ export const TopGuide = component$(() => {
                 />
                 <Description type="ascension" />
             </S.YearSection>
-        </S.Component>
+        </S.Wrapper>
     )
 })

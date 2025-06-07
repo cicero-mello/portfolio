@@ -28,6 +28,7 @@ export const ReactSection = component$(() => {
             descriptionRef.value!.style.opacity = "1"
             startGlitch(descriptionId, {
                 distortionIntensity: 100,
+                noObservers: true
             })
         }, 1000)
     })

@@ -7,7 +7,7 @@ export const MyPicture = component$(() => {
     const imageId = useId()
 
     const handleClick = $(() => {
-        startGlitch(imageId)
+        startGlitch(imageId, { noObservers: true })
     })
 
     return (
