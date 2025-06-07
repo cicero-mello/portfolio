@@ -14,6 +14,7 @@ export default component$(() => {
             <HelloSection />
             <ReactSection />
             <HistorySection />
+            <h1>Hello</h1>
         </S.Main>
     )
 })

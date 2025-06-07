@@ -7,7 +7,6 @@ export const Description = component$<Props>(({
     type,
     ...rest
 }) => {
-
     const SVGComponent = svgComponentByDescriptionType.get(
         type
     )!

@@ -1,6 +1,7 @@
-import { component$, Slot, useVisibleTask$ } from "@builder.io/qwik"
-import { registerGSAPPlugins } from "~/gsap"
+import { $, component$, isServer, Slot, useOnWindow, useVisibleTask$ } from "@builder.io/qwik"
 import type { RequestHandler } from "@builder.io/qwik-city"
+import { registerGSAPPlugins } from "~/gsap"
+import { ScrollTrigger } from "gsap/all"
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -19,6 +20,16 @@ export default component$(() => {
     useVisibleTask$(() => {
         registerGSAPPlugins()
     })
+
+    useOnWindow("resize", $(() => {
+        if (isServer) return
+        ScrollTrigger.refresh()
+    }))
+
+    useOnWindow("beforeunload", $(() => {
+        if (isServer) return
+        window.scrollTo(0, 0)
+    }))
 
     return <Slot />
 })

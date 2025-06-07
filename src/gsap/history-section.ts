@@ -1,51 +1,49 @@
-import type { Signal } from "@builder.io/qwik"
-import { gsap } from "gsap"
+import { pxToRemBasedPx } from "~/utils"
+import { gsap as GSAP } from "gsap"
 
-export const setupScrollTrigger = (
-    historySectionRef: Signal<Element | undefined>
-) => {
+const pinHistorySection = (historySection: Element) => {
+    const end = pxToRemBasedPx(3300)
 
-
-
-    const a = document.getElementsByClassName("top-guide")[0]!
-    slideTopGuide(a)
-    pinTopGuide(historySectionRef.value!)
-}
-
-const pinTopGuide = (historySection: Element) => {
-    gsap.to(historySection, {
+    GSAP.to(historySection, {
         scrollTrigger: {
             trigger: historySection,
             start: "top top",
             pin: true,
-            end: "+=3300",
+            end: `+=${end}`,
         }
     })
 }
 
-const slideTopGuide = (historySection: Element) => {
-    const getX = () => {
-        const elementWidth = historySection.scrollWidth
+const slideTopGuide = (topGuide: HTMLElement) => {
+    const desiredEmptySpaceOnRight = pxToRemBasedPx(500)
+    const end = pxToRemBasedPx(3600)
 
-        const style = window.getComputedStyle(historySection as HTMLElement)
+    const getX = () => {
+        const elementWidth = topGuide.scrollWidth
+
+        const style = window.getComputedStyle(topGuide)
         const marginLeft = parseFloat(style.marginLeft) || 0
 
         const totalWidth = elementWidth + marginLeft
         const viewportWidth = window.innerWidth
 
-        const distance = totalWidth - viewportWidth + 500
+        const distance = totalWidth - viewportWidth + desiredEmptySpaceOnRight
         return -distance
     }
 
-    gsap.to(historySection, {
+    GSAP.to(topGuide, {
         x: getX,
         scrollTrigger: {
-            trigger: historySection,
+            trigger: topGuide,
             scrub: 0.8,
             start: "top 80%",
-            end: "+=3600",
-            markers: true,
+            end: `+=${end}`,
             invalidateOnRefresh: true,
         }
     })
+}
+
+export const gsap = {
+    pinHistorySection,
+    slideTopGuide
 }

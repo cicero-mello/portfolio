@@ -1,6 +1,6 @@
-import { BagSVG, RocketSVG, SuitCaseSVG, VitalsSVG } from "../../../svg"
+import { BagSVG, RocketSVG, SuitCaseSVG, VitalsSVG } from "~/components/svg"
 import type { DescriptionTexts, DescriptionType } from "./types"
-import type { SVGComponentProps } from "../../../svg/types"
+import type { SVGComponentProps } from "~/components/svg/types"
 import type { Component } from "@builder.io/qwik"
 
 export const svgComponentByDescriptionType = (
