@@ -1,4 +1,4 @@
-import { $, component$, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
 import { setupScrollTrigger } from "~/gsap/react-section"
 import { startTyping } from "cm-typing-effect"
 import { SpinnerLogo } from "./spinner-logo"
@@ -6,6 +6,8 @@ import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
 
 export const ReactSection = component$(() => {
+    const animationSetupIsDone = useSignal(false)
+
     const descriptionRef = useSignal<HTMLElement>()
     const descriptionId = useId()
     const textId1 = useId()
@@ -30,10 +32,11 @@ export const ReactSection = component$(() => {
         }, 1000)
     })
 
-    // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(async () => {
+    useOnWindow("scroll", $(() => {
+        if (isServer || animationSetupIsDone.value) return
         setupScrollTrigger(startAnimations)
-    })
+        animationSetupIsDone.value = true
+    }))
 
     return (
         <S.Section class="react-section">
