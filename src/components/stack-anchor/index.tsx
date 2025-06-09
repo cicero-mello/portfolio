@@ -66,6 +66,10 @@ export const StackAnchor = component$(({
             {...rest}
         >
             <Component
+                style={{
+                    width: "100%",
+                    height: "100%"
+                }}
                 pathColor={
                     haveEmphasis.value ?
                         Colors.Toast : Colors.Fawn

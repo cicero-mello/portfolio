@@ -2,6 +2,7 @@ import { $, component$, isServer, useOnWindow, useSignal } from "@builder.io/qwi
 import { gsap } from "~/gsap/history-section"
 import { TopGuide } from "./top-guide"
 import * as S from "./styles.css"
+import { BottomIcons } from "./bottom-icons"
 
 export const HistorySection = component$(() => {
     const animationSetupIsDone = useSignal(false)
@@ -17,6 +18,7 @@ export const HistorySection = component$(() => {
     return (
         <S.MainSection ref={historySectionRef}>
             <TopGuide />
+            <BottomIcons />
         </S.MainSection>
     )
 })

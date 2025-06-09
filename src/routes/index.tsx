@@ -6,11 +6,13 @@ import {
     HistorySection,
     ReactSection,
 } from "~/components"
+import { BottomIcons } from "~/components/sections/history/bottom-icons"
 
 export default component$(() => {
 
     return (
         <S.Main>
+            {/* <BottomIcons /> */}
             <HelloSection />
             <ReactSection />
             <HistorySection />
