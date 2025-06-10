@@ -12,11 +12,11 @@ export default component$(() => {
 
     return (
         <S.Main>
-            {/* <BottomIcons /> */}
-            <HelloSection />
+            <BottomIcons />
+            {/* <HelloSection />
             <ReactSection />
             <HistorySection />
-            <h1>Hello</h1>
+            <h1>Hello</h1> */}
         </S.Main>
     )
 })

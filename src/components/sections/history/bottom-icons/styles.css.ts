@@ -4,21 +4,28 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     /* background-color: beige; */
-    height: 100vh;
+    height: 60vh;
     width: 100vw;
     justify-content: center;
-    gap: 2rem;
+    gap: 5%;
     padding: 1rem 2rem 2rem 2rem;
+
+    background-color: blue;
 `
 
 export const Line = styled.div`
     display: flex;
-    width: 100%;
-    height: 100%;
-    gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* ou qualquer altura */
+  background: #eee;
+  overflow: hidden;
+  padding: 0 0 24px 0;
+
 
     &.classe-foda {
         /* background-color: red; */
-        padding: 0 62px;
+        /* padding: 0 62px; */
     }
 `

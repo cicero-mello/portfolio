@@ -11,10 +11,15 @@ export const Anchor = styled.a`
     color: ${Colors.Toast};
     outline: none;
 
-
-    aspect-ratio: 1;
-    height: fit-content;
+    /* aspect-ratio: 1; */
+    height: 100%;
+    width: 100%;
     font-size: 20px;
+
+
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* Importante */
 `
 
 
