@@ -1,12 +1,15 @@
 import { $, component$, isServer, useOnWindow, useSignal } from "@builder.io/qwik"
+import { useBottomIconsContextSetup } from "~/context/history-section/desktop"
 import { gsap } from "~/gsap/history-section"
+import { BottomIcons } from "./bottom-icons"
 import { TopGuide } from "./top-guide"
 import * as S from "./styles.css"
-import { BottomIcons } from "./bottom-icons"
 
 export const HistorySection = component$(() => {
     const animationSetupIsDone = useSignal(false)
     const historySectionRef = useSignal<HTMLElement>()
+
+    useBottomIconsContextSetup()
 
     useOnWindow("scroll", $(() => {
         if (isServer || animationSetupIsDone.value) return

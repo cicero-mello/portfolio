@@ -1,4 +1,5 @@
-import { $, component$, isServer, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useContext, useOnWindow, useSignal } from "@builder.io/qwik"
+import { BottomIconsContext } from "~/context/history-section/desktop"
 import { gsap } from "~/gsap/history-section"
 import { onElementHitWindow } from "~/utils"
 import { Description } from "./description"
@@ -12,6 +13,8 @@ export const TopGuide = component$(() => {
     const yearSection3Ref = useSignal<HTMLElement>()
     const yearSection4Ref = useSignal<HTMLElement>()
 
+    const bottomIcons = useContext(BottomIconsContext)
+
     const setupAnimations = $(() => {
         gsap.slideTopGuide(topGuideRef.value!)
 
@@ -20,9 +23,11 @@ export const TopGuide = component$(() => {
             screenXPercent: 0.65,
             onHitFromRight: () => {
                 yearSection1Ref.value!.style.opacity = "1"
+                bottomIcons.showC()
             },
             onHitFromLeft: () => {
                 yearSection1Ref.value!.style.opacity = "0.2"
+                bottomIcons.hideC()
             }
         })
 
@@ -32,10 +37,30 @@ export const TopGuide = component$(() => {
             onHitFromRight: () => {
                 yearSection2Ref.value!.style.opacity = "1"
                 yearSection1Ref.value!.style.opacity = "0.2"
+
+                bottomIcons.showCSS()
+                bottomIcons.showStyledComponents()
+                bottomIcons.showJavascript()
+                bottomIcons.showAxios()
+                bottomIcons.showReact()
+                bottomIcons.showTypescript()
+                bottomIcons.showHTML()
+                bottomIcons.showJava()
+                bottomIcons.showGit()
             },
             onHitFromLeft: () => {
                 yearSection1Ref.value!.style.opacity = "1"
                 yearSection2Ref.value!.style.opacity = "0.2"
+
+                bottomIcons.hideCSS()
+                bottomIcons.hideStyledComponents()
+                bottomIcons.hideJavascript()
+                bottomIcons.hideAxios()
+                bottomIcons.hideReact()
+                bottomIcons.hideTypescript()
+                bottomIcons.hideHTML()
+                bottomIcons.hideJava()
+                bottomIcons.hideGit()
             }
         })
 
@@ -49,6 +74,7 @@ export const TopGuide = component$(() => {
             onHitFromLeft: () => {
                 yearSection2Ref.value!.style.opacity = "1"
                 yearSection3Ref.value!.style.opacity = "0.2"
+
             }
         })
 
@@ -58,10 +84,48 @@ export const TopGuide = component$(() => {
             onHitFromRight: () => {
                 yearSection4Ref.value!.style.opacity = "1"
                 yearSection3Ref.value!.style.opacity = "0.2"
+
+                bottomIcons.showVite()
+                bottomIcons.showPrisma()
+                bottomIcons.showQwik()
+                bottomIcons.showPreact()
+                bottomIcons.showTanstack()
+                bottomIcons.showZod()
+                bottomIcons.showFigma()
+                bottomIcons.showNode()
+                bottomIcons.showFastify()
+                bottomIcons.showZustand()
+                bottomIcons.showVitest()
+                bottomIcons.showNPM()
+                bottomIcons.showTailwind()
+                bottomIcons.showSwagger()
+                bottomIcons.showDocker()
+                bottomIcons.showReactHookForm()
+                bottomIcons.showNext()
+                bottomIcons.showGSAP()
             },
             onHitFromLeft: () => {
                 yearSection3Ref.value!.style.opacity = "1"
                 yearSection4Ref.value!.style.opacity = "0.2"
+
+                bottomIcons.hideVite()
+                bottomIcons.hidePrisma()
+                bottomIcons.hideQwik()
+                bottomIcons.hidePreact()
+                bottomIcons.hideTanstack()
+                bottomIcons.hideZod()
+                bottomIcons.hideFigma()
+                bottomIcons.hideNode()
+                bottomIcons.hideFastify()
+                bottomIcons.hideZustand()
+                bottomIcons.hideVitest()
+                bottomIcons.hideNPM()
+                bottomIcons.hideTailwind()
+                bottomIcons.hideSwagger()
+                bottomIcons.hideDocker()
+                bottomIcons.hideReactHookForm()
+                bottomIcons.hideNext()
+                bottomIcons.hideGSAP()
             }
         })
     })

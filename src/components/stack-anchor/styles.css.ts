@@ -2,6 +2,10 @@ import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const Anchor = styled.a`
+    font-size: 1.25rem; // 20px
+    width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,18 +15,12 @@ export const Anchor = styled.a`
     color: ${Colors.Toast};
     outline: none;
 
-    /* aspect-ratio: 1; */
-    height: 100%;
-    width: 100%;
-    font-size: 20px;
-
-
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box; /* Importante */
+    will-change: transform;
+    transform: scale(0);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+    transform-origin: center;
 `
-
-
 
 export const Name = styled.span`
     position: absolute;

@@ -1,4 +1,4 @@
-import type { Component, HTMLAttributes } from "@builder.io/qwik"
+import type { Component, HTMLAttributes, Signal } from "@builder.io/qwik"
 import type { SVGComponentProps } from "../svg/types"
 
 export interface StackAnchorProps extends Omit<
@@ -8,4 +8,5 @@ export interface StackAnchorProps extends Omit<
     svgComponent: Component<SVGComponentProps>
     name: string
     href: string
+    ref?: Signal<HTMLAnchorElement | undefined>
 }

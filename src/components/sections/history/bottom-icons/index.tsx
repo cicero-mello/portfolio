@@ -1,54 +1,120 @@
-import { component$ } from "@builder.io/qwik"
-import * as S from "./styles.css"
+import { $, component$, isServer, type Signal, useContext, useOnWindow, useSignal } from "@builder.io/qwik"
+import { BottomIconsContext, type VisibilityControl } from "~/context/history-section/desktop"
 import { StackAnchor } from "~/components/stack-anchor"
 import * as Icon from "~/components/svg"
+import * as S from "./styles.css"
 
 export const BottomIcons = component$(() => {
+    const context = useContext(BottomIconsContext)
+    const contextSetupIsDone = useSignal(false)
+
+    const refs = {
+        CSS: useSignal<HTMLAnchorElement>(),
+        StyledComponents: useSignal<HTMLAnchorElement>(),
+        Javascript: useSignal<HTMLAnchorElement>(),
+        Vite: useSignal<HTMLAnchorElement>(),
+        Prisma: useSignal<HTMLAnchorElement>(),
+        Qwik: useSignal<HTMLAnchorElement>(),
+        Preact: useSignal<HTMLAnchorElement>(),
+        Tanstack: useSignal<HTMLAnchorElement>(),
+        Zod: useSignal<HTMLAnchorElement>(),
+        Axios: useSignal<HTMLAnchorElement>(),
+        React: useSignal<HTMLAnchorElement>(),
+        Figma: useSignal<HTMLAnchorElement>(),
+        Typescript: useSignal<HTMLAnchorElement>(),
+        C: useSignal<HTMLAnchorElement>(),
+        HTML: useSignal<HTMLAnchorElement>(),
+        Node: useSignal<HTMLAnchorElement>(),
+        Fastify: useSignal<HTMLAnchorElement>(),
+        Zustand: useSignal<HTMLAnchorElement>(),
+        Vitest: useSignal<HTMLAnchorElement>(),
+        Java: useSignal<HTMLAnchorElement>(),
+        Git: useSignal<HTMLAnchorElement>(),
+        NPM: useSignal<HTMLAnchorElement>(),
+        Tailwind: useSignal<HTMLAnchorElement>(),
+        Swagger: useSignal<HTMLAnchorElement>(),
+        Docker: useSignal<HTMLAnchorElement>(),
+        ReactHookForm: useSignal<HTMLAnchorElement>(),
+        Next: useSignal<HTMLAnchorElement>(),
+        GSAP: useSignal<HTMLAnchorElement>(),
+    }
+
+    const showIcon = $((icon: Signal<HTMLAnchorElement | undefined>) => {
+        if (!icon.value) return
+        icon.value.style.transform = "scale(1)"
+        icon.value.style.pointerEvents = "unset"
+        icon.value.tabIndex = 0
+    })
+
+    const hideIcon = $((icon: Signal<HTMLAnchorElement | undefined>) => {
+        if (!icon.value) return
+        icon.value.style.transform = "scale(0)"
+        icon.value.style.pointerEvents = "none"
+        icon.value.tabIndex = -1
+    })
+
+    useOnWindow("scroll", $(() => {
+        if (isServer || contextSetupIsDone.value) return
+        contextSetupIsDone.value = true
+        for (const [key, ref] of Object.entries(refs)) {
+            context[`show${key}` as keyof VisibilityControl] = $(() => showIcon(ref))
+            context[`hide${key}` as keyof VisibilityControl] = $(() => hideIcon(ref))
+        }
+    }))
 
     return (
         <S.Wrapper>
-            <S.Line class="classe-foda">
+            <S.Line class="small-line">
                 <StackAnchor
-                    name="CSS"
-                    href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
-                    svgComponent={Icon.CSS3SVG}
-                />
-                <StackAnchor
-                    name="Styled-Components"
-                    href="https://styled-components.com/"
-                    svgComponent={Icon.StyledComponentsSVG}
-                />
-                <StackAnchor
-                    name="Javascript"
-                    href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
-                    svgComponent={Icon.JavaScriptSVG}
-                />
-                <StackAnchor
+                    ref={refs.Vite}
                     name="Vite"
                     href="https://vite.dev/"
                     svgComponent={Icon.ViteSVG}
                 />
                 <StackAnchor
-                    name="GitHub"
-                    href="https://github.com/"
-                    svgComponent={Icon.GitHubSVG}
+                    ref={refs.Prisma}
+                    name="Prisma"
+                    href="https://www.prisma.io/"
+                    svgComponent={Icon.PrismaSVG}
                 />
                 <StackAnchor
+                    ref={refs.Qwik}
                     name="Qwik"
                     href="https://qwik.dev/"
                     svgComponent={Icon.QwikSVG}
                 />
                 <StackAnchor
+                    ref={refs.CSS}
+                    name="CSS"
+                    href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
+                    svgComponent={Icon.CSS3SVG}
+                />
+                <StackAnchor
+                    ref={refs.StyledComponents}
+                    name="Styled-Components"
+                    href="https://styled-components.com/"
+                    svgComponent={Icon.StyledComponentsSVG}
+                />
+                <StackAnchor
+                    ref={refs.Javascript}
+                    name="Javascript"
+                    href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+                    svgComponent={Icon.JavaScriptSVG}
+                />
+                <StackAnchor
+                    ref={refs.Preact}
                     name="Preact"
                     href="https://preactjs.com/"
                     svgComponent={Icon.PreactSVG}
                 />
                 <StackAnchor
+                    ref={refs.Tanstack}
                     name="Tanstack"
                     href="https://tanstack.com/"
                     svgComponent={Icon.TanstackSVG}
                 />
                 <StackAnchor
+                    ref={refs.Zod}
                     name="Zod"
                     href="https://zod.dev/"
                     svgComponent={Icon.ZodSVG}
@@ -56,99 +122,117 @@ export const BottomIcons = component$(() => {
             </S.Line>
             <S.Line>
                 <StackAnchor
-                    name="Axios"
-                    href="https://axios-http.com/ptbr/docs/intro"
-                    svgComponent={Icon.AxiosSVG}
-                />
-                <StackAnchor
-                    name="React"
-                    href="https://react.dev/"
-                    svgComponent={Icon.ReactSVG}
-                />
-                <StackAnchor
-                    name="Figma"
-                    href="https://www.figma.com"
-                    svgComponent={Icon.FigmaSVG}
-                />
-                <StackAnchor
-                    name="Typescript"
-                    href="https://www.typescriptlang.org/"
-                    svgComponent={Icon.TypescriptSVG}
-                />
-                <StackAnchor
-                    name="C"
-                    href="https://www.w3schools.com/c/c_intro.php"
-                    svgComponent={Icon.CSVG}
-                />
-                <StackAnchor
-                    name="HTML"
-                    href="https://developer.mozilla.org/pt-BR/docs/Web/HTML"
-                    svgComponent={Icon.HTML5SVG}
-                />
-                <StackAnchor
-                    name="Node"
-                    href="https://nodejs.org/pt"
-                    svgComponent={Icon.NodeSVG}
-                />
-                <StackAnchor
-                    name="Fastify"
-                    href="https://fastify.dev/"
-                    svgComponent={Icon.FastifySVG}
-                />
-                <StackAnchor
-                    name="Zustand"
-                    href="https://zustand-demo.pmnd.rs/"
-                    svgComponent={Icon.ZustandSVG}
-                />
-                <StackAnchor
-                    name="Vitest"
-                    href="https://vitest.dev/"
-                    svgComponent={Icon.VitestSVG}
-                />
-
-            </S.Line>
-            <S.Line class="classe-foda">
-                <StackAnchor
-                    name="Java"
-                    href="https://www.java.com/pt-BR/"
-                    svgComponent={Icon.JavaSVG}
-                />
-                <StackAnchor
-                    name="Git"
-                    href="https://git-scm.com/"
-                    svgComponent={Icon.GitSVG}
-                />
-                <StackAnchor
+                    ref={refs.NPM}
                     name="NPM"
                     href="https://www.npmjs.com/"
                     svgComponent={Icon.NPMSVG}
                 />
                 <StackAnchor
+                    ref={refs.Tailwind}
                     name="Tailwind"
                     href="https://tailwindcss.com/"
                     svgComponent={Icon.TailwindSVG}
                 />
                 <StackAnchor
+                    ref={refs.Figma}
+                    name="Figma"
+                    href="https://www.figma.com"
+                    svgComponent={Icon.FigmaSVG}
+                />
+                <StackAnchor
+                    ref={refs.Typescript}
+                    name="Typescript"
+                    href="https://www.typescriptlang.org/"
+                    svgComponent={Icon.TypescriptSVG}
+                />
+                <StackAnchor
+                    ref={refs.C}
+                    name="C"
+                    href="https://www.w3schools.com/c/c_intro.php"
+                    svgComponent={Icon.CSVG}
+                />
+                <StackAnchor
+                    ref={refs.HTML}
+                    name="HTML"
+                    href="https://developer.mozilla.org/pt-BR/docs/Web/HTML"
+                    svgComponent={Icon.HTML5SVG}
+                />
+                <StackAnchor
+                    ref={refs.Node}
+                    name="Node"
+                    href="https://nodejs.org/pt"
+                    svgComponent={Icon.NodeSVG}
+                />
+                <StackAnchor
+                    ref={refs.Fastify}
+                    name="Fastify"
+                    href="https://fastify.dev/"
+                    svgComponent={Icon.FastifySVG}
+                />
+                <StackAnchor
+                    ref={refs.Zustand}
+                    name="Zustand"
+                    href="https://zustand-demo.pmnd.rs/"
+                    svgComponent={Icon.ZustandSVG}
+                />
+                <StackAnchor
+                    ref={refs.Vitest}
+                    name="Vitest"
+                    href="https://vitest.dev/"
+                    svgComponent={Icon.VitestSVG}
+                />
+            </S.Line>
+            <S.Line class="small-line">
+                <StackAnchor
+                    ref={refs.Swagger}
                     name="Swagger"
                     href="https://swagger.io/"
                     svgComponent={Icon.SwaggerSVG}
                 />
                 <StackAnchor
+                    ref={refs.Docker}
                     name="Docker"
                     href="https://www.docker.com/"
                     svgComponent={Icon.DockerSVG}
                 />
                 <StackAnchor
+                    ref={refs.Axios}
+                    name="Axios"
+                    href="https://axios-http.com/ptbr/docs/intro"
+                    svgComponent={Icon.AxiosSVG}
+                />
+                <StackAnchor
+                    ref={refs.React}
+                    name="React"
+                    href="https://react.dev/"
+                    svgComponent={Icon.ReactSVG}
+                />
+                <StackAnchor
+                    ref={refs.Java}
+                    name="Java"
+                    href="https://www.java.com/pt-BR/"
+                    svgComponent={Icon.JavaSVG}
+                />
+                <StackAnchor
+                    ref={refs.Git}
+                    name="Git"
+                    href="https://git-scm.com/"
+                    svgComponent={Icon.GitSVG}
+                />
+                <StackAnchor
+                    ref={refs.ReactHookForm}
                     name="React Hook Form"
                     href="https://react-hook-form.com/"
                     svgComponent={Icon.ReactHookFormSVG}
                 />
                 <StackAnchor
+                    ref={refs.Next}
                     name="Next.js"
                     href="https://nextjs.org/"
                     svgComponent={Icon.NextSVG}
                 />
                 <StackAnchor
+                    ref={refs.GSAP}
                     name="GSAP"
                     href="https://gsap.com/"
                     svgComponent={Icon.GSAPSVG}

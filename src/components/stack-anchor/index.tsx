@@ -8,10 +8,15 @@ export const StackAnchor = component$(({
     svgComponent: Component,
     name,
     href,
+    id,
+    ref,
     ...rest
 }: StackAnchorProps) => {
-    const anchorId = useId()
-    const anchorRef = useSignal<HTMLAnchorElement>()
+    // eslint-disable-next-line qwik/use-method-usage
+    const anchorId = id ?? useId()
+    // eslint-disable-next-line qwik/use-method-usage
+    const anchorRef = ref ?? useSignal<HTMLAnchorElement>()
+
     const animationSetupIsDone = useSignal(false)
     const haveEmphasis = useSignal(false)
     const onHover = useSignal(false)
@@ -68,7 +73,7 @@ export const StackAnchor = component$(({
             <Component
                 style={{
                     width: "100%",
-                    height: "100%"
+                    height: "auto"
                 }}
                 pathColor={
                     haveEmphasis.value ?
