@@ -43,7 +43,27 @@ const slideTopGuide = (topGuide: HTMLElement) => {
     })
 }
 
+const toggleFinalMessageWrapper = (finalMessageWrapper: HTMLElement) => {
+    GSAP.to(finalMessageWrapper, {
+        scrollTrigger: {
+            trigger: finalMessageWrapper,
+            start: "top 10%",
+            end: "top 10%",
+            scrub: true,
+            onEnter: () => {
+                const left = pxToRemBasedPx(500)
+                finalMessageWrapper.style.left = `calc(100vw - ${left}px)`
+            },
+            onEnterBack: () => {
+                finalMessageWrapper.style.left = "calc(100vw)"
+            },
+            invalidateOnRefresh: true,
+        }
+    })
+}
+
 export const gsap = {
     pinHistorySection,
-    slideTopGuide
+    slideTopGuide,
+    toggleFinalMessageWrapper
 }

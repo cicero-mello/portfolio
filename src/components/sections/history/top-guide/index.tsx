@@ -8,6 +8,7 @@ import * as S from "./styles.css"
 export const TopGuide = component$(() => {
     const animationSetupIsDone = useSignal(false)
     const topGuideRef = useSignal<HTMLElement>()
+    const finalMessageWrapperRef = useSignal<HTMLElement>()
     const yearSection1Ref = useSignal<HTMLElement>()
     const yearSection2Ref = useSignal<HTMLElement>()
     const yearSection3Ref = useSignal<HTMLElement>()
@@ -17,6 +18,7 @@ export const TopGuide = component$(() => {
 
     const setupAnimations = $(() => {
         gsap.slideTopGuide(topGuideRef.value!)
+        gsap.toggleFinalMessageWrapper(finalMessageWrapperRef.value!)
 
         onElementHitWindow({
             element: yearSection1Ref.value!,
@@ -130,58 +132,73 @@ export const TopGuide = component$(() => {
         })
     })
 
+    const finalMessageHight = useSignal(0)
+
     useOnWindow("scroll", $(() => {
         if (isServer || animationSetupIsDone.value) return
         animationSetupIsDone.value = true
         setupAnimations()
+        finalMessageHight.value = topGuideRef.value!.offsetHeight - 4
     }))
 
     return (
-        <S.Wrapper ref={topGuideRef}>
-            <S.PlaceHolder>TIMELINE</S.PlaceHolder>
-            <S.YearSection ref={yearSection1Ref}>
-                <S.ImpactText
-                    class="impact-text-1"
-                    children="1º IMPACT"
-                />
-                <S.YearText
-                    class="year-text-1"
-                    children="2017"
-                />
-                <Description type="school" />
-            </S.YearSection>
+        <>
+            <S.Wrapper ref={topGuideRef}>
+                <S.PlaceHolder>TIMELINE</S.PlaceHolder>
+                <S.YearSection ref={yearSection1Ref}>
+                    <S.ImpactText
+                        class="impact-text-1"
+                        children="1º IMPACT"
+                    />
+                    <S.YearText
+                        class="year-text-1"
+                        children="2017"
+                    />
+                    <Description type="school" />
+                </S.YearSection>
 
-            <S.YearSection ref={yearSection2Ref}>
-                <S.ImpactText
-                    class="impact-text-2"
-                    children="2º IMPACT"
-                />
-                <S.YearText
-                    class="year-text-2"
-                    children="2020" />
-                <Description type="work" />
-            </S.YearSection>
+                <S.YearSection ref={yearSection2Ref}>
+                    <S.ImpactText
+                        class="impact-text-2"
+                        children="2º IMPACT"
+                    />
+                    <S.YearText
+                        class="year-text-2"
+                        children="2020" />
+                    <Description type="work" />
+                </S.YearSection>
 
-            <S.YearSection ref={yearSection3Ref}>
-                <S.ImpactText
-                    class="impact-text-3"
-                    children="//////////" />
-                <S.YearText
-                    class="year-text-3"
-                    children="2022" />
-                <Description type="health" />
-            </S.YearSection>
+                <S.YearSection ref={yearSection3Ref}>
+                    <S.ImpactText
+                        class="impact-text-3"
+                        children="//////////" />
+                    <S.YearText
+                        class="year-text-3"
+                        children="2022" />
+                    <Description type="health" />
+                </S.YearSection>
 
-            <S.YearSection ref={yearSection4Ref}>
-                <S.ImpactText
-                    class="impact-text-4"
-                    children="3º IMPACT" />
-                <S.YearText
-                    class="year-text-4"
-                    children="2024/2025"
-                />
-                <Description type="ascension" />
-            </S.YearSection>
-        </S.Wrapper>
+                <S.YearSection ref={yearSection4Ref}>
+                    <S.ImpactText
+                        class="impact-text-4"
+                        children="3º IMPACT" />
+                    <S.YearText
+                        class="year-text-4"
+                        children="2024/2025"
+                    />
+                    <Description type="ascension" />
+                </S.YearSection>
+            </S.Wrapper>
+            <S.FinalMessageWrapper
+                ref={finalMessageWrapperRef}
+                style={{
+                    height: finalMessageHight.value + "px"
+                }}
+            >
+                <S.FinalMessage>
+                    ...and the learning continues
+                </S.FinalMessage>
+            </S.FinalMessageWrapper>
+        </>
     )
 })

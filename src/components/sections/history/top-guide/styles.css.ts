@@ -96,3 +96,27 @@ export const PlaceHolder = styled.div`
     font-family: "Engravers MT";
     color: ${Colors.Cloud15};
 `
+
+export const FinalMessageWrapper = styled.div`
+    width: 31.25rem;    // 500px
+    top: 0;
+    left: calc(100vw);
+    z-index: -1;
+
+    display: flex;
+    position: absolute;
+    font-family: "Henny Penny";
+    justify-content: center;
+    align-items: center;
+    color: ${Colors.Fawn};
+`
+
+export const FinalMessage = styled.p`
+    font-size: 3rem;    // 48px
+    padding-right: 3%;
+    padding-top: 12%;
+    width: 87%;
+    transform: rotate(20deg);
+
+    text-align: center;
+`
