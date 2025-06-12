@@ -1,4 +1,5 @@
 import { $, component$, isServer, Slot, useOnWindow, useVisibleTask$ } from "@builder.io/qwik"
+import { useIsMobileSizeContextSetup } from "~/context/is-mobile-size"
 import type { RequestHandler } from "@builder.io/qwik-city"
 import { registerGSAPPlugins } from "~/gsap"
 import { ScrollTrigger } from "gsap/all"
@@ -19,6 +20,7 @@ export default component$(() => {
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
         registerGSAPPlugins()
+        ScrollTrigger.refresh()
     })
 
     useOnWindow("resize", $(() => {
@@ -27,10 +29,12 @@ export default component$(() => {
         ScrollTrigger.refresh()
     }))
 
-    useOnWindow("beforeunload", $(() => {
+    useOnWindow("beforeunload", $(async () => {
         if (isServer) return
         window.scrollTo(0, 0)
     }))
+
+    useIsMobileSizeContextSetup()
 
     return <Slot />
 })

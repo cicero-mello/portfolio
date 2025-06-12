@@ -22,3 +22,7 @@ export enum Breakpoints {
     Mobile = "max-width: 30rem",        // 480px
     SmallHeight = "max-height: 38rem"   // 608px
 }
+
+export enum NumberBreakpoints {
+    MobileWidth = 480
+}
