@@ -1,3 +1,4 @@
+import { keyframes } from "@vanilla-extract/css"
 import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
@@ -25,4 +26,21 @@ export const Anchor = styled.a`
 export const Name = styled.span`
     position: absolute;
     top: 100%;
+`
+
+const floating = keyframes({
+    from: {
+        transform: "translateY(0.2rem)"
+    },
+    to: {
+        transform: "translateY(-0.2rem)"
+    }
+})
+
+
+export const SVGWrapper = styled.div`
+    animation: ${floating} 1800ms infinite alternate ease-in-out;
+    width: 100%;
+    height: 100%;
+    display: flex;
 `

@@ -5,10 +5,12 @@ import { Colors } from "~/styles"
 import * as S from "./styles.css"
 
 export const StackAnchor = component$(({
+    id,
     svgComponent: Component,
     name,
     href,
-    id,
+    float = true,
+    randomRotate = true,
     ref,
     ...rest
 }: StackAnchorProps) => {
@@ -62,6 +64,13 @@ export const StackAnchor = component$(({
         setupAnimation()
     }))
 
+    const rotateDeg = useSignal(
+        `${Math.floor(Math.random() * 29) - 14}deg`
+    )
+    const animationDelay = useSignal(
+        "-" + Math.random() + "s"
+    )
+
     return (
         <S.Anchor
             id={anchorId}
@@ -70,16 +79,23 @@ export const StackAnchor = component$(({
             href={href}
             {...rest}
         >
-            <Component
-                style={{
-                    width: "100%",
-                    height: "auto"
-                }}
-                pathColor={
-                    haveEmphasis.value ?
-                        Colors.Toast : Colors.Fawn
-                }
-            />
+            <S.SVGWrapper style={float ?
+                { animationDelay: animationDelay.value } :
+                { animation: "none" }
+            }>
+                <Component
+                    style={{
+                        width: "100%",
+                        height: "auto",
+                        transform: randomRotate ?
+                            `rotate(${rotateDeg.value})` : "unset"
+                    }}
+                    pathColor={
+                        haveEmphasis.value ?
+                            Colors.Toast : Colors.Fawn
+                    }
+                />
+            </S.SVGWrapper>
             {haveEmphasis.value && <S.Name children={name} />}
         </S.Anchor>
     )

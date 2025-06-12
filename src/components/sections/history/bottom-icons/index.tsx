@@ -160,7 +160,7 @@ export const BottomIcons = component$(() => {
                 <StackAnchor
                     ref={refs.Node}
                     name="Node"
-                    href="https://nodejs.org/pt"
+                    href="https://nodejs.org"
                     svgComponent={Icon.NodeSVG}
                 />
                 <StackAnchor
@@ -210,7 +210,7 @@ export const BottomIcons = component$(() => {
                 <StackAnchor
                     ref={refs.Java}
                     name="Java"
-                    href="https://www.java.com/pt-BR/"
+                    href="https://www.java.com/"
                     svgComponent={Icon.JavaSVG}
                 />
                 <StackAnchor

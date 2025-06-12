@@ -23,6 +23,7 @@ export default component$(() => {
 
     useOnWindow("resize", $(() => {
         if (isServer) return
+        window.scrollTo(0, 0)
         ScrollTrigger.refresh()
     }))
 

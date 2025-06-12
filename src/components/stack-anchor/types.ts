@@ -9,4 +9,6 @@ export interface StackAnchorProps extends Omit<
     name: string
     href: string
     ref?: Signal<HTMLAnchorElement | undefined>
+    float?: boolean
+    randomRotate?: boolean
 }
