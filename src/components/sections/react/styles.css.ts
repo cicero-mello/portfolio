@@ -68,7 +68,6 @@ export const DescriptionText = styled.p`
     font-size: 1.2rem;  // 19.2px
     line-height: 140%;
     white-space: nowrap;
-    opacity: 0;
 
     @media screen and (max-width: 68.75rem) { // 1100px
         display: unset;

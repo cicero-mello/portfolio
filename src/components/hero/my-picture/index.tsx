@@ -10,6 +10,7 @@ export const MyPicture = component$(() => {
     const imageId = useId()
 
     const handleClick = $(() => {
+        if (deviceType.value === "mobile") return
         startGlitch(imageId, { noObservers: true })
     })
 

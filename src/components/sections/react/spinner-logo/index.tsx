@@ -1,9 +1,12 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { useDeviceType } from "~/context/device-type"
 import { ReactBigSVG } from "~/components/svg"
-import * as S from "./styles.css"
 import { Colors } from "~/styles"
+import * as S from "./styles.css"
 
 export const SpinnerLogo = component$(() => {
+    const deviceType = useDeviceType()
+
     const logoRef = useSignal<SVGAElement>()
     const logoShadowRef = useSignal<SVGAElement>()
 
@@ -16,6 +19,13 @@ export const SpinnerLogo = component$(() => {
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
+        if (deviceType.value === "mobile") return
+
+        logoRef.value!.style.animation = "unset"
+        logoRef.value!.style.willChange = "transform"
+        logoShadowRef.value!.style.animation = "unset"
+        logoShadowRef.value!.style.willChange = "transform"
+
         const rotateAnimation = (timestamp: number) => {
             if (!previousTimestamp.value) previousTimestamp.value = timestamp
 

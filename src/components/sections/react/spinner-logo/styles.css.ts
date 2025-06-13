@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css"
+import { keyframes, style } from "@vanilla-extract/css"
 import { styled } from "styled-vanilla-extract/qwik"
 
 export const Wrapper = styled.div`
@@ -10,12 +10,16 @@ export const Wrapper = styled.div`
     }
 `
 
+const rotate = keyframes({
+    to: { transform: "rotate(360deg)" }
+})
+
 export const reactSvgClass = style({
     width: "20.6875rem",            // 331px
     height: "auto",
     userSelect: "none",
-    willChange: "transform",
     transformOrigin: "center center",
+    animation: rotate + " 40s linear infinite",
     "@media": {
         "(max-width: 68.75rem)": {  // 1100px
             width: "100%",

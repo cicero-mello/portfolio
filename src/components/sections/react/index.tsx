@@ -1,5 +1,6 @@
 import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
 import { setupScrollTrigger } from "~/gsap/react-section"
+import { useDeviceType } from "~/context/device-type"
 import { startTyping } from "cm-typing-effect"
 import { SpinnerLogo } from "./spinner-logo"
 import { startGlitch } from "cm-glitch"
@@ -7,6 +8,7 @@ import * as S from "./styles.css"
 
 export const ReactSection = component$(() => {
     const animationSetupIsDone = useSignal(false)
+    const deviceType = useDeviceType()
 
     const descriptionRef = useSignal<HTMLElement>()
     const descriptionId = useId()
@@ -14,6 +16,8 @@ export const ReactSection = component$(() => {
     const textId2 = useId()
 
     const startAnimations = $(async () => {
+        if (deviceType.value === "mobile") return
+
         await startTyping(textId1, {
             startDelay: 800,
             animationTime: 1400,
@@ -25,7 +29,7 @@ export const ReactSection = component$(() => {
         })
 
         setTimeout(() => {
-            descriptionRef.value!.style.opacity = "1"
+            descriptionRef.value!.style.visibility = "unset"
             startGlitch(descriptionId, {
                 distortionIntensity: 100,
                 noObservers: true
@@ -34,7 +38,11 @@ export const ReactSection = component$(() => {
     })
 
     useOnWindow("scroll", $(() => {
-        if (isServer || animationSetupIsDone.value) return
+        if (
+            isServer
+            || animationSetupIsDone.value
+            || deviceType.value === "mobile"
+        ) return
         setupScrollTrigger(startAnimations)
         animationSetupIsDone.value = true
     }))
@@ -44,14 +52,22 @@ export const ReactSection = component$(() => {
             <SpinnerLogo />
             <S.TextContainer>
                 <S.MainText>
-                    <span id={textId1} style={{ visibility: "hidden" }}>
-                        I'm frontend developer
-                    </span>
-                    <span id={textId2} style={{ visibility: "hidden" }}>
-                        focused on REACT
-                    </span>
+                    <span
+                        id={textId1}
+                        children="I'm frontend developer"
+                        style={{ visibility: deviceType.value === "mobile" ? "unset" : "hidden" }}
+                    />
+                    <span
+                        id={textId2}
+                        children="focused on REACT"
+                        style={{ visibility: deviceType.value === "mobile" ? "unset" : "hidden" }}
+                    />
                 </S.MainText>
-                <S.DescriptionText id={descriptionId} ref={descriptionRef}>
+                <S.DescriptionText
+                    id={descriptionId}
+                    ref={descriptionRef}
+                    style={{ visibility: deviceType.value === "mobile" ? "unset" : "hidden" }}
+                >
                     <span>But, in my scope I have </span>
                     <span>HTML, CSS, JS, TS, Styled-Components, Tailwind, </span>
                     <span>Next.js, Qwik, Preact, Git, Vite, NodeJS, Fastify, Figma...</span>
