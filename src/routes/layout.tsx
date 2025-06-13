@@ -1,5 +1,5 @@
 import { $, component$, isServer, Slot, useOnWindow, useVisibleTask$ } from "@builder.io/qwik"
-import { useIsMobileSizeContextSetup } from "~/context/is-mobile-size"
+import { useDeviceTypeContextSetup } from "~/context/device-type"
 import type { RequestHandler } from "@builder.io/qwik-city"
 import { registerGSAPPlugins } from "~/gsap"
 import { ScrollTrigger } from "gsap/all"
@@ -34,7 +34,7 @@ export default component$(() => {
         window.scrollTo(0, 0)
     }))
 
-    useIsMobileSizeContextSetup()
+    useDeviceTypeContextSetup()
 
     return <Slot />
 })
