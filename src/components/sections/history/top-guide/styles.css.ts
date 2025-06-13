@@ -1,17 +1,24 @@
 import { styled } from "styled-vanilla-extract/qwik"
-import { Colors } from "~/styles"
+import { Breakpoints, Colors } from "~/styles"
 
 export const Wrapper = styled.div`
     gap: 37.5rem;                               // 600px
-    border-radius: 0 2rem 2rem 0;               // 32px
     border-radius: 2rem;                        // 32px
-    padding: 1.5rem 6.25rem 2.375rem 12.5rem;   // 24px 100px 38px 200px
     margin-left: calc(100vw + 5rem);            // 80px
-    padding-left: 0;
+    padding: 1.5rem 6.25rem 2.375rem 0;         // 24px 100px 38px 0
 
     display: flex;
     background-color: ${Colors.Fawn};
     width: fit-content;
+
+    @media screen and (max-width: 50rem) {  // 800px
+        padding: 1.1rem 6.25rem 1.6rem 0;   // 17.6px 100px 25.6px 0
+        gap: 20rem;                         // 320px
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        padding: 1.1rem 6.25rem 1.6rem 0;   // 17.6px 100px 25.6px 0
+        gap: 20rem;                         // 320px
+    }
 `
 
 export const YearSection = styled.section`
@@ -23,6 +30,13 @@ export const YearSection = styled.section`
     transition: 100ms linear;
     will-change: opacity;
     opacity: 0.2;
+
+    @media screen and (max-width: 50rem) {  // 800px
+        gap: 0.7rem;    // 11.2px
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        gap: 0.7rem;    // 11.2px
+    }
 `
 
 export const ImpactText = styled.span`
@@ -46,6 +60,39 @@ export const ImpactText = styled.span`
     }
     &.impact-text-4 {
         padding-right: 10%;
+    }
+
+    @media screen and (max-width: 50rem) {  // 800px
+        font-size: 3rem;        // 48px
+        &.impact-text-1 {
+            padding-right: 32%;
+        }
+        &.impact-text-2 {
+            padding-right: 28%;
+        }
+        &.impact-text-3 {
+            padding-right: 22%;
+        }
+        &.impact-text-4 {
+            padding-right: 0;
+            padding-left: 2%;
+        }
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        font-size: 3rem;        // 48px
+        &.impact-text-1 {
+            padding-right: 32%;
+        }
+        &.impact-text-2 {
+            padding-right: 28%;
+        }
+        &.impact-text-3 {
+            padding-right: 22%;
+        }
+        &.impact-text-4 {
+            padding-right: 0;
+            padding-left: 2%;
+        }
     }
 `
 
@@ -84,6 +131,51 @@ export const YearText = styled.span`
         width: 57.1rem;         // 913.6px
         margin-left: 9.2rem;    // 147.2px
     }
+
+    @media screen and (max-width: 50rem) {  // 800px
+        font-size: 2.6rem;          // 41.6px
+
+        &.year-text-1::after,
+        &.year-text-2::after,
+        &.year-text-3::after {
+            height: 0.125rem;       // 2px
+        }
+
+        &.year-text-1::after {
+            width: 34.5rem;         // 552px
+            margin-left: 7.5rem;    // 120px
+        }
+        &.year-text-2::after {
+            width: 33.6rem;         // 537.6px
+            margin-left: 8.6rem;    // 137.6px
+        }
+        &.year-text-3::after {
+            width: 33.6rem;         // 537.6px
+            margin-left: 8.5rem;    // 136px
+        }
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        font-size: 2.6rem;          // 41.6px
+
+        &.year-text-1::after,
+        &.year-text-2::after,
+        &.year-text-3::after {
+            height: 0.125rem;       // 2px
+        }
+
+        &.year-text-1::after {
+            width: 34.5rem;         // 552px
+            margin-left: 7.5rem;    // 120px
+        }
+        &.year-text-2::after {
+            width: 33.6rem;         // 537.6px
+            margin-left: 8.6rem;    // 137.6px
+        }
+        &.year-text-3::after {
+            width: 33.6rem;         // 537.6px
+            margin-left: 8.5rem;    // 136px
+        }
+    }
 `
 
 export const PlaceHolder = styled.div`
@@ -95,6 +187,17 @@ export const PlaceHolder = styled.div`
     align-items: center;
     font-family: "Engravers MT";
     color: ${Colors.Cloud15};
+
+    @media screen and (max-width: 50rem) {  // 800px
+        font-size: 9rem;            // 144px
+        margin-left: 24rem;         // 384px
+        padding-bottom: 0.625rem;   // 16px
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        font-size: 9rem;            // 144px
+        margin-left: 24rem;         // 384px
+        padding-bottom: 0.625rem;   // 16px
+    }
 `
 
 export const FinalMessageWrapper = styled.div`
@@ -119,4 +222,11 @@ export const FinalMessage = styled.p`
     transform: rotate(20deg);
 
     text-align: center;
+
+    @media screen and (max-width: 50rem) {  // 800px
+        font-size: 2.5rem;  // 40px
+    }
+    @media screen and (${Breakpoints.SmallHeight}) {  // 608px
+        font-size: 2.5rem;  // 40px
+    }
 `
