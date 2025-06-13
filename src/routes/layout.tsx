@@ -1,5 +1,5 @@
 import { $, component$, isServer, Slot, useOnWindow, useVisibleTask$ } from "@builder.io/qwik"
-import { useDeviceTypeContextSetup } from "~/context/device-type"
+import { useDeviceType, useDeviceTypeContextSetup } from "~/context/device-type"
 import type { RequestHandler } from "@builder.io/qwik-city"
 import { registerGSAPPlugins } from "~/gsap"
 import { ScrollTrigger } from "gsap/all"
@@ -35,6 +35,9 @@ export default component$(() => {
     }))
 
     useDeviceTypeContextSetup()
+    const deviceType = useDeviceType()
 
-    return <Slot />
+    return (
+        deviceType.value === null ? <p>loading</p> : <Slot />
+    )
 })
