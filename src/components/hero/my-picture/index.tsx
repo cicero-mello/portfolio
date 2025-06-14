@@ -1,16 +1,16 @@
 import Image from "../../../../assets/images/me-brown.webp?w=3017&h=3017&jsx"
 import OptimizedImage from "../../../../assets/images/me-brown.webp?jsx"
 import { $, component$, useId } from "@builder.io/qwik"
-import { useDeviceType } from "~/context/device-type"
+import { useDevice } from "~/context/device"
 import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
 
 export const MyPicture = component$(() => {
-    const deviceType = useDeviceType()
+    const device = useDevice()
     const imageId = useId()
 
     const handleClick = $(() => {
-        if (deviceType.value === "mobile") return
+        if (device.type === "mobile") return
         startGlitch(imageId, { noObservers: true })
     })
 
@@ -21,7 +21,7 @@ export const MyPicture = component$(() => {
             aria-label="Easter Egg Button"
             id={imageId}
         >
-            {deviceType.value === "mobile" ?
+            {device.type === "mobile" ?
                 <OptimizedImage
                     alt="Cícero Mello"
                     class={S.imageClass}

@@ -1,5 +1,5 @@
 import { $, component$, isServer, Slot, useOnWindow, useTask$, useVisibleTask$ } from "@builder.io/qwik"
-import { useDeviceType, useDeviceTypeContextSetup } from "~/context/device-type"
+import { useDevice, useDeviceContextSetup } from "~/context/device"
 import type { RequestHandler } from "@builder.io/qwik-city"
 import { registerGSAPPlugins } from "~/gsap"
 import { ScrollTrigger } from "gsap/all"
@@ -16,8 +16,8 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 }
 
 export default component$(() => {
-    useDeviceTypeContextSetup()
-    const deviceType = useDeviceType()
+    useDeviceContextSetup()
+    const device = useDevice()
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
@@ -25,7 +25,7 @@ export default component$(() => {
     })
 
     useTask$(({ track }) => {
-        track(deviceType)
+        track(device)
         if (isServer) return
         ScrollTrigger.refresh()
     })
@@ -42,6 +42,6 @@ export default component$(() => {
     }))
 
     return (
-        deviceType.value === null ? <p>loading</p> : <Slot />
+        device.isLoadingData ? <p>loading</p> : <Slot />
     )
 })

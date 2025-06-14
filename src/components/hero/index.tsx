@@ -1,12 +1,12 @@
 import { component$, useId, useVisibleTask$ } from "@builder.io/qwik"
-import { useDeviceType } from "~/context/device-type"
+import { useDevice } from "~/context/device"
 import { startTyping } from "cm-typing-effect"
 import { Background } from "./background"
 import { MyPicture } from './my-picture'
 import * as S from "./styles.css"
 
 export const Hero = component$(() => {
-    const deviceType = useDeviceType()
+    const device = useDevice()
 
     const idText1 = useId()
     const idText2 = useId()
@@ -14,7 +14,7 @@ export const Hero = component$(() => {
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(async () => {
-        if (deviceType.value === "mobile") return
+        if (device.type === "mobile") return
         await startTyping(idText1, {
             startDelay: 2500,
             animationTime: 300,
@@ -40,7 +40,7 @@ export const Hero = component$(() => {
                         children="Hi"
                         id={idText1}
                         style={{
-                            visibility: deviceType.value === "desktop" ?
+                            visibility: device.type === "desktop" ?
                                 "hidden" : "unset"
                         }}
                     />
@@ -48,7 +48,7 @@ export const Hero = component$(() => {
                         children="I'm Cícero"
                         id={idText2}
                         style={{
-                            visibility: deviceType.value === "desktop" ?
+                            visibility: device.type === "desktop" ?
                                 "hidden" : "unset"
                         }}
                     />
@@ -56,7 +56,7 @@ export const Hero = component$(() => {
                         children="and I like to code"
                         id={idText3}
                         style={{
-                            visibility: deviceType.value === "desktop" ?
+                            visibility: device.type === "desktop" ?
                                 "hidden" : "unset"
                         }}
                     />
