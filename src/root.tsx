@@ -5,6 +5,7 @@ import { isDev } from "@builder.io/qwik"
 
 import "./global.css"
 import { LanguageContext, type LanguageType } from "./context/language"
+import { useDeviceContextSetup } from "./context/device"
 
 export default component$(() => {
     /**
@@ -16,6 +17,7 @@ export default component$(() => {
 
     const languageSignal = useSignal<LanguageType>("en")
     useContextProvider(LanguageContext, languageSignal)
+    useDeviceContextSetup()
 
     return (
         <QwikCityProvider>

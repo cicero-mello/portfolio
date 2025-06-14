@@ -1,8 +1,7 @@
-import { $, component$, isServer, Slot, useOnWindow, useTask$, useVisibleTask$ } from "@builder.io/qwik"
-import { useDevice, useDeviceContextSetup } from "~/context/device"
+import { component$, isServer, Slot, useSignal, useTask$ } from "@builder.io/qwik"
+import { useDevice } from "~/context/device"
 import type { RequestHandler } from "@builder.io/qwik-city"
-import { registerGSAPPlugins } from "~/gsap"
-import { ScrollTrigger } from "gsap/all"
+import { applyScrollSmoother, registerGSAPPlugins } from "~/gsap"
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -16,30 +15,22 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 }
 
 export default component$(() => {
-    useDeviceContextSetup()
     const device = useDevice()
-
-    // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(() => {
-        registerGSAPPlugins()
-    })
+    const isDesktopGSAPSetupDone = useSignal(false)
 
     useTask$(({ track }) => {
         track(device)
-        if (isServer) return
-        ScrollTrigger.refresh()
+        if (
+            isServer
+            || isDesktopGSAPSetupDone.value
+            || device.isLoadingData
+            || device.type === "mobile"
+        ) return
+
+        registerGSAPPlugins()
+        applyScrollSmoother()
+        isDesktopGSAPSetupDone.value = true
     })
-
-    useOnWindow("resize", $(() => {
-        if (isServer) return
-        window.scrollTo(0, 0)
-        ScrollTrigger.refresh()
-    }))
-
-    useOnWindow("beforeunload", $(async () => {
-        if (isServer) return
-        window.scrollTo(0, 0)
-    }))
 
     return (
         device.isLoadingData ? <p>loading</p> : <Slot />

@@ -17,19 +17,20 @@ export const TopGuide = component$(() => {
     const bottomIcons = useContext(BottomIconsContext)
 
     const setupAnimations = $(() => {
-        gsap.slideTopGuide(topGuideRef.value!)
-        gsap.toggleFinalMessageWrapper(finalMessageWrapperRef.value!)
-
         onElementHitWindow({
             element: yearSection1Ref.value!,
             screenXPercent: 0.65,
             onHitFromRight: () => {
                 yearSection1Ref.value!.style.opacity = "1"
                 bottomIcons.showC()
+
+                finalMessageWrapperRef.value!.style.visibility = "unset"
             },
             onHitFromLeft: () => {
                 yearSection1Ref.value!.style.opacity = "0.2"
                 bottomIcons.hideC()
+
+                finalMessageWrapperRef.value!.style.visibility = "hidden"
             }
         })
 
@@ -135,9 +136,20 @@ export const TopGuide = component$(() => {
     const finalMessageHight = useSignal(0)
 
     useOnWindow("scroll", $(() => {
-        if (isServer || animationSetupIsDone.value) return
+        if (
+            isServer
+            || animationSetupIsDone.value
+            || !topGuideRef.value
+            || !finalMessageWrapperRef.value
+        ) return
         animationSetupIsDone.value = true
+
+        gsap.slideTopGuide(topGuideRef.value!)
         setupAnimations()
+        finalMessageHight.value = topGuideRef.value!.offsetHeight - 4
+    }))
+
+    useOnWindow("resize", $(() => {
         finalMessageHight.value = topGuideRef.value!.offsetHeight - 4
     }))
 

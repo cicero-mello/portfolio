@@ -53,12 +53,17 @@ export const SpinnerLogo = component$(() => {
         requestAnimationFrame(rotateAnimation)
     })
 
+    const handleClickNucleus = $(() => {
+        if (device.type === "mobile") return
+        gearRotateBoost.value += 140
+    })
+
     return (
         <S.Wrapper>
             <ReactBigSVG
                 ref={logoRef}
                 class={S.reactSvgClass}
-                onClickCenter$={$(() => { gearRotateBoost.value += 140 })}
+                onClickCenter$={handleClickNucleus}
                 pathColor={
                     gearRotateBoost.value < 1000 ?
                         Colors.Cloud :

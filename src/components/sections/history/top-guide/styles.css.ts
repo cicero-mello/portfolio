@@ -203,11 +203,12 @@ export const PlaceHolder = styled.div`
 export const FinalMessageWrapper = styled.div`
     width: 31.25rem;    // 500px
     top: 0;
-    left: calc(100vw);
+    left: calc(100vw - 31.25rem);
     z-index: -1;
 
     display: flex;
     position: absolute;
+    visibility: hidden;
     font-family: "Henny Penny";
     justify-content: center;
     align-items: center;
@@ -215,10 +216,10 @@ export const FinalMessageWrapper = styled.div`
 `
 
 export const FinalMessage = styled.p`
-    font-size: 3rem;    // 48px
-    padding-right: 3%;
-    padding-top: 12%;
+    font-size: 3rem;        // 48px
     width: 87%;
+    padding-top: 12%;
+    padding-right: 3%;
     transform: rotate(20deg);
 
     text-align: center;

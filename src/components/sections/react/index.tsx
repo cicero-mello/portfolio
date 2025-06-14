@@ -43,6 +43,7 @@ export const ReactSection = component$(() => {
             || animationSetupIsDone.value
             || device.type === "mobile"
         ) return
+
         setupScrollTrigger(startAnimations)
         animationSetupIsDone.value = true
     }))

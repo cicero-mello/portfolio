@@ -1,6 +1,6 @@
 import { $, createContextId, isServer, useContext, useContextProvider, useOnWindow, useStore, useVisibleTask$ } from "@builder.io/qwik"
 import { Breakpoints } from "~/styles"
-import { Device } from "./types"
+import type { Device } from "./types"
 
 const DeviceContext = createContextId<Device>(
     "device-context"
@@ -39,7 +39,6 @@ export const useDeviceContextSetup = () => {
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(async () => {
-        if (!device) return
         device.type = await getIsTouchDevice() ? "mobile" : "desktop"
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
@@ -47,7 +46,7 @@ export const useDeviceContextSetup = () => {
     })
 
     useOnWindow("resize", $(async () => {
-        if (isServer || !device) return
+        if (isServer) return
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
     }))
