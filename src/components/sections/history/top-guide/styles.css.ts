@@ -213,6 +213,11 @@ export const FinalMessageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     color: ${Colors.Fawn};
+
+    @media screen and (max-width: 50rem) {  // 800px
+        width: 26.25rem;                    // 420px
+        left: calc(100vw - 26.25rem);       // 420px
+    }
 `
 
 export const FinalMessage = styled.p`

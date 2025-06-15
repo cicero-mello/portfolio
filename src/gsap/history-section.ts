@@ -15,10 +15,14 @@ const pinHistorySection = (historySection: Element) => {
 }
 
 const slideTopGuide = (topGuide: HTMLElement) => {
-    const desiredEmptySpaceOnRight = pxToRemBasedPx(500)
     const end = pxToRemBasedPx(3600)
 
     const getX = () => {
+        const desiredEmptySpaceOnRight = (
+            window.matchMedia("(max-width: 50rem)").matches ?
+                pxToRemBasedPx(420) : pxToRemBasedPx(500)
+        )
+
         const elementWidth = topGuide.scrollWidth
 
         const style = window.getComputedStyle(topGuide)
