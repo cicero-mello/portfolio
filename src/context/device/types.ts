@@ -5,4 +5,5 @@ export interface Device {
     isPortrait: boolean
     isMobileWidth: boolean
     isLoadingData: boolean
+    isSmallHeight: boolean
 }

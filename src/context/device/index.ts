@@ -35,6 +35,12 @@ export const useDeviceContextSetup = () => {
         ).matches
     ))
 
+    const getIsSmallHeight = $(() => (
+        window.matchMedia(
+            `(${Breakpoints.SmallHeight})`
+        ).matches
+    ))
+
     const device = useContext(DeviceContext)
 
     // eslint-disable-next-line qwik/no-use-visible-task
@@ -42,6 +48,7 @@ export const useDeviceContextSetup = () => {
         device.type = await getIsTouchDevice() ? "mobile" : "desktop"
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
+        device.isSmallHeight = await getIsSmallHeight()
         device.isLoadingData = false
     })
 
@@ -49,6 +56,7 @@ export const useDeviceContextSetup = () => {
         if (isServer) return
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
+        device.isSmallHeight = await getIsSmallHeight()
     }))
 }
 
