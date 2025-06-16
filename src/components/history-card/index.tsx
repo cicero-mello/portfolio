@@ -1,7 +1,7 @@
-import { component$ } from "@builder.io/qwik"
 import type { HistoryCardProps } from "./types"
+import { component$ } from "@builder.io/qwik"
+import { AnchorIcon } from "../anchor-icon"
 import * as S from "./styles.css"
-import { Colors } from "~/styles"
 
 export const HistoryCard = component$(({
     title,
@@ -16,7 +16,7 @@ export const HistoryCard = component$(({
         <S.Section {...rest}>
             <S.Title children={title} />
             <S.DescriptionWrapper>
-                <DescriptionIcon class={S.DescriptionIconClass} />
+                <DescriptionIcon class={S.IconClass} />
                 <S.DescriptionTextWrapper>
                     <S.DescriptionText>{description1}</S.DescriptionText>
                     <S.DescriptionText>{description2}</S.DescriptionText>
@@ -28,19 +28,13 @@ export const HistoryCard = component$(({
                     href,
                     icon: Icon
                 }) => (
-                    <S.AnchorIcon
+                    <AnchorIcon
+                        ariaLabel={ariaLabel}
                         href={href}
-                        aria-label={ariaLabel}
-                        target="_blank"
+                        svgComponent={Icon}
+                        class={S.IconClass}
                     >
-                        <Icon
-                            pathColor={Colors.Fawn}
-                            style={{
-                                width: "100%",
-                                height: "auto"
-                            }}
-                        />
-                    </S.AnchorIcon>
+                    </AnchorIcon>
                 ))}
             </S.IconsWrapper>
         </S.Section>
