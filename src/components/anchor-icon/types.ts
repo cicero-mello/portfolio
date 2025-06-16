@@ -9,4 +9,6 @@ export interface AnchorIconProps extends Omit<
     href: string
     ref?: Signal<HTMLAnchorElement | undefined>
     ariaLabel: string
+    float?: boolean
+    randomRotate?: boolean
 }

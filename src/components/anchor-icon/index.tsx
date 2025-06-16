@@ -5,6 +5,8 @@ import * as S from "./styles.css"
 
 export const AnchorIcon = component$(({
     ariaLabel,
+    randomRotate = true,
+    float = true,
     svgComponent: Component,
     href,
     ref,
@@ -66,6 +68,13 @@ export const AnchorIcon = component$(({
         setupAnimation()
     }))
 
+    const rotateDeg = useSignal(
+        `${Math.floor(Math.random() * 29) - 14}deg`
+    )
+    const animationDelay = useSignal(
+        "-" + Math.random() + "s"
+    )
+
     return (
         <S.Anchor
             ref={anchorRef}
@@ -74,17 +83,24 @@ export const AnchorIcon = component$(({
             aria-label={ariaLabel}
             {...rest}
         >
-            <Component
-                ref={svgRef}
-                style={{
-                    width: "100%",
-                    height: "auto"
-                }}
-                pathColor={
-                    haveEmphasis.value ?
-                        Colors.Toast : Colors.Fawn
-                }
-            />
+            <S.FloatWrapper style={float ?
+                { animationDelay: animationDelay.value } :
+                { animation: "none" }
+            }>
+                <Component
+                    ref={svgRef}
+                    style={{
+                        width: "100%",
+                        height: "auto",
+                        transform: randomRotate ?
+                            `rotate(${rotateDeg.value})` : "unset"
+                    }}
+                    pathColor={
+                        haveEmphasis.value ?
+                            Colors.Toast : Colors.Fawn
+                    }
+                />
+            </S.FloatWrapper>
         </S.Anchor>
     )
 })
