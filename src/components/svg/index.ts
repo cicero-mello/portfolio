@@ -39,3 +39,5 @@ export * from "./bag"
 export * from "./rocket"
 export * from "./suitcase"
 export * from "./vitals"
+
+export * from "./triangle"

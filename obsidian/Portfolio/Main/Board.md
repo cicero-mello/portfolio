@@ -4,7 +4,6 @@ kanban-plugin: board
 
 ---
 
-#done
 ## A Fazer
 
 - [ ] [[Criar GSAP Section Desktop]] @{2025-06-17}
@@ -20,11 +19,11 @@ kanban-plugin: board
 
 ## Fazendo
 
-- [ ] [[Criar Timeline Mobile (History Section)]] @{2025-06-16}
 
 
 ## Feito
 
+- [ ] [[Criar Timeline Mobile (History Section)]] @{2025-06-16}
 - [ ] [[Criar History Section Desktop]] @{2025-06-15}
 
 

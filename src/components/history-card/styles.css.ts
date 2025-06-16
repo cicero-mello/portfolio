@@ -29,7 +29,7 @@ export const IconsWrapper = styled.div`
     justify-content: center;
 `
 
-export const Title = styled.h2`
+export const Title = styled.h3`
     font-size: 3rem;    // 48px
     font-family: "Grechen Fuemen";
 

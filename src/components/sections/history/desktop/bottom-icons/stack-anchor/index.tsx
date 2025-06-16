@@ -64,6 +64,12 @@ export const StackAnchor = component$(({
         setupAnimation()
     }))
 
+    useOnWindow("keydown", $(() => {
+        if (isServer || animationSetupIsDone.value) return
+        animationSetupIsDone.value = true
+        setupAnimation()
+    }))
+
     const rotateDeg = useSignal(
         `${Math.floor(Math.random() * 29) - 14}deg`
     )

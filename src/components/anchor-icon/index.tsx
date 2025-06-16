@@ -4,7 +4,6 @@ import { Colors } from "~/styles"
 import * as S from "./styles.css"
 
 export const AnchorIcon = component$(({
-    id,
     ariaLabel,
     svgComponent: Component,
     href,

@@ -1,5 +1,5 @@
 import type { HistoryCardProps } from "./types"
-import { component$ } from "@builder.io/qwik"
+import { component$, useId } from "@builder.io/qwik"
 import { AnchorIcon } from "../anchor-icon"
 import * as S from "./styles.css"
 
@@ -9,11 +9,14 @@ export const HistoryCard = component$(({
     description1,
     description2,
     descriptionIcon: DescriptionIcon,
+    id: idProp,
     ...rest
 }: HistoryCardProps) => {
+    // eslint-disable-next-line qwik/use-method-usage
+    const id = idProp ?? useId()
 
     return (
-        <S.Section {...rest}>
+        <S.Section {...rest} id={id}>
             <S.Title children={title} />
             <S.DescriptionWrapper>
                 <DescriptionIcon class={S.IconClass} />
@@ -27,8 +30,9 @@ export const HistoryCard = component$(({
                     ariaLabel,
                     href,
                     icon: Icon
-                }) => (
+                }, index) => (
                     <AnchorIcon
+                        key={id + index}
                         ariaLabel={ariaLabel}
                         href={href}
                         svgComponent={Icon}
