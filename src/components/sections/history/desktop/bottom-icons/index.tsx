@@ -1,6 +1,6 @@
 import { $, component$, isServer, type Signal, useContext, useOnWindow, useSignal } from "@builder.io/qwik"
 import { BottomIconsContext, type VisibilityControl } from "~/context/history-section/desktop"
-import { StackAnchor } from "~/components/stack-anchor"
+import { StackAnchor } from "./stack-anchor"
 import * as Icon from "~/components/svg"
 import * as S from "./styles.css"
 

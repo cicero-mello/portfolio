@@ -77,6 +77,7 @@ export const StackAnchor = component$(({
             ref={anchorRef}
             target="_blank"
             href={href}
+            tabIndex={-1}
             {...rest}
         >
             <S.SVGWrapper style={float ?

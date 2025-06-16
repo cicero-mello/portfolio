@@ -1,5 +1,5 @@
 import type { Component, HTMLAttributes, Signal } from "@builder.io/qwik"
-import type { SVGComponentProps } from "../svg/types"
+import type { SVGComponentProps } from "../../../../../svg/types"
 
 export interface StackAnchorProps extends Omit<
     HTMLAttributes<HTMLAnchorElement>,
