@@ -1,5 +1,6 @@
 import type { DocumentHead } from "@builder.io/qwik-city"
 import { $, component$, useOnWindow } from "@builder.io/qwik"
+import { useDevice } from "~/context/device"
 import * as S from "./styles.css"
 import {
     HelloSection,
@@ -8,9 +9,12 @@ import {
 } from "~/components"
 
 export default component$(() => {
+    const device = useDevice()
 
     useOnWindow("resize", $(() => {
-        window.scrollTo(0, 0)
+        if (device.type === "desktop") {
+            window.scrollTo(0, 0)
+        }
     }))
 
     return (
