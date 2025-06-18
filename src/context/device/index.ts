@@ -51,12 +51,20 @@ export const useDeviceContextSetup = () => {
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(async () => {
-        device.type = await getIsTouchDevice() ? "mobile" : "desktop"
-        device.isPortrait = await getIsPortrait()
-        device.isMobileWidth = await getIsMobileWidth()
-        device.isSmallHeight = await getIsSmallHeight()
-        device.isGSAPSectionMinWidth = await getIsGSAPSectionMinWidth()
-        device.isLoadingData = false
+        Promise.all([
+            getIsTouchDevice(),
+            getIsPortrait(),
+            getIsMobileWidth(),
+            getIsSmallHeight(),
+            getIsGSAPSectionMinWidth()
+        ]).then(([touch, portrait, mobileW, smallH, minWidth]) => {
+            device.type = touch ? "mobile" : "desktop"
+            device.isPortrait = portrait
+            device.isMobileWidth = mobileW
+            device.isSmallHeight = smallH
+            device.isGSAPSectionMinWidth = minWidth
+            device.isLoadingData = false
+        })
     })
 
     useOnWindow("resize", $(async () => {
@@ -64,7 +72,6 @@ export const useDeviceContextSetup = () => {
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
         device.isSmallHeight = await getIsSmallHeight()
-        device.isGSAPSectionMinWidth = await getIsGSAPSectionMinWidth()
     }))
 }
 
