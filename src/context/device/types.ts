@@ -6,4 +6,5 @@ export interface Device {
     isMobileWidth: boolean
     isLoadingData: boolean
     isSmallHeight: boolean
+    isGSAPSectionMinWidth: boolean
 }

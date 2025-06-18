@@ -29,6 +29,12 @@ export const useDeviceContextSetup = () => {
         ).matches
     ))
 
+    const getIsGSAPSectionMinWidth = $(() => (
+        window.matchMedia(
+            `(max-width: 35rem)` // 560px
+        ).matches
+    ))
+
     const getIsMobileWidth = $(() => (
         window.matchMedia(
             `(${Breakpoints.Mobile})`
@@ -49,6 +55,7 @@ export const useDeviceContextSetup = () => {
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
         device.isSmallHeight = await getIsSmallHeight()
+        device.isGSAPSectionMinWidth = await getIsGSAPSectionMinWidth()
         device.isLoadingData = false
     })
 
@@ -57,6 +64,7 @@ export const useDeviceContextSetup = () => {
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
         device.isSmallHeight = await getIsSmallHeight()
+        device.isGSAPSectionMinWidth = await getIsGSAPSectionMinWidth()
     }))
 }
 

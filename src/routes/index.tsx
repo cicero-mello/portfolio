@@ -3,7 +3,7 @@ import { $, component$, useOnWindow } from "@builder.io/qwik"
 import { useDevice } from "~/context/device"
 import * as S from "./styles.css"
 import {
-    GsapSection,
+    GSAPSection,
     HelloSection,
     HistorySection,
     ReactSection,
@@ -23,7 +23,7 @@ export default component$(() => {
             <HelloSection />
             <ReactSection />
             <HistorySection />
-            <GsapSection />
+            <GSAPSection />
             <h1>Hello</h1>
         </S.Main>
     )
