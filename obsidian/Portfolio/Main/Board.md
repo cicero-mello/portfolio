@@ -17,11 +17,11 @@ kanban-plugin: board
 
 ## Fazendo
 
-- [ ] [[Criar ou Adaptar GSAP Section para Mobile]] @{2025-06-18}
 
 
 ## Feito
 
+- [ ] [[Criar ou Adaptar GSAP Section para Mobile]] @{2025-06-18}
 - [ ] [[Criar GSAP Section Desktop]] @{2025-06-17}
 - [ ] [[Criar Timeline Mobile (History Section)]] @{2025-06-16}
 - [ ] [[Criar History Section Desktop]] @{2025-06-15}

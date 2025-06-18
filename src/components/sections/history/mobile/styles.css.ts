@@ -2,8 +2,8 @@ import { style, styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const MainSection = styled.section`
-    padding: 10vh 1.5rem;   // 24px
-    gap: 2.25rem;           // 36px
+    padding: 8.75rem 1.5rem;    // 140px 24px
+    gap: 2.25rem;               // 36px
     width: 100%;
 
     display: flex;
