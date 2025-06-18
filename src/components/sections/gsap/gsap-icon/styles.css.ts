@@ -1,4 +1,3 @@
-import { style } from "@vanilla-extract/css"
 import { styled } from "styled-vanilla-extract/qwik"
 
 export const Wrapper = styled.div`
@@ -11,7 +10,3 @@ export const Wrapper = styled.div`
 
     transform: skewX(-37deg) skewY(2deg);
 `
-
-export const GSAPSVGClass = style({
-
-})

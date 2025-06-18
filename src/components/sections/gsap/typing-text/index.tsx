@@ -1,16 +1,18 @@
-import { $, component$, useId, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
 import { startTyping } from "cm-typing-effect"
+import { gsap } from "~/gsap/gsap-section"
 import * as S from "./styles.css"
 
 export const TypingText = component$(() => {
     const idText1 = useId()
     const idText2 = useId()
     const idText3 = useId()
+    const animationSetupIsDone = useSignal(false)
 
-    const animate = $(async () => {
+    const startAnimations = $(async () => {
         await startTyping(idText1, {
             realisticTyping: true,
-            startDelay: 900,
+            startDelay: 1200,
             animationTime: 1600
         })
         await startTyping(idText2, {
@@ -23,10 +25,17 @@ export const TypingText = component$(() => {
         })
     })
 
-    // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(() => {
-        animate()
+    const setupAnimations = $(() => {
+        if (
+            isServer
+            || animationSetupIsDone.value
+        ) return
+        animationSetupIsDone.value = true
+        gsap.triggerInGsapSection(startAnimations)
     })
+
+    useOnWindow("scroll", setupAnimations)
+    useOnWindow("keydown", setupAnimations)
 
     return (
         <S.Text>

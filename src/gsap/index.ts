@@ -1,9 +1,14 @@
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin"
 
 export const registerGSAPPlugins = () => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+    gsap.registerPlugin(
+        ScrollTrigger,
+        ScrollSmoother,
+        MorphSVGPlugin
+    )
     ScrollTrigger.refresh()
 }
 

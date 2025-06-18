@@ -37,16 +37,18 @@ export const ReactSection = component$(() => {
         }, 1000)
     })
 
-    useOnWindow("scroll", $(() => {
+    const setupAnimations = $(() => {
         if (
             isServer
             || animationSetupIsDone.value
             || device.type === "mobile"
         ) return
-
         setupScrollTrigger(startAnimations)
         animationSetupIsDone.value = true
-    }))
+    })
+
+    useOnWindow("scroll", setupAnimations)
+    useOnWindow("keydown", setupAnimations)
 
     return (
         <S.Section class="react-section">
