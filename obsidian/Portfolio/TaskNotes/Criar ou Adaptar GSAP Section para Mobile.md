@@ -1,1 +1,3 @@
-[[Tambem melhorar resposividade/adaptabilidade da versão Mobile]]
+#doing
+
+[[Tbm melhorar versão Desktop]]
