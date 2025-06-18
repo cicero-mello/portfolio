@@ -34,17 +34,18 @@ export const Background = component$(() => {
                 {Array.from({ length: 10 }).map((_, i) => {
                     const animationTime = randomNumberBetween(220, 260)
                     const direction = i % 2 === 0 ? "reverse" : "normal"
+                    const text = randomCutAndJoinText(bloodyStream)
                     return (
                         <S.Line key={i + "-hero-bg-line"}>
                             <S.LineFrase
-                                children={randomCutAndJoinText(bloodyStream)}
+                                children={text}
                                 style={{
                                     "--animation-time": `${animationTime}s`,
                                     "--animation-direction": direction
                                 }}
                             />
                             <S.LineFrase
-                                children={randomCutAndJoinText(bloodyStream)}
+                                children={text}
                                 style={{
                                     "--animation-time": `${animationTime}s`,
                                     "--animation-direction": direction
