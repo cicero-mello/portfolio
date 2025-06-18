@@ -1,4 +1,4 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { startTyping } from "cm-typing-effect"
 import { gsap } from "~/gsap/gsap-section"
 import * as S from "./styles.css"
@@ -9,16 +9,23 @@ export const TypingText = component$(() => {
     const idText3 = useId()
     const animationSetupIsDone = useSignal(false)
 
+    const abortTypingAnimations = useSignal(false)
+
     const startAnimations = $(async () => {
+        if (abortTypingAnimations.value) return
         await startTyping(idText1, {
             realisticTyping: true,
             startDelay: 1200,
             animationTime: 1600
         })
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (abortTypingAnimations.value) return
         await startTyping(idText2, {
             realisticTyping: true,
             animationTime: 1600
         })
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (abortTypingAnimations.value) return
         await startTyping(idText3, {
             realisticTyping: true,
             animationTime: 600
@@ -36,6 +43,14 @@ export const TypingText = component$(() => {
 
     useOnWindow("scroll", setupAnimations)
     useOnWindow("keydown", setupAnimations)
+
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(() => {
+        abortTypingAnimations.value = false
+        return () => {
+            abortTypingAnimations.value = true
+        }
+    })
 
     return (
         <S.Text>

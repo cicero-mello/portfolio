@@ -1,4 +1,4 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { removeGlitch, startGlitch } from "cm-glitch"
 import { GSAP2SVG, GSAPSVG } from "~/components/svg"
 import { gsap } from "~/gsap/gsap-section"
@@ -9,6 +9,8 @@ export const GSAPIcon = component$(() => {
     const GSAPSVGRef = useSignal<HTMLElement>()
     const GSAP2SVGRef = useSignal<HTMLElement>()
     const animationSetupIsDone = useSignal(false)
+
+    const timeoutId = useSignal<NodeJS.Timeout>()
 
     const addSequentialPathIds = $((svgElement: HTMLElement, prefix: string = 'path') => {
         const paths = svgElement.querySelectorAll('path')
@@ -22,7 +24,7 @@ export const GSAPIcon = component$(() => {
         addSequentialPathIds(GSAPSVGRef.value!, "gsap-i-1")
         addSequentialPathIds(GSAP2SVGRef.value!, "gsap-i-2")
 
-        setTimeout(async () => {
+        timeoutId.value = setTimeout(async () => {
             gsap.moveCape()
             GSAPSVGRef.value!.style.visibility = "unset"
             await startGlitch(GSAPSVGId, {
@@ -47,6 +49,13 @@ export const GSAPIcon = component$(() => {
 
     useOnWindow("scroll", setupAnimations)
     useOnWindow("keydown", setupAnimations)
+
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(() => {
+        return () => {
+            clearTimeout(timeoutId.value)
+        }
+    })
 
     return (
         <S.Wrapper>

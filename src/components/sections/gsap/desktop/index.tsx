@@ -1,4 +1,4 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { removeGlitch, startGlitch } from "cm-glitch"
 import { gsap } from "~/gsap/gsap-section"
 import { TypingText } from "./typing-text"
@@ -13,10 +13,13 @@ export const Desktop = component$(() => {
     const gsapAnchorRef = useSignal<HTMLElement>()
     const cardRef = useSignal<HTMLElement>()
 
+    const timeoutId1 = useSignal<NodeJS.Timeout>()
+    const timeoutId2 = useSignal<NodeJS.Timeout>()
+
     const animationSetupIsDone = useSignal(false)
 
     const startAnimations = $(async () => {
-        setTimeout(async () => {
+        timeoutId1.value = setTimeout(async () => {
             cardRef.value!.style.visibility = "unset"
             await startGlitch(cardId, {
                 maxDistortionX: 20,
@@ -27,7 +30,7 @@ export const Desktop = component$(() => {
             removeGlitch(cardId)
         }, 2000)
 
-        setTimeout(async () => {
+        timeoutId2.value = setTimeout(async () => {
             gsapTextRef.value!.style.visibility = "unset"
             gsapAnchorRef.value!.style.visibility = "unset"
             startGlitch(gsapTextId, {
@@ -49,6 +52,14 @@ export const Desktop = component$(() => {
         ) return
         animationSetupIsDone.value = true
         gsap.triggerInGsapSection(startAnimations)
+    })
+
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(() => {
+        return () => {
+            clearTimeout(timeoutId1.value)
+            clearTimeout(timeoutId2.value)
+        }
     })
 
     useOnWindow("scroll", setupAnimations)
