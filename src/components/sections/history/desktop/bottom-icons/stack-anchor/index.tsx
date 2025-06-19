@@ -1,6 +1,7 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { component$, isServer, useId, useSignal, useTask$ } from "@builder.io/qwik"
 import type { StackAnchorProps } from "./types"
 import { startGlitch } from "cm-glitch"
+import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
 import * as S from "./styles.css"
 
@@ -18,17 +19,12 @@ export const StackAnchor = component$(({
     const anchorId = id ?? useId()
     // eslint-disable-next-line qwik/use-method-usage
     const anchorRef = ref ?? useSignal<HTMLAnchorElement>()
+    const needEmphasis = useEmphasis(anchorRef)
 
-    const animationSetupIsDone = useSignal(false)
-    const haveEmphasis = useSignal(false)
-    const onHover = useSignal(false)
-    const onFocus = useSignal(false)
+    useTask$(({ track }) => {
+        track(needEmphasis)
+        if (isServer || !anchorRef.value) return
 
-    const updateEmphasis = $(() => {
-        const shouldHaveEmphasis = onHover.value || onFocus.value
-        if (haveEmphasis.value === shouldHaveEmphasis) return
-
-        haveEmphasis.value = shouldHaveEmphasis
         startGlitch(anchorId, {
             animationTime: 130,
             direction: "reverse",
@@ -38,37 +34,6 @@ export const StackAnchor = component$(({
             noObservers: true
         })
     })
-
-    const setupAnimation = $(() => {
-        anchorRef.value!.addEventListener("mouseenter", () => {
-            onHover.value = true
-            updateEmphasis()
-        })
-        anchorRef.value!.addEventListener("mouseleave", () => {
-            onHover.value = false
-            updateEmphasis()
-        })
-        anchorRef.value!.addEventListener("focus", () => {
-            onFocus.value = true
-            updateEmphasis()
-        })
-        anchorRef.value!.addEventListener("blur", () => {
-            onFocus.value = false
-            updateEmphasis()
-        })
-    })
-
-    useOnWindow("mousemove", $(() => {
-        if (isServer || animationSetupIsDone.value) return
-        animationSetupIsDone.value = true
-        setupAnimation()
-    }))
-
-    useOnWindow("keydown", $(() => {
-        if (isServer || animationSetupIsDone.value) return
-        animationSetupIsDone.value = true
-        setupAnimation()
-    }))
 
     const rotateDeg = useSignal(
         `${Math.floor(Math.random() * 29) - 14}deg`
@@ -98,12 +63,12 @@ export const StackAnchor = component$(({
                             `rotate(${rotateDeg.value})` : "unset"
                     }}
                     pathColor={
-                        haveEmphasis.value ?
+                        needEmphasis.value ?
                             Colors.Toast : Colors.Fawn
                     }
                 />
             </S.SVGWrapper>
-            {haveEmphasis.value && <S.Name children={name} />}
+            {needEmphasis.value && <S.Name children={name} />}
         </S.Anchor>
     )
 })
