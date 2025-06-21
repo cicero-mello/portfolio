@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] [[Criar ou Adaptar CodePenSection Mobile]] @{2025-06-20}
 - [ ] [[Criar GitHubSection Desktop]] @{2025-06-21}
 - [ ] [[Criar GitHubSection Mobile]] @{2025-06-22}
 - [ ] [[Criar Contact Section Desktop]] @{2025-06-23}
@@ -19,6 +18,7 @@ kanban-plugin: board
 
 ## Feito
 
+- [ ] [[Criar ou Adaptar CodePenSection Mobile]] @{2025-06-20}
 - [ ] [[Criar CodePenSection Desktop]] @{2025-06-19}
 - [ ] [[Repensar Layout da CodePenSection]] @{2025-06-19}
 - [ ] [[Criar ou Adaptar GSAP Section para Mobile]] @{2025-06-18}

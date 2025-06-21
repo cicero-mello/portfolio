@@ -13,13 +13,15 @@ export const GitHubSection = component$((
     return (
         <S.Section {...props}>
             <S.Text>
-                Or check my public repos <br />
-                on <S.Anchor
-                    children="GitHub"
-                    target="_blank"
-                    href="https://github.com/cicero-mello"
-                    ref={anchorRef}
-                />
+                <span>Or check my public repos </span>
+                <span>
+                    on <S.Anchor
+                        children="GitHub"
+                        target="_blank"
+                        href="https://github.com/cicero-mello"
+                        ref={anchorRef}
+                    />
+                </span>
             </S.Text>
             <GitHubSVG
                 class={S.IconClass}

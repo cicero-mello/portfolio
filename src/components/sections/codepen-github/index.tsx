@@ -1,5 +1,6 @@
 import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
 import { gsap } from "~/gsap/codepen-github-section"
+import { useDevice } from "~/context/device"
 import { CodePenSection } from "./codepen"
 import { GitHubSection } from "./github"
 import { startGlitch } from "cm-glitch"
@@ -7,6 +8,8 @@ import * as S from "./styles.css"
 import { delay } from "~/utils"
 
 export const CodePenGitHubSection = component$(() => {
+    const device = useDevice()
+
     const titleId = useId()
     const codePenSectionId = useId()
     const gitHubSectionId = useId()
@@ -44,7 +47,11 @@ export const CodePenGitHubSection = component$(() => {
     })
 
     const setupAnimations = $(() => {
-        if (isServer || animationSetupIsDone.value) return
+        if (
+            isServer
+            || animationSetupIsDone.value
+            || device.type === "mobile"
+        ) return
         animationSetupIsDone.value = true
         gsap.triggerInCodePenGitHubSection(
             startAnimations
@@ -59,19 +66,28 @@ export const CodePenGitHubSection = component$(() => {
             <S.Title
                 id={titleId}
                 ref={titleRef}
-                style={{ visibility: "hidden" }}
+                style={{
+                    visibility: device.type === "mobile" ?
+                        "unset" : "hidden"
+                }}
             >
                 Want to see my code?
             </S.Title>
             <CodePenSection
                 id={codePenSectionId}
                 ref={codePenSectionRef}
-                style={{ visibility: "hidden" }}
+                style={{
+                    visibility: device.type === "mobile" ?
+                        "unset" : "hidden"
+                }}
             />
             <GitHubSection
                 id={gitHubSectionId}
                 ref={gitHubSectionRef}
-                style={{ visibility: "hidden" }}
+                style={{
+                    visibility: device.type === "mobile" ?
+                        "unset" : "hidden"
+                }}
             />
         </S.Section>
     )
