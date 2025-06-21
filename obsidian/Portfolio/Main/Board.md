@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] [[Criar GitHubSection Desktop]] @{2025-06-21}
 - [ ] [[Criar GitHubSection Mobile]] @{2025-06-22}
 - [ ] [[Criar Contact Section Desktop]] @{2025-06-23}
 - [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-24}
@@ -14,6 +13,7 @@ kanban-plugin: board
 
 ## Fazendo
 
+- [ ] [[Criar GitHubSection Desktop]] @{2025-06-21}
 
 
 ## Feito
