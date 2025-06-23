@@ -1,3 +1,4 @@
+import { HTMLAttributes } from "@builder.io/qwik"
 import { AnchorIconProps } from "~/components/anchor-icon/types"
 
 export type SectionName = (
@@ -12,6 +13,6 @@ export interface SectionData {
     image: any
 }
 
-export interface SectionProps {
+export interface SectionProps extends HTMLAttributes<HTMLElement> {
     name: SectionName
 }

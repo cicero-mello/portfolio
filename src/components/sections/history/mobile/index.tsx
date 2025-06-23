@@ -11,7 +11,7 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2017"
-                description1="First contact with Programing (with electronics) in High School"
+                description1="First contact with Programming (with electronics) in High School"
                 description2="Most of the time was focused on Microcontrollers"
                 descriptionIcon={Icon.BagSVG}
                 anchorIcons={[
@@ -164,12 +164,12 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "Javascript",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+                        href: "https://developer.mozilla.org/docs/Web/JavaScript",
                         icon: Icon.JavaScriptSVG
                     },
                     {
                         ariaLabel: "Axios",
-                        href: "https://axios-http.com/ptbr/docs/intro",
+                        href: "https://axios-http.com",
                         icon: Icon.AxiosSVG
                     },
                     {

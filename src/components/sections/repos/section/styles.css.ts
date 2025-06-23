@@ -5,10 +5,9 @@ import { Colors } from "~/styles"
 export const Section = styled.section`
     display: flex;
     min-height: unset;
-    /* background-color: red; */
     width: fit-content;
     gap: 24px;
-    padding-bottom: 64px;
+    padding-bottom: 24px;
 `
 
 export const LeftWrapper = styled.div`

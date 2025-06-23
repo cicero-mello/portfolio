@@ -43,6 +43,7 @@ export const Section = component$(({
                     children={data.name}
                     href={data.site}
                     target="_blank"
+                    key={data.name + "-rs-anchor-key"}
                 />
                 <S.ImageWrapper
                     ref={imageWrapperRef}
@@ -53,18 +54,20 @@ export const Section = component$(({
             </S.LeftWrapper>
             <S.RightWrapper>
                 <S.IconsWrapper>
-                    {data.anchorIcons.map((anchorIconProps) => (
+                    {data.anchorIcons.map((anchorIconProps, index) => (
                         <AnchorIcon
                             class={S.IconClass}
-                            {...anchorIconProps}
+                            key={name + "rskeyai" + index}
                             randomRotate={false}
-                        // float={false}
+                            {...anchorIconProps}
                         />
                     ))}
                 </S.IconsWrapper>
                 <S.TextList>
-                    {data.features.map((feature) => (
-                        <S.TextItem>{feature}</S.TextItem>
+                    {data.features.map((feature, index) => (
+                        <S.TextItem key={name + "rskeyti" + index}>
+                            {feature}
+                        </S.TextItem>
                     ))}
                 </S.TextList>
             </S.RightWrapper>
