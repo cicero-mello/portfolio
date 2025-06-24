@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from "@builder.io/qwik"
+import type { Signal } from "@builder.io/qwik"
 import type { AnchorIconProps } from "~/components/anchor-icon/types"
 
 export type SectionName = (
@@ -13,7 +13,6 @@ export interface SectionData {
     image: any
 }
 
-export interface SectionProps extends HTMLAttributes<HTMLElement> {
-    name: SectionName
-    isVisible: boolean
+export interface SectionProps {
+    sectionNameSignal: Signal<SectionName>
 }

@@ -94,18 +94,7 @@ export const ReposSection = component$(() => {
         >
             <Scrollbar percent={percent.value} markers={3} />
             <S.GlitchWrapper id={glitchWrapperId}>
-                <Section
-                    name="c-streaming"
-                    isVisible={currentSection.value === "c-streaming"}
-                />
-                <Section
-                    name="poke-info"
-                    isVisible={currentSection.value === "poke-info"}
-                />
-                <Section
-                    name="ice-crud"
-                    isVisible={currentSection.value === "ice-crud"}
-                />
+                <Section sectionNameSignal={currentSection} />
             </S.GlitchWrapper>
         </S.Section>
     )

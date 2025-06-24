@@ -6,19 +6,19 @@ import type { SectionProps } from "./types"
 import * as S from "./styles.css"
 
 export const Section = component$(({
-    name, isVisible
+    sectionNameSignal
 }: SectionProps) => {
-    const data = sectionDataBySectionName.get(name)!
-    const Image = data.image
+    const data = useSignal(sectionDataBySectionName.get(sectionNameSignal.value)!)
+    const Image = data.value.image
 
     const anchorRef = useSignal<HTMLElement>()
     const imageWrapperRef = useSignal<HTMLElement>()
     const imageEmphasis = useEmphasis(anchorRef)
     const anchorEmphasis = useEmphasis(imageWrapperRef)
 
-    useRotate3D(imageWrapperRef, {
-        maxRotateX: 20,
-        maxRotateY: 18
+    const handleClickImage = $(() => {
+        if (!anchorRef.value) return
+        anchorRef.value.click()
     })
 
     useTask$(({ track }) => {
@@ -27,6 +27,7 @@ export const Section = component$(({
         if (imageEmphasis.value) imageWrapperRef.value.classList.add("emphasis")
         else imageWrapperRef.value.classList.remove("emphasis")
     })
+
     useTask$(({ track }) => {
         track(anchorEmphasis)
         if (isServer || !anchorRef.value) return
@@ -34,20 +35,24 @@ export const Section = component$(({
         else anchorRef.value.classList.remove("emphasis")
     })
 
-    const handleClickImage = $(() => {
-        if (!anchorRef.value) return
-        anchorRef.value.click()
+    useTask$(({ track }) => {
+        track(sectionNameSignal)
+        if (isServer) return
+        data.value = sectionDataBySectionName.get(sectionNameSignal.value)!
+    })
+
+    useRotate3D(imageWrapperRef, {
+        maxRotateX: 20,
+        maxRotateY: 18
     })
 
     return (
-        <S.Section style={{
-            display: isVisible ? "flex" : "none"
-        }}>
+        <S.Section>
             <S.LeftWrapper>
                 <S.Anchor
                     ref={anchorRef}
-                    children={data.name}
-                    href={data.site}
+                    children={data.value.name}
+                    href={data.value.site}
                     target="_blank"
                 />
                 <S.ImageWrapper
@@ -59,18 +64,20 @@ export const Section = component$(({
             </S.LeftWrapper>
             <S.RightWrapper>
                 <S.IconsWrapper>
-                    {data.anchorIcons.map((anchorIconProps, index) => (
+                    {data.value.anchorIcons.map((anchorIconProps, index) => (
                         <AnchorIcon
                             class={S.IconClass}
-                            key={name + "repos-sec-anchor-key-" + index}
+                            key={data.value.name + "repos-sec-anchor-key-" + index}
                             randomRotate={false}
                             {...anchorIconProps}
                         />
                     ))}
                 </S.IconsWrapper>
                 <S.TextList>
-                    {data.features.map((feature, index) => (
-                        <S.TextItem key={name + "repos-sec-ti-key-" + index}>
+                    {data.value.features.map((feature, index) => (
+                        <S.TextItem
+                            key={data.value.name + "repos-sec-ti-key-" + index}
+                        >
                             {feature}
                         </S.TextItem>
                     ))}
