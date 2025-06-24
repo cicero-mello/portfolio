@@ -69,6 +69,7 @@ export const Anchor = styled.a`
 export const ImageWrapper = styled.div`
     border-radius: 1.125rem;    // 18px
     max-width: 31.25rem;        // 500px
+    min-width: 31.25rem;        // 500px
     margin-top: 1rem;           // 16px
     aspect-ratio: 1920 / 1440;
     width: 100%;
@@ -86,15 +87,17 @@ export const ImageWrapper = styled.div`
         border: 0.1875rem solid ${Colors.Toast}; // 3px
     }
 
-    @media screen and (max-width: 72.5rem){         // 1160px
-       max-width: 25rem;                            // 400px
-       &:hover, &.emphasis {
+@media screen and (max-width: 72.5rem){             // 1160px
+        max-width: 25rem;                           // 400px
+        min-width: 25rem;                           // 400px
+        &:hover, &.emphasis {
             border: 0.125rem solid ${Colors.Toast}; // 2px
         }
     }
 
     @media screen and (max-width: 56.25rem){    // 900px
-       max-width: 18.75rem;                     // 300px
+        max-width: 18.75rem;                    // 300px
+        min-width: 18.75rem;                    // 300px
     }
 `
 

@@ -1,9 +1,9 @@
 import * as Icon from "~/components/svg"
 import type { SectionData, SectionName } from "./types"
 
-import CStreaming from "../../../../../assets/images/c-streaming.webp?w=1920&h=1440&jsx"
-import PokeInfo from "../../../../../assets/images/poke-info.webp?w=1920&h=1440&jsx"
-import IceCrud from "../../../../../assets/images/ice-crud.webp?w=1920&h=1440&jsx"
+import CStreaming from "../../../../../../assets/images/c-streaming.webp?w=1920&h=1440&jsx"
+import PokeInfo from "../../../../../../assets/images/poke-info.webp?w=1920&h=1440&jsx"
+import IceCrud from "../../../../../../assets/images/ice-crud.webp?w=1920&h=1440&jsx"
 import { $ } from "@builder.io/qwik"
 import * as S from "./styles.css"
 
