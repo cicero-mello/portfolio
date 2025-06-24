@@ -3,18 +3,20 @@ import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const Section = styled.section`
+    padding-bottom: 1.5rem;     // 24px
+    gap: 1.75rem;               // 28px
+
     display: flex;
     min-height: unset;
     width: fit-content;
-    gap: 28px;
-    padding-bottom: 24px;
 `
 
 export const LeftWrapper = styled.div`
+    perspective: 900px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    perspective: 900px;
 `
 
 export const EmphasisClass = style({
@@ -22,17 +24,18 @@ export const EmphasisClass = style({
 })
 
 export const Anchor = styled.a`
+    font-size: 2.8rem;          // 44.8px
+    padding-bottom: 0.75rem;    // 12px
+
     display: flex;
     position: relative;
     justify-content: center;
     color: ${Colors.Toast};
     transition: color 100ms ease-in-out;
     width: fit-content;
-    font-size: 2.8rem;
     text-decoration: none;
     font-family: "Grechen Fuemen";
     outline: none;
-    padding-bottom: 12px;
 
     &:hover, &:focus, &.emphasis {
         color: ${Colors.Cloud};
@@ -40,38 +43,58 @@ export const Anchor = styled.a`
 
     &::after {
         content: "";
-        bottom: 10px;
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        background-color: ${Colors.Toast};
         border-radius: 0.25rem; // 4px
+        bottom: 0.625rem;       // 16px
+        height: 0.1875rem;      // 3px
+        width: 100%;
+
+        position: absolute;
+        background-color: ${Colors.Toast};
         transition: background-color 160ms ease-in-out;
     }
 
     &:hover::after, &:focus::after, &.emphasis::after {
         background-color: ${Colors.Fawn};
     }
+
+    @media screen and (max-width: 72.5rem){ // 1160px
+        font-size: 2.5rem;                  // 40px
+        &::after {
+            height: 0.125rem;               // 2px
+            bottom: 0.5rem;                 // 8px
+        }
+    }
 `
 
 export const ImageWrapper = styled.div`
-    border-radius: 18px;
-    overflow: hidden;
+    border-radius: 1.125rem;    // 18px
+    max-width: 31.25rem;        // 500px
+    margin-top: 1rem;           // 16px
     aspect-ratio: 1920 / 1440;
-    max-width: 500px;
     width: 100%;
-    cursor: pointer;
-    user-select: none;
-    margin-top: 16px;
 
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+    border: 0px solid ${Colors.Toast};
     transition:
         border 100ms ease-in-out,
         transform 100ms linear
     ;
-    border: 0px solid ${Colors.Toast};
 
     &:hover, &.emphasis {
-        border: 3px solid ${Colors.Toast};
+        border: 0.1875rem solid ${Colors.Toast}; // 3px
+    }
+
+    @media screen and (max-width: 72.5rem){         // 1160px
+       max-width: 25rem;                            // 400px
+       &:hover, &.emphasis {
+            border: 0.125rem solid ${Colors.Toast}; // 2px
+        }
+    }
+
+    @media screen and (max-width: 56.25rem){    // 900px
+       max-width: 18.75rem;                     // 300px
     }
 `
 
@@ -85,28 +108,46 @@ export const RightWrapper = styled.div`
 `
 
 export const IconsWrapper = styled.div`
+    margin-top: 5.25rem;    // 84px
+    max-width: 21.75rem;    // 348px
+    gap: 0.125rem;          // 2px
+
     display: flex;
     flex-wrap: wrap;
-    margin-top: 84px;
-    max-width: 348px;
-    gap: 2px;
+
+    @media screen and (max-width: 72.5rem){ // 1160px
+       max-width: 18.75rem;                 // 300px
+    }
 `
 
 export const IconClass = style({
-    width: "48px",
-    maxWidth: "48px"
+    width: "3rem",      // 48px
+    maxWidth: "3rem",   // 48px
+    "@media": {
+        "screen and (max-width: 72.5rem)": {    // 1160px
+            width: "2.5rem",                    // 40px
+            maxWidth: "2.5rem"                  // 40px
+        }
+    }
 })
 
 export const TextList = styled.ul`
+    margin-top: 1.5rem; // 24px
+    font-size: 1.6rem;  // 25.6px
+    gap: 0.75rem;       // 12px
+
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
     list-style: none;
-    font-size: 1.6rem;
     color: ${Colors.Cloud51};
     font-weight: normal;
     font-family: "Cascadia Code";
+
+    @media screen and (max-width: 72.5rem){ // 1160px
+       font-size: 1.2rem;                   // 19.2px
+       margin-top: 1.125rem;                // 18px
+       gap: 0.375rem;                       // 6px
+    }
 `
 
 export const TextItem = styled.li`

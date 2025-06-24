@@ -2,54 +2,66 @@ import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const Wrapper = styled.div`
-    display: flex;
+    gap: 1.125rem;  // 18px
     height: 80vh;
+
+    display: flex;
     overflow: hidden;
-    gap: 18px;
     min-width: fit-content;
+
+    @media screen and (max-width: 79.375rem){   // 1270px
+        gap: 0.75rem;                           // 12px
+    }
 `
 
 export const ScrollWrapper = styled.div`
-    min-width: 8px;
+    border-radius: 1.25rem; // 20px
+    margin-left: 1.5rem;    // 24px
+    min-width: 0.5rem;      // 8px
     height: 100%;
-    overflow: hidden;
+
     background-color: ${Colors.Fawn};
-    margin-left: 24px;
-    border-radius: 20px;
+    overflow: hidden;
     position: relative;
+
+    @media screen and (max-width: 79.375rem){   // 1270px
+        min-width: 0.3125rem;                   // 5px
+    }
 `
 
 export const ScrollItem = styled.div`
+    border-radius: 1.25rem;     // 20px
     width: 100%;
     height: 10%;
+    top: 0;
 
     background-color: ${Colors.Toast};
     position: absolute;
-
-    border-radius: 20px;
-
     will-change: top;
-    top: 0;
 `
 
 export const MarkersWrapper = styled.div`
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
 `
 
 export const Marker = styled.div`
-    height: 4px;
-    width: 24px;
-    border-radius: 8px;
-    background-color: ${Colors.Fawn};
+    height: 0.25rem;        // 4px
+    width: 1.5rem;          // 24px
+    border-radius: 0.5rem;  // 8px
 
+    background-color: ${Colors.Fawn};
     &:last-of-type {
         visibility: hidden;
     }
-
     &.surpassed {
         background-color: ${Colors.Toast};
+    }
+
+    @media screen and (max-width: 79.375rem){   // 1270px
+         height: 0.1875rem; // 3px
     }
 `
