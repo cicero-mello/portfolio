@@ -1,4 +1,4 @@
-import { $, type Signal, useOnWindow } from "@builder.io/qwik"
+import { $, isServer, type Signal } from "@builder.io/qwik"
 import type { UseRotate3DOptions } from "./types"
 
 export const useRotate3D = (
@@ -38,5 +38,7 @@ export const useRotate3D = (
         elementRef.value.style.transform = `rotateX(${degsToRotateX}deg) rotateY(${degsToRotateY}deg)`
     })
 
-    useOnWindow("mousemove", moveElement)
+    if (isServer) return
+    window.removeEventListener("mousemove", moveElement)
+    window.addEventListener("mousemove", moveElement)
 }
