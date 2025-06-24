@@ -22,11 +22,11 @@ export default component$(() => {
 
     return (
         <S.Main id="smooth-content">
-            {/* <HelloSection /> */}
-            {/* <ReactSection /> */}
-            {/* <HistorySection /> */}
-            {/* <GSAPSection /> */}
-            {/* <CodePenGitHubSection /> */}
+            <HelloSection />
+            <ReactSection />
+            <HistorySection />
+            <GSAPSection />
+            <CodePenGitHubSection />
             <ReposSection />
         </S.Main>
     )

@@ -6,7 +6,7 @@ export const Section = styled.section`
     display: flex;
     min-height: unset;
     width: fit-content;
-    gap: 24px;
+    gap: 28px;
     padding-bottom: 24px;
 `
 
@@ -14,6 +14,7 @@ export const LeftWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    perspective: 900px;
 `
 
 export const EmphasisClass = style({
@@ -61,8 +62,12 @@ export const ImageWrapper = styled.div`
     width: 100%;
     cursor: pointer;
     user-select: none;
+    margin-top: 16px;
 
-    transition: 100ms ease-in-out;
+    transition:
+        border 100ms ease-in-out,
+        transform 100ms linear
+    ;
     border: 0px solid ${Colors.Toast};
 
     &:hover, &.emphasis {

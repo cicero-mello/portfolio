@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik"
-import { ScrollbarProps } from "./types"
+import type { ScrollbarProps } from "./types"
 import * as S from "./styles.css"
 
 export const Scrollbar = component$(({

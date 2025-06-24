@@ -14,11 +14,11 @@ kanban-plugin: board
 
 ## Fazendo
 
-- [ ] [[Criar GitHubSection Desktop]] @{2025-06-24}
 
 
 ## Feito
 
+- [ ] [[Criar GitHubSection Desktop]] @{2025-06-24}
 - [ ] [[Criar ou Adaptar CodePenSection Mobile]] @{2025-06-20}
 - [ ] [[Criar CodePenSection Desktop]] @{2025-06-19}
 - [ ] [[Repensar Layout da CodePenSection]] @{2025-06-19}

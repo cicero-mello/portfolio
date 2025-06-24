@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "@builder.io/qwik"
-import { AnchorIconProps } from "~/components/anchor-icon/types"
+import type { HTMLAttributes } from "@builder.io/qwik"
+import type { AnchorIconProps } from "~/components/anchor-icon/types"
 
 export type SectionName = (
     "c-streaming" | "poke-info" | "ice-crud"
@@ -15,4 +15,5 @@ export interface SectionData {
 
 export interface SectionProps extends HTMLAttributes<HTMLElement> {
     name: SectionName
+    isVisible: boolean
 }

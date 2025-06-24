@@ -27,6 +27,8 @@ export const ScrollItem = styled.div`
     position: absolute;
 
     border-radius: 20px;
+
+    will-change: top;
     top: 0;
 `
 

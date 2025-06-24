@@ -11,6 +11,6 @@ export const Section = styled.section`
 `
 
 export const GlitchWrapper = styled.div`
-    max-width: 944px;
+    max-width: 952px;
     width: 100%;
 `

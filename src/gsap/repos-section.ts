@@ -53,6 +53,21 @@ const changeSectionTrigger = (
     })
 }
 
+const showInTrigger = (
+    onTrigger: QRL<() => void | Promise<void>>,
+) => {
+    GSAP.to(".repos-section", {
+        scrollTrigger: {
+            trigger: ".repos-section",
+            start: "top 40%",
+            once: true,
+            onEnter: onTrigger
+        }
+    })
+}
+
+
 export const gsap = {
-    changeSectionTrigger
+    changeSectionTrigger,
+    showInTrigger
 }

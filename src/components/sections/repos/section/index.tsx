@@ -1,21 +1,25 @@
 import { $, component$, isServer, useSignal, useTask$ } from "@builder.io/qwik"
 import { AnchorIcon } from "~/components/anchor-icon"
+import { useEmphasis, useRotate3D } from "~/hooks"
 import { sectionDataBySectionName } from "./core"
-import { SectionProps } from "./types"
-import { useEmphasis } from "~/hooks"
+import type { SectionProps } from "./types"
 import * as S from "./styles.css"
 
 export const Section = component$(({
-    name
+    name, isVisible
 }: SectionProps) => {
     const data = sectionDataBySectionName.get(name)!
     const Image = data.image
 
     const anchorRef = useSignal<HTMLElement>()
     const imageWrapperRef = useSignal<HTMLElement>()
-
     const imageEmphasis = useEmphasis(anchorRef)
     const anchorEmphasis = useEmphasis(imageWrapperRef)
+
+    useRotate3D(imageWrapperRef, {
+        maxRotateX: 20,
+        maxRotateY: 18
+    })
 
     useTask$(({ track }) => {
         track(imageEmphasis)
@@ -31,19 +35,20 @@ export const Section = component$(({
     })
 
     const handleClickImage = $(() => {
-        if (!anchorRef.value || !anchorRef.value.click) return
+        if (!anchorRef.value) return
         anchorRef.value.click()
     })
 
     return (
-        <S.Section>
+        <S.Section style={{
+            display: isVisible ? "flex" : "none"
+        }}>
             <S.LeftWrapper>
                 <S.Anchor
                     ref={anchorRef}
                     children={data.name}
                     href={data.site}
                     target="_blank"
-                    key={data.name + "-rs-anchor-key"}
                 />
                 <S.ImageWrapper
                     ref={imageWrapperRef}
@@ -57,7 +62,7 @@ export const Section = component$(({
                     {data.anchorIcons.map((anchorIconProps, index) => (
                         <AnchorIcon
                             class={S.IconClass}
-                            key={name + "rskeyai" + index}
+                            key={name + "repos-sec-anchor-key-" + index}
                             randomRotate={false}
                             {...anchorIconProps}
                         />
@@ -65,7 +70,7 @@ export const Section = component$(({
                 </S.IconsWrapper>
                 <S.TextList>
                     {data.features.map((feature, index) => (
-                        <S.TextItem key={name + "rskeyti" + index}>
+                        <S.TextItem key={name + "repos-sec-ti-key-" + index}>
                             {feature}
                         </S.TextItem>
                     ))}

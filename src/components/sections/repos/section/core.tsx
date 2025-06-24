@@ -1,5 +1,5 @@
 import * as Icon from "~/components/svg"
-import { SectionData, SectionName } from "./types"
+import type { SectionData, SectionName } from "./types"
 
 import CStreaming from "../../../../../assets/images/c-streaming.webp?w=1920&h=1440&jsx"
 import PokeInfo from "../../../../../assets/images/poke-info.webp?w=1920&h=1440&jsx"

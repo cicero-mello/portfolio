@@ -1,4 +1,4 @@
-import { $, Signal, useOnWindow } from "@builder.io/qwik"
+import { $, type Signal, useOnWindow } from "@builder.io/qwik"
 import type { UseRotate3DOptions } from "./types"
 
 export const useRotate3D = (
@@ -34,6 +34,7 @@ export const useRotate3D = (
         const degsToRotateY = clampedX * maxRotateY
         const degsToRotateX = -clampedY * maxRotateX
 
+        elementRef.value.style.willChange = "transform"
         elementRef.value.style.transform = `rotateX(${degsToRotateX}deg) rotateY(${degsToRotateY}deg)`
     })
 
