@@ -29,8 +29,8 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
                 "Streaming-Style UI",
                 "Hight Accessibility",
                 "Page Transitions",
-                "Responsive/Adaptive Layout",
-                "Web Storage Features",
+                "Responsive Layout",
+                "Web Storage",
                 "Original Design"
             ],
             anchorIcons: [
@@ -71,10 +71,10 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             site: "https://poke-info.vercel.app/",
             features: [
                 "Creative UI",
-                "Responsive/Adaptive Layout",
+                "Responsive Layout",
                 "Page Transitions",
-                "Web Storage Features",
-                "External API Consumption",
+                "Web Storage",
+                "External API Use",
                 "Cache Management",
                 "Infinite Scroll",
                 "Virtualization",
@@ -128,10 +128,11 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             site: "https://github.com/cicero-mello/ice-crud-frontend",
             features: [
                 "Full Stack App",
-                "CRUD Features",
+                "CRUD",
                 "Auth Management",
                 "Unit Tests",
                 "Documented Api",
+                "Data Validation",
                 "Original Design"
             ],
             anchorIcons: [

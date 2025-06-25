@@ -12,11 +12,11 @@ kanban-plugin: board
 
 ## Fazendo
 
-- [ ] [[Criar GitHubSection Mobile]] @{2025-06-24}
 
 
 ## Feito
 
+- [ ] [[Criar GitHubSection Mobile]] @{2025-06-24}
 - [ ] Adicionar Efeito 3D nos cards de Repo na Repo Section @{2025-06-24}
 - [ ] [[Criar GitHubSection Desktop]] @{2025-06-24}
 - [ ] [[Criar ou Adaptar CodePenSection Mobile]] @{2025-06-20}
