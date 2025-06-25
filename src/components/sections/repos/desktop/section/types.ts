@@ -1,17 +1,5 @@
 import type { Signal } from "@builder.io/qwik"
-import type { AnchorIconProps } from "~/components/anchor-icon/types"
-
-export type SectionName = (
-    "c-streaming" | "poke-info" | "ice-crud"
-)
-
-export interface SectionData {
-    name: string
-    site: string
-    features: string[]
-    anchorIcons: AnchorIconProps[]
-    image: any
-}
+import type { SectionName } from "../../types"
 
 export interface SectionProps {
     sectionNameSignal: Signal<SectionName>

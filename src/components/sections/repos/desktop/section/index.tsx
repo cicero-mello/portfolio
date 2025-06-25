@@ -1,9 +1,11 @@
 import { $, component$, isServer, useSignal, useTask$ } from "@builder.io/qwik"
+import { getSectionDataBySectionName } from "../../core"
 import { AnchorIcon } from "~/components/anchor-icon"
 import { useEmphasis, useRotate3D } from "~/hooks"
-import { sectionDataBySectionName } from "./core"
 import type { SectionProps } from "./types"
 import * as S from "./styles.css"
+
+const sectionDataBySectionName = getSectionDataBySectionName("desktop")
 
 export const Section = component$(({
     sectionNameSignal

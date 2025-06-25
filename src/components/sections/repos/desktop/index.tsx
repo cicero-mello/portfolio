@@ -1,7 +1,7 @@
 import { $, component$, useId, useOnWindow, useSignal } from "@builder.io/qwik"
 import * as S from "./styles.css"
 import { Section } from "./section"
-import type { SectionName } from "./section/types"
+import type { SectionName } from "../types"
 import { gsap } from "~/gsap/repos-section"
 import { startGlitch } from "cm-glitch"
 import { Scrollbar } from "./scrollbar"

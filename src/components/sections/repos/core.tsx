@@ -1,17 +1,29 @@
 import * as Icon from "~/components/svg"
 import type { SectionData, SectionName } from "./types"
 
-import CStreaming from "../../../../../../assets/images/c-streaming.webp?w=1920&h=1440&jsx"
-import PokeInfo from "../../../../../../assets/images/poke-info.webp?w=1920&h=1440&jsx"
-import IceCrud from "../../../../../../assets/images/ice-crud.webp?w=1920&h=1440&jsx"
-import { $ } from "@builder.io/qwik"
-import * as S from "./styles.css"
+import CStreaming from "../../../../assets/images/c-streaming.webp?w=1920&h=1440&jsx"
+import CStreamingOptimized from "../../../../assets/images/c-streaming.webp?jsx"
 
-export const sectionDataBySectionName = (
+import PokeInfo from "../../../../assets/images/poke-info.webp?w=1920&h=1440&jsx"
+import PokeInfoOptimized from "../../../../assets/images/poke-info.webp?jsx"
+
+import IceCrud from "../../../../assets/images/ice-crud.webp?w=1920&h=1440&jsx"
+import IceCrudOptimized from "../../../../assets/images/ice-crud.webp?jsx"
+
+import { $ } from "@builder.io/qwik"
+import type { DeviceType } from "~/context/device/types"
+import * as DesktopStyles from "./desktop/section/styles.css"
+import * as MobileStyles from "./mobile/section/styles.css"
+
+export const getSectionDataBySectionName = (deviceType: DeviceType) => (
     new Map<SectionName, SectionData>([
         ["c-streaming", {
             name: "C-Streaming",
-            image: $(() => <CStreaming class={S.ImageClass} />),
+            image: $(() => (
+                deviceType === "desktop" ?
+                    <CStreaming class={DesktopStyles.ImageClass} />
+                    : <CStreamingOptimized class={MobileStyles.ImageClass} />
+            )),
             site: "https://c-streaming.vercel.app/",
             features: [
                 "Streaming-Style UI",
@@ -51,7 +63,11 @@ export const sectionDataBySectionName = (
         }],
         ["poke-info", {
             name: "Poke-Info",
-            image: $(() => <PokeInfo class={S.ImageClass} />),
+            image: $(() => (
+                deviceType === "desktop" ?
+                    <PokeInfo class={DesktopStyles.ImageClass} />
+                    : <PokeInfoOptimized class={MobileStyles.ImageClass} />
+            )),
             site: "https://poke-info.vercel.app/",
             features: [
                 "Creative UI",
@@ -104,7 +120,11 @@ export const sectionDataBySectionName = (
         }],
         ["ice-crud", {
             name: "Ice-CRUD",
-            image: $(() => <IceCrud class={S.ImageClass} />),
+            image: $(() => (
+                deviceType === "desktop" ?
+                    <IceCrud class={DesktopStyles.ImageClass} />
+                    : <IceCrudOptimized class={MobileStyles.ImageClass} />
+            )),
             site: "https://github.com/cicero-mello/ice-crud-frontend",
             features: [
                 "Full Stack App",
