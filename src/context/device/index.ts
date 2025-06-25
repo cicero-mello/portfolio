@@ -73,13 +73,13 @@ export const useDeviceContextSetup = () => {
             getIsReposSectionMobileMinWidth()
         ]).then(([
             touch, portrait, mobileW, smallH,
-            minWidth, reposMinWidth, reposMobileMinWidth
+            gsapMinWidth, reposMinWidth, reposMobileMinWidth
         ]) => {
             device.type = touch ? "mobile" : "desktop"
             device.isPortrait = portrait
             device.isMobileWidth = mobileW
             device.isSmallHeight = smallH
-            device.isGSAPSectionMinWidth = minWidth
+            device.isGSAPSectionMinWidth = gsapMinWidth
             device.isReposSectionMinWidth = reposMinWidth
             device.isReposSectionMobileMinWidth = reposMobileMinWidth
             device.isLoadingData = false
@@ -91,6 +91,7 @@ export const useDeviceContextSetup = () => {
         device.isPortrait = await getIsPortrait()
         device.isMobileWidth = await getIsMobileWidth()
         device.isSmallHeight = await getIsSmallHeight()
+        device.isGSAPSectionMinWidth = await getIsGSAPSectionMinWidth()
         device.isReposSectionMinWidth = await getIsReposSectionMinWidth()
         device.isReposSectionMobileMinWidth = await getIsReposSectionMobileMinWidth()
     }))
