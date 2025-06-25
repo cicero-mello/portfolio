@@ -1,4 +1,4 @@
-import { $, isServer, type Signal } from "@builder.io/qwik"
+import { $, useVisibleTask$, type Signal } from "@builder.io/qwik"
 import type { UseRotate3DOptions } from "./types"
 
 export const useRotate3D = (
@@ -38,7 +38,9 @@ export const useRotate3D = (
         elementRef.value.style.transform = `rotateX(${degsToRotateX}deg) rotateY(${degsToRotateY}deg)`
     })
 
-    if (isServer) return
-    window.removeEventListener("mousemove", moveElement)
-    window.addEventListener("mousemove", moveElement)
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(({ cleanup }) => {
+        window.addEventListener("mousemove", moveElement)
+        cleanup(() => window.removeEventListener("mousemove", moveElement))
+    })
 }
