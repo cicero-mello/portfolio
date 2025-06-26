@@ -7,6 +7,7 @@ import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
 import * as S from "./styles.css"
 import { Email } from "./email"
+import { TrianglesLayer } from "./triangles-layer"
 
 export const ContactSection = component$(() => {
     const linkedInAnchorRef = useSignal<HTMLElement>()
@@ -30,6 +31,7 @@ export const ContactSection = component$(() => {
 
     return (
         <S.Section>
+            <TrianglesLayer />
             <DynamicText />
             <S.ContactWrapper>
                 <ContactText class={S.ContactClass} />

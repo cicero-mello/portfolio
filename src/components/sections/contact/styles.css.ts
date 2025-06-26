@@ -3,23 +3,27 @@ import { style, styled } from "styled-vanilla-extract/qwik"
 export const Section = styled.section`
     display: flex;
     flex-direction: column;
+    position: relative;
 `
 
 export const ContactWrapper = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin-bottom: 5%;
-    min-width: 60vw;
-    margin-right: 80px;
     align-items: center;
-    gap: 80px;
     justify-content: center;
-    align-self: flex-end;
+    gap: 66px;
+    margin-bottom: 40px;
+
+    width: 70vw;
+    align-self: center;
+    margin-left: 25vw;
+    margin-right: 5vw;
+    z-index: 10;
 `
 
 export const ContactClass = style({
-    width: "220px"
+    width: "276px"
 })
 
 export const ContactContent = styled.div`
@@ -29,11 +33,14 @@ export const ContactContent = styled.div`
 `
 
 export const MeImageWrapper = styled.div`
-    width: 136px;
-    height: 136px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
-    filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.23));
+    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
+    margin-top: -36px;
+
+    z-index: 10;
 `
 
 export const ImageClass = style({
@@ -50,21 +57,20 @@ export const InfoWrapper = styled.div`
 export const AnchorsWrapper = styled.div`
     display: flex;
     align-items: flex-end;
-    gap: 16px;
-    margin-top: 24px;
+    gap: 22px;
+    margin-top: 32px;
 `
 
 export const Anchor = styled.a`
     overflow: hidden;
-    height: 80px;
+    height: 86px;
     cursor: pointer;
     outline: none;
-    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.23);
 
-    filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.23));
+    filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.2));
 
     &:last-of-type {
-        height: 60px;
+        height: 66px;
     }
 `
 

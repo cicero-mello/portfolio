@@ -42,4 +42,5 @@ export * from "./rocket"
 export * from "./suitcase"
 export * from "./vitals"
 
+export * from "./triangle-big"
 export * from "./triangle"
