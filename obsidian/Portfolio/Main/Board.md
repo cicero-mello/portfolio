@@ -6,12 +6,12 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] [[Criar Contact Section Desktop]] @{2025-06-25}
 - [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 
 
 ## Fazendo
 
+- [ ] [[Criar Contact Section Desktop]] @{2025-06-25}
 
 
 ## Feito
