@@ -9,11 +9,12 @@ export const Section = styled.section`
     display: flex;
     flex-direction: column;
     position: fixed;
+    width: 100vw;
 
     bottom: 0;
     left: 0;
 
-    outline: 30px solid ${Colors.Lavender};
+    outline: 1.875rem solid ${Colors.Lavender}; // 30px
 
     background-color: ${Colors.Onyx};
 
@@ -23,42 +24,73 @@ export const Section = styled.section`
     &.visible {
         transform: rotate(0) translate(0, 0);
     }
+
+    @media screen and (max-width: 73.125rem){ // 1170px
+        justify-content: space-evenly;
+    }
 `
 
 export const ContactWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    gap: 66px;
-    margin-bottom: 40px;
-
+    margin-bottom: 2.5rem;  // 40px
+    gap: 4.125rem;          // 66px
     width: 70vw;
     align-self: center;
     margin-left: 25vw;
     margin-right: 5vw;
-    z-index: 10;
+    z-index: 1;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 73.125rem){   // 1170px
+        padding: 1.5rem;                        // 24px
+        width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
+
+        flex: unset;
+        height: fit-content;
+    }
+
+    @media screen and (max-width: 55rem){   // 880px
+        gap: 3.375rem;                      // 54px
+        transform: scale(0.8);
+    }
+
+    @media screen and (max-width: 41.25rem){ // 660px
+        transform: scale(0.7);
+    }
 `
 
 export const ContactClass = style({
-    width: "276px"
+    width: "17.25rem"   // 276px
 })
 
 export const ContactContent = styled.div`
+    gap: 6.25rem; // 100px
+
     display: flex;
     width: fit-content;
-    gap: 100px;
+
+    @media screen and (max-width: 55rem){   // 880px
+        gap: 3.125rem;                      // 50px
+    }
 `
 
 export const MeImageWrapper = styled.div`
-    width: 180px;
-    height: 180px;
+    width: 11.25rem;        // 180px
+    height: 11.25rem;       // 180px
+    margin-top: -2.25rem;   // -36px
+
+    // -2px 2px 3px
+    box-shadow: -0.125rem 0.125rem 0.1875rem rgba(0, 0, 0, 0.2);
+
+    z-index: 1;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
-    margin-top: -36px;
-    z-index: 10;
 `
 
 export const ImageClass = style({
@@ -73,22 +105,25 @@ export const InfoWrapper = styled.div`
 `
 
 export const AnchorsWrapper = styled.div`
+    margin-top: 2rem;   // 32px
+    gap: 1.375rem;      // 22px
+
     display: flex;
     align-items: flex-end;
-    gap: 22px;
-    margin-top: 32px;
 `
 
 export const Anchor = styled.a`
-    overflow: hidden;
-    height: 86px;
+    height: 5.375rem; // 86px
+
+    // -2px 2px 3px
+    filter: drop-shadow(-0.125rem 0.125rem 0.1875rem rgba(0, 0, 0, 0.2));
+
     cursor: pointer;
+    overflow: hidden;
     outline: none;
 
-    filter: drop-shadow(-2px 2px 3px rgba(0, 0, 0, 0.2));
-
     &:last-of-type {
-        height: 66px;
+        height: 4.125rem; // 66px
     }
 
     transition: 110ms ease-in-out;

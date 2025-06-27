@@ -2,8 +2,9 @@ import { styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const Wrapper = styled.div`
+    gap: 2rem; // 32px
+
     display: flex;
-    gap: 32px;
     align-items: center;
 `
 
@@ -12,40 +13,45 @@ export const CopyButtonWrapper = styled.div`
 `
 
 export const CopyTextTip = styled.p`
-    position: absolute;
-    top: -30px;
-    left: -60px;
-    font-family: "Cascadia Code";
+    font-size: 1.2rem;  // 19.2px
+    top: -1.875rem;     // -30px
+    left: -3.75rem;     // 60px
+    width: 6.25rem;     // 100px
     transform: rotate(-25deg);
-    width: 100px;
+
+    font-family: "Cascadia Code";
+    position: absolute;
     text-align: center;
     visibility: hidden;
-    font-size: 1.2rem;
     pointer-events: none;
     user-select: none;
 `
 
 export const CopyButton = styled.button`
+    border: 0.25rem solid ${Colors.Cloud};  // 4px
+    height: 1.875rem;                       // 30px
+    aspect-ratio: 25/27;
+
+    // 5px -3px 8px
+    filter: drop-shadow(0.3125rem -0.1875rem 0.5rem rgba(0, 0, 0, 0.2));
+
     position: relative;
     outline: none;
-    aspect-ratio: 25/27;
-    height: 30px;
     width: auto;
-    border: 4px solid ${Colors.Cloud};
-    filter: drop-shadow(5px -3px 8px rgba(0, 0, 0, 0.2));
-
     transition: 160ms ease-in-out;
 
     &::after {
         content: "";
+        transition: 160ms ease-in-out;
         position: absolute;
         width: 100%;
         height: 100%;
-        border: 4px solid ${Colors.Cloud};
-        filter: drop-shadow(5px -3px 8px rgba(0, 0, 0, 0.2));
         top: 20%;
         left: 30%;
-        transition: 160ms ease-in-out;
+        border: 0.25rem solid ${Colors.Cloud}; // 4px
+
+        // 5px -3px 8px
+        filter: drop-shadow(0.3125rem -0.1875rem 0.5rem rgba(0, 0, 0, 0.2));
     }
 
     &:hover::after, &:focus::after {
@@ -59,6 +65,8 @@ export const CopyButton = styled.button`
 
 export const Text = styled.p`
     font-family: "Grechen Fuemen";
-    font-size: 2.5rem;
-    filter: drop-shadow(5px -3px 8px rgba(0, 0, 0, 0.2));
+    font-size: 2.5rem; // 40px
+
+    // 5px -3px 8px
+    filter: drop-shadow(0.3125rem -0.1875rem 0.5rem rgba(0, 0, 0, 0.2));
 `

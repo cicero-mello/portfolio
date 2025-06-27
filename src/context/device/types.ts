@@ -9,4 +9,5 @@ export interface Device {
     isGSAPSectionMinWidth: boolean
     isReposSectionMinWidth: boolean
     isReposSectionMobileMinWidth: boolean
+    isContactSectionMinWidth: boolean
 }
