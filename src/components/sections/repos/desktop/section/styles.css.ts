@@ -78,6 +78,7 @@ export const ImageWrapper = styled.div`
     user-select: none;
     cursor: pointer;
     border: 0px solid ${Colors.Toast};
+    background-color: ${Colors.Fawn};
     transition:
         border 100ms ease-in-out,
         transform 100ms linear

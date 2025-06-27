@@ -4,6 +4,7 @@ import { useDevice } from "~/context/device"
 import * as S from "./styles.css"
 import {
     CodePenGitHubSection,
+    ContactSection,
     GSAPSection,
     HelloSection,
     HistorySection,
@@ -28,6 +29,7 @@ export default component$(() => {
             <GSAPSection />
             <CodePenGitHubSection />
             <ReposSection />
+            <ContactSection />
         </S.Main>
     )
 })

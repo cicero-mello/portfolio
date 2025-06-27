@@ -6,16 +6,16 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 
 
 ## Fazendo
 
-- [ ] [[Criar Contact Section Desktop]] @{2025-06-25}
+- [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 
 
 ## Feito
 
+- [ ] [[Criar Contact Section Desktop]] @{2025-06-25}
 - [ ] [[Criar GitHubSection Mobile]] @{2025-06-24}
 - [ ] Adicionar Efeito 3D nos cards de Repo na Repo Section @{2025-06-24}
 - [ ] [[Criar GitHubSection Desktop]] @{2025-06-24}

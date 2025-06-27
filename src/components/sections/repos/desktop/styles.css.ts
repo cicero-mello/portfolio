@@ -3,7 +3,7 @@ import { styled } from "styled-vanilla-extract/qwik"
 export const Section = styled.section`
     gap: 12.5rem;   // 200px
     width: 100%;
-    margin-bottom: 400vh;
+    margin-bottom: 100vh;
 
     display: flex;
     justify-content: center;

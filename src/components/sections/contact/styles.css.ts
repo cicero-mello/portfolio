@@ -1,9 +1,28 @@
 import { style, styled } from "styled-vanilla-extract/qwik"
+import { Colors } from "~/styles"
+
+export const SectionWrapper = styled.div`
+    height: 1px;
+`
 
 export const Section = styled.section`
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    outline: 30px solid ${Colors.Lavender};
+
+    background-color: ${Colors.Onyx};
+
+    transition: transform 1000ms ease;
+    transform: rotate(25deg) translate(140vw, 120vh);
+
+    &.visible {
+        transform: rotate(0) translate(0, 0);
+    }
 `
 
 export const ContactWrapper = styled.div`
@@ -39,7 +58,6 @@ export const MeImageWrapper = styled.div`
     overflow: hidden;
     box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
     margin-top: -36px;
-
     z-index: 10;
 `
 
@@ -71,6 +89,15 @@ export const Anchor = styled.a`
 
     &:last-of-type {
         height: 66px;
+    }
+
+    transition: 110ms ease-in-out;
+    &:hover, &:focus {
+        transform: rotate(-6deg);
+    }
+
+    &:hover:last-of-type, &:focus:last-of-type {
+        transform: rotate(6deg);
     }
 `
 
