@@ -19,7 +19,7 @@ export const ContactSection = component$(() => {
     const applyTransitionInPaths = $((fatherElement: HTMLElement) => {
         const paths = fatherElement.querySelectorAll("path")
         paths.forEach((path) => {
-            path.style.transition = "160ms ease-in-out"
+            path.style.transition = "120ms ease-in-out"
         })
     })
 
