@@ -1,4 +1,4 @@
-import { component$, type HTMLAttributes, useSignal } from "@builder.io/qwik"
+import { component$, type HTMLAttributes, isServer, useSignal, useTask$ } from "@builder.io/qwik"
 import { CodePenSVG } from "~/components/svg"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
@@ -9,6 +9,19 @@ export const CodePenSection = component$((
 ) => {
     const anchorRef = useSignal<HTMLElement>()
     const anchorEmphasis = useEmphasis(anchorRef)
+
+    const svgAnchorRef = useSignal<HTMLElement>()
+    const svgAnchorEmphasis = useEmphasis(svgAnchorRef)
+
+    useTask$(({ track }) => {
+        track(svgAnchorEmphasis)
+        if (isServer) return
+        if (svgAnchorEmphasis.value) {
+            anchorRef.value?.classList.add("emphasis")
+            return
+        }
+        anchorRef.value?.classList.remove("emphasis")
+    })
 
     return (
         <S.Section {...props}>
@@ -22,11 +35,22 @@ export const CodePenSection = component$((
                         ref={anchorRef}
                     />
                 </S.Text>
-                <CodePenSVG
-                    class={S.IconClass}
-                    style={{ opacity: anchorEmphasis.value ? 1 : 0.3 }}
-                    pathColor={Colors.Toast}
-                />
+                <a
+                    aria-disabled="true"
+                    tabIndex={-1}
+                    href="https://codepen.io/cicero-mello"
+                    target="_blank"
+                    ref={svgAnchorRef}
+                >
+                    <CodePenSVG
+                        class={S.IconClass}
+                        style={{
+                            opacity:
+                                (anchorEmphasis.value || svgAnchorEmphasis.value) ? 1 : 0.3
+                        }}
+                        pathColor={Colors.Toast}
+                    />
+                </a>
             </S.TextWrapper>
             <S.IframeWrapper>
                 <iframe

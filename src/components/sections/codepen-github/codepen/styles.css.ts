@@ -67,11 +67,11 @@ export const Anchor = styled.a`
         transition: background-color 160ms ease-in-out;
     }
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.emphasis {
         color: ${Colors.Cloud};
     }
 
-    &:hover::after, &:focus::after {
+    &:hover::after, &:focus::after, &.emphasis::after {
         background-color: ${Colors.Fawn};
     }
 `

@@ -1,4 +1,4 @@
-import { component$, type HTMLAttributes, useSignal } from "@builder.io/qwik"
+import { component$, type HTMLAttributes, isServer, useSignal, useTask$ } from "@builder.io/qwik"
 import { GitHubSVG } from "~/components/svg"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
@@ -9,6 +9,20 @@ export const GitHubSection = component$((
 ) => {
     const anchorRef = useSignal<HTMLElement>()
     const anchorEmphasis = useEmphasis(anchorRef)
+
+    const svgAnchorRef = useSignal<HTMLElement>()
+    const svgAnchorEmphasis = useEmphasis(svgAnchorRef)
+
+    useTask$(({ track }) => {
+        track(svgAnchorEmphasis)
+        if (isServer) return
+
+        if (svgAnchorEmphasis.value) {
+            anchorRef.value?.classList.add("emphasis")
+            return
+        }
+        anchorRef.value?.classList.remove("emphasis")
+    })
 
     return (
         <S.Section {...props}>
@@ -23,11 +37,23 @@ export const GitHubSection = component$((
                     />
                 </span>
             </S.Text>
-            <GitHubSVG
-                class={S.IconClass}
-                pathColor={Colors.Toast}
-                style={{ opacity: anchorEmphasis.value ? 1 : 0.3 }}
-            />
+            <a
+                ref={svgAnchorRef}
+                tabIndex={-1}
+                aria-disabled="true"
+                target="_blank"
+                href="https://github.com/cicero-mello"
+            >
+                <GitHubSVG
+                    class={S.IconClass}
+                    pathColor={Colors.Toast}
+                    style={{
+                        opacity:
+                            (anchorEmphasis.value || svgAnchorEmphasis.value) ?
+                                1 : 0.3
+                    }}
+                />
+            </a>
         </S.Section>
     )
 })

@@ -6,15 +6,27 @@ kanban-plugin: board
 
 ## A Fazer
 
+- [ ] Permitir navegação tab somente nos itens visiveis
+- [ ] Resolver Problema Codepen iframe no firefox
+- [ ] Trocar "trick" para useVisibleTask
+- [ ] Ajustar os tempos das animações
+- [ ] Corrigir altura das sections
+- [ ] Revisão ortográfica
+- [ ] Adicionar suporte a linguagem ptBR
+- [ ] Caça a bugs / Revisão / Otimização
+- [ ] Configurações de SEO
+- [ ] Conversão para SSG
+- [ ] Usar domínio
 
 
 ## Fazendo
 
-- [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 
 
 ## Feito
 
+- [ ] [[Melhorar Anchor GitHub CodePen Section]]
+- [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 - [ ] [[Criar Contact Section Desktop]] @{2025-06-25}
 - [ ] [[Criar GitHubSection Mobile]] @{2025-06-24}
 - [ ] Adicionar Efeito 3D nos cards de Repo na Repo Section @{2025-06-24}
