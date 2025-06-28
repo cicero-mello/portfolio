@@ -2,8 +2,7 @@ import { style, styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const SectionWrapper = styled.div`
-    /* height: 1px; */
-    height: 100vh;
+    height: 1px;
 `
 
 export const Section = styled.section`
@@ -20,7 +19,7 @@ export const Section = styled.section`
     background-color: ${Colors.Onyx};
 
     transition: transform 1000ms ease;
-    /* transform: rotate(25deg) translate(140vw, 120vh); */
+    transform: rotate(25deg) translate(140vw, 120vh);
 
     &.visible {
         transform: rotate(0) translate(0, 0);

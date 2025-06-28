@@ -14,7 +14,9 @@ export enum Colors {
     Cloud2 = "#F6F6F605",
 
     Toast22 = "#AD968638",
-    Toast9 = "#AD968617"
+    Toast9 = "#AD968617",
+
+    Lavender13 = "#8B6D9C21"
 }
 
 export enum Breakpoints {

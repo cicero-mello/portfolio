@@ -1,4 +1,4 @@
-import { QRL } from "@builder.io/qwik"
+import { type QRL } from "@builder.io/qwik"
 import { gsap as GSAP } from "gsap"
 
 const triggerInContactSection = (
