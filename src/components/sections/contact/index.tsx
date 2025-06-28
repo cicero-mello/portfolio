@@ -1,17 +1,21 @@
 import MyselfImage from "../../../../assets/images/me-purple.webp?w=1080&h=1080&jsx"
-import { $, component$, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, QRL, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { InstagramSVG, LinkedInSVG } from "~/components/svg"
 import { TrianglesLayer } from "./triangles-layer"
 import { gsap } from "~/gsap/contact-section"
 import { DynamicText } from "./dynamic-text"
 import { ContactText } from "./contact-text"
+import { disableTabOutside } from "~/utils"
 import { startGlitch } from "cm-glitch"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
-import * as S from "./styles.css"
 import { Email } from "./email"
+import * as S from "./styles.css"
 
 export const ContactSection = component$(() => {
+    const sectionRef = useSignal<HTMLElement>()
+    const enableTabOutside = useSignal<QRL>()
+
     const imageWrapperId = useId()
     const linkedInAnchorRef = useSignal<HTMLElement>()
     const instagramAnchorRef = useSignal<HTMLElement>()
@@ -26,11 +30,23 @@ export const ContactSection = component$(() => {
         })
     })
 
+    const onShow = $(async () => {
+        enableTabOutside.value = await disableTabOutside(sectionRef.value!)
+    })
+
+    const onHide = $(() => {
+        if (!enableTabOutside.value) return
+        enableTabOutside.value()
+    })
+
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
         applyTransitionInPaths(linkedInAnchorRef.value!)
         applyTransitionInPaths(instagramAnchorRef.value!)
-        gsap.triggerInContactSection()
+        gsap.triggerInContactSection(
+            onShow,
+            onHide
+        )
     })
 
     const handleClickImageWrapper = $(() => {
@@ -41,7 +57,7 @@ export const ContactSection = component$(() => {
 
     return (
         <S.SectionWrapper class="contact-section-wrapper">
-            <S.Section class="contact-section">
+            <S.Section class="contact-section" ref={sectionRef}>
                 <TrianglesLayer />
                 <DynamicText />
                 <S.ContactWrapper>
