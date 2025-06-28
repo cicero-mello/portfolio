@@ -36,7 +36,7 @@ const floating = keyframes({
 
 export const ChangeableText = styled.span`
     -webkit-text-stroke: 0.0625rem; // 1px
-    min-width: 28.125rem;           // 450px
+    min-width: 27rem;               // 423px
     font-size: 3.5rem;              // 56px
     padding-bottom: 1.25rem;        // 20px
     margin-left: 0.5ch;
