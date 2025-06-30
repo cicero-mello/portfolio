@@ -3,6 +3,7 @@ import { applyScrollSmoother, registerGSAPPlugins } from "~/gsap"
 import type { RequestHandler } from "@builder.io/qwik-city"
 import { alwaysTrapTabToViewport } from "~/utils"
 import { useDevice } from "~/context/device"
+import styles from "./styles.module.css"
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -15,7 +16,22 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     })
 }
 
+const PageLoader = component$(({
+    visible
+}: { visible: boolean }) => {
+    return (
+        <div
+            class={styles.wrapper}
+            style={{ opacity: visible ? "1" : "0" }}
+        >
+            <div class={styles.square} />
+            <div class={styles.square} />
+        </div>
+    )
+})
+
 export default component$(() => {
+    const showContent = useSignal(false)
     const device = useDevice()
 
     const isDesktopGSAPSetupDone = useSignal(false)
@@ -35,7 +51,19 @@ export default component$(() => {
         isDesktopGSAPSetupDone.value = true
     })
 
+    useTask$(({ track }) => {
+        track(device)
+        if (isServer || showContent.value === true) return
+        if (!device.isLoadingData) {
+            setTimeout(() => {
+                showContent.value = true
+            }, 300)
+        }
+    })
+
     return (
-        device.isLoadingData ? <p>loading</p> : <Slot />
+        !showContent.value ?
+            <PageLoader visible={device.isLoadingData} />
+            : <Slot />
     )
 })
