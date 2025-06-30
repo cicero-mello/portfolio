@@ -9,7 +9,7 @@ export const Header = component$(() => {
             <S.Logo>
                 <S.Name>Cícero Mello</S.Name>
                 <S.Description>
-                    Frontend Developer
+                    Front-End Developer
                 </S.Description>
             </S.Logo>
             <ToggleLanguageButton />

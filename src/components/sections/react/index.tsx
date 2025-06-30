@@ -80,7 +80,7 @@ export const ReactSection = component$(() => {
                     ref={descriptionRef}
                     style={{ visibility: device.type === "mobile" ? "unset" : "hidden" }}
                 >
-                    <span>But, in my scope I have </span>
+                    <span>However, in my scope I have </span>
                     <span>HTML, CSS, JS, TS, Styled-Components, Tailwind, </span>
                     <span>Next.js, Qwik, Preact, Git, Vite, NodeJS, Fastify, Figma...</span>
                 </S.DescriptionText>

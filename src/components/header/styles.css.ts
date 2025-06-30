@@ -65,14 +65,14 @@ export const Name = styled.span`
 `
 
 export const Description = styled.span`
-    font-size: 1.25rem; // 20px
+    font-size: 1.2rem;      // 19.2px
     line-height: 100%;
     color: ${Colors.Stone};
 
     @media screen and (${Breakpoints.Mobile}) {
-        font-size: 1rem; // 16px
+        font-size: 0.95rem; // 15.2px
     }
     @media screen and (${Breakpoints.SmallHeight}) {
-        font-size: 1rem; // 16px
+        font-size: 0.95rem; // 15.2px
     }
 `

@@ -6,8 +6,8 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Revisão ortográfica
 - [ ] Adicionar suporte a linguagem ptBR
+- [ ] Fazer Tela de Loading Inicial
 - [ ] Caça a bugs / Revisão / Otimização
 - [ ] Configurações de SEO
 - [ ] Conversão para SSG
@@ -20,6 +20,7 @@ kanban-plugin: board
 
 ## Feito
 
+- [ ] [[Revisão ortográfica]]
 - [ ] [[Ajustar os tempos das animações]]
 - [ ] [[Corrigir altura das sections]]
 - [ ] [[Resolver Problema Codepen iframe no firefox]]

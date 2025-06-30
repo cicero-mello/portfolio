@@ -11,8 +11,8 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2017"
-                description1="First contact with Programming (with electronics) in High School"
-                description2="Most of the time was focused on Microcontrollers"
+                description1="First contact with programming (with electronics) in High School"
+                description2="Most of the time was focused on microcontrollers"
                 descriptionIcon={Icon.BagSVG}
                 anchorIcons={[
                     {
@@ -25,8 +25,8 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2020"
-                description1="Knowledge Expansion to Web Development in Internship/Job"
-                description2="Initially FullStack, after, focus on Frontend"
+                description1="Knowledge expansion to web development in internship/job"
+                description2="Initially full-stack; later, focused on front-end"
                 descriptionIcon={Icon.SuitCaseSVG}
                 anchorIcons={[
                     {

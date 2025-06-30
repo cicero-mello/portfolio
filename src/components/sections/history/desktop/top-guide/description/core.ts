@@ -16,22 +16,22 @@ export const textByDescriptionType = (
     new Map<DescriptionType, DescriptionTexts>([
         ["school", {
             top: (
-                "First contact with Programming " +
+                "First contact with programming " +
                 "(with electronics) in High School"
             ),
             bottom: (
                 "Most of the time was focused on " +
-                "Microcontrollers"
+                "microcontrollers"
             )
         }],
         ["work", {
             top: (
-                "Knowledge Expansion to Web  " +
-                "Development in Internship/Job"
+                "Knowledge expansion to web  " +
+                "development in internship/job"
             ),
             bottom: (
-                "Initially FullStack, after, focus on " +
-                "Frontend"
+                "Initially full-stack; later, focused on " +
+                "front-end"
             )
         }],
         ["health", {
