@@ -35,7 +35,7 @@ export const GSAPIcon = component$(() => {
                 noObservers: true
             })
             removeGlitch(GSAPSVGId)
-        }, 3300)
+        }, 3000)
     })
 
     const setupAnimations = $(() => {

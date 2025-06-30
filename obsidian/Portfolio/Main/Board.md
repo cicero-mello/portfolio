@@ -16,11 +16,11 @@ kanban-plugin: board
 
 ## Fazendo
 
-- [ ] Ajustar os tempos das animações
 
 
 ## Feito
 
+- [ ] [[Ajustar os tempos das animações]]
 - [ ] [[Corrigir altura das sections]]
 - [ ] [[Resolver Problema Codepen iframe no firefox]]
 - [ ] [[Permitir navegação tab somente nos itens visiveis]]

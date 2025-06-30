@@ -16,10 +16,10 @@ export const Hero = component$(() => {
     useVisibleTask$(async () => {
         if (device.type === "mobile") return
         await startTyping(idText1, {
-            startDelay: 2500,
+            startDelay: 1200,
             animationTime: 300,
             realisticTyping: true,
-            endDelay: 2000
+            endDelay: 1500
         })
         await startTyping(idText2, {
             realisticTyping: true,

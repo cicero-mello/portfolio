@@ -1,5 +1,5 @@
-import type { DocumentHead } from "@builder.io/qwik-city"
 import { $, component$, useOnWindow } from "@builder.io/qwik"
+import type { DocumentHead } from "@builder.io/qwik-city"
 import { useDevice } from "~/context/device"
 import * as S from "./styles.css"
 import {

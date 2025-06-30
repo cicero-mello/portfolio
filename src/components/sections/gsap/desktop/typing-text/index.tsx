@@ -15,7 +15,7 @@ export const TypingText = component$(() => {
         if (abortTypingAnimations.value) return
         await startTyping(idText1, {
             realisticTyping: true,
-            startDelay: 1200,
+            startDelay: 500,
             animationTime: 1600
         })
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

@@ -21,7 +21,7 @@ export const ReactSection = component$(() => {
         if (device.type === "mobile") return
 
         await startTyping(textId1, {
-            startDelay: 800,
+            startDelay: 500,
             animationTime: 1400,
             realisticTyping: true
         })
@@ -36,7 +36,7 @@ export const ReactSection = component$(() => {
                 distortionIntensity: 100,
                 noObservers: true
             })
-        }, 1000)
+        }, 300)
     })
 
     const setupAnimations = $(() => {

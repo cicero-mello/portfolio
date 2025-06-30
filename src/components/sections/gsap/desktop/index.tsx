@@ -28,7 +28,7 @@ export const Desktop = component$(() => {
                 noObservers: true
             })
             removeGlitch(cardId)
-        }, 2000)
+        }, 1500)
 
         timeoutId2.value = setTimeout(async () => {
             gsapTextRef.value!.style.visibility = "unset"
@@ -42,7 +42,7 @@ export const Desktop = component$(() => {
 
             removeGlitch(gsapTextId)
             removeGlitch(gsapAnchorId)
-        }, 5300)
+        }, 4500)
     })
 
     const setupAnimations = $(() => {
