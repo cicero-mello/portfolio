@@ -1,7 +1,8 @@
 import { component$, isServer, Slot, useSignal, useTask$ } from "@builder.io/qwik"
-import { useDevice } from "~/context/device"
-import type { RequestHandler } from "@builder.io/qwik-city"
 import { applyScrollSmoother, registerGSAPPlugins } from "~/gsap"
+import type { RequestHandler } from "@builder.io/qwik-city"
+import { alwaysTrapTabToViewport } from "~/utils"
+import { useDevice } from "~/context/device"
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -16,6 +17,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 export default component$(() => {
     const device = useDevice()
+
     const isDesktopGSAPSetupDone = useSignal(false)
 
     useTask$(({ track }) => {
@@ -29,6 +31,7 @@ export default component$(() => {
 
         registerGSAPPlugins()
         applyScrollSmoother()
+        alwaysTrapTabToViewport()
         isDesktopGSAPSetupDone.value = true
     })
 

@@ -5,6 +5,7 @@ import { Desktop } from "./desktop"
 
 export const ContactSection = component$(() => {
     const device = useDevice()
+
     const showMobile = (
         device.type === "mobile"
         || device.isSmallHeight

@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Permitir navegação tab somente nos itens visiveis
 - [ ] Resolver Problema Codepen iframe no firefox
 - [ ] Trocar "trick" para useVisibleTask
 - [ ] Ajustar os tempos das animações
@@ -25,6 +24,7 @@ kanban-plugin: board
 
 ## Feito
 
+- [ ] [[Permitir navegação tab somente nos itens visiveis]]
 - [ ] [[Melhorar Anchor GitHub CodePen Section]]
 - [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}
 - [ ] [[Criar Contact Section Desktop]] @{2025-06-25}

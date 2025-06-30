@@ -1,10 +1,12 @@
 import { $, component$, isServer, useId, useSignal, useTask$ } from "@builder.io/qwik"
 import { startGlitch } from "cm-glitch"
 import { useEmphasis } from "~/hooks"
+import type { EmailProps } from "./types"
 import * as S from "./styles.css"
 
-export const Email = component$(() => {
-    const buttonRef = useSignal<HTMLElement>()
+export const Email = component$((props: EmailProps) => {
+    // eslint-disable-next-line qwik/use-method-usage
+    const buttonRef = props.buttonRef ?? useSignal<HTMLElement>()
     const showTip = useEmphasis(buttonRef)
     const tipId = useId()
     const tipTextRef = useSignal<HTMLElement>()

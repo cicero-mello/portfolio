@@ -3,14 +3,14 @@ import { gsap as GSAP } from "gsap"
 
 const triggerInContactSection = (
     onEnter: QRL<() => void | Promise<void>>,
-    onLeave: QRL<() => void | Promise<void>>
+    onToggle: QRL<() => void | Promise<void>>
 ) => {
     GSAP.to(".contact-section-wrapper", {
         scrollTrigger: {
             trigger: ".contact-section-wrapper",
             start: "top bottom",
             toggleClass: { targets: ".contact-section", className: "visible" },
-            onLeave: onLeave,
+            onToggle: onToggle,
             onEnter: onEnter
         }
     })

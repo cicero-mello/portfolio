@@ -1,11 +1,10 @@
 import MyselfImage from "../../../../../assets/images/me-purple.webp?w=1080&h=1080&jsx"
-import { $, component$, type QRL, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { InstagramSVG, LinkedInSVG } from "~/components/svg"
 import { TrianglesLayer } from "./triangles-layer"
 import { gsap } from "~/gsap/contact-section"
 import { DynamicText } from "./dynamic-text"
 import { ContactText } from "../contact-text"
-import { disableTabOutside } from "~/utils"
 import { startGlitch } from "cm-glitch"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
@@ -13,8 +12,8 @@ import { Email } from "./email"
 import * as S from "./styles.css"
 
 export const Desktop = component$(() => {
+    const emailButtonRef = useSignal<HTMLElement>()
     const sectionRef = useSignal<HTMLElement>()
-    const enableTabOutside = useSignal<QRL>()
 
     const imageWrapperId = useId()
     const linkedInAnchorRef = useSignal<HTMLElement>()
@@ -30,22 +29,49 @@ export const Desktop = component$(() => {
         })
     })
 
-    const onShow = $(async () => {
-        enableTabOutside.value = await disableTabOutside(sectionRef.value!)
+    const redirectFirstFocus = $(() => {
+        document.addEventListener("focusin", () => {
+            if (!emailButtonRef.value) return
+            emailButtonRef.value.focus()
+        }, {
+            capture: true,
+            once: true
+        })
     })
 
-    const onHide = $(() => {
-        if (!enableTabOutside.value) return
-        enableTabOutside.value()
+    const removeFocus = $(async () => {
+        if (document.activeElement) {
+            const elemento = document.activeElement as HTMLElement
+            elemento.blur()
+        }
+    })
+
+    const enableCyclicFocus = $((): void => {
+        if (!emailButtonRef.value || !instagramAnchorRef.value) return
+
+        emailButtonRef.value.addEventListener('keydown', (e: KeyboardEvent) => {
+            if (e.key === 'Tab' && e.shiftKey) {
+                e.preventDefault()
+                instagramAnchorRef.value!.focus()
+            }
+        })
+
+        instagramAnchorRef.value.addEventListener('keydown', (e: KeyboardEvent) => {
+            if (e.key === 'Tab' && !e.shiftKey) {
+                e.preventDefault()
+                emailButtonRef.value!.focus()
+            }
+        })
     })
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
         applyTransitionInPaths(linkedInAnchorRef.value!)
         applyTransitionInPaths(instagramAnchorRef.value!)
+        enableCyclicFocus()
         gsap.triggerInContactSection(
-            onShow,
-            onHide
+            redirectFirstFocus,
+            removeFocus
         )
     })
 
@@ -70,7 +96,7 @@ export const Desktop = component$(() => {
                             <MyselfImage class={S.ImageClass} alt="Cícero Mello" />
                         </S.MeImageWrapper>
                         <S.InfoWrapper>
-                            <Email />
+                            <Email buttonRef={emailButtonRef} />
                             <S.AnchorsWrapper>
                                 <S.Anchor
                                     ref={linkedInAnchorRef}
