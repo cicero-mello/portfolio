@@ -10,6 +10,7 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: unset;
 `
 
 export const TopText = styled.h2`

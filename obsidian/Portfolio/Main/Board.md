@@ -6,8 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Ajustar os tempos das animações
-- [ ] Corrigir altura das sections
 - [ ] Revisão ortográfica
 - [ ] Adicionar suporte a linguagem ptBR
 - [ ] Caça a bugs / Revisão / Otimização
@@ -18,10 +16,12 @@ kanban-plugin: board
 
 ## Fazendo
 
+- [ ] Ajustar os tempos das animações
 
 
 ## Feito
 
+- [ ] [[Corrigir altura das sections]]
 - [ ] [[Resolver Problema Codepen iframe no firefox]]
 - [ ] [[Permitir navegação tab somente nos itens visiveis]]
 - [ ] [[Melhorar Anchor GitHub CodePen Section]]

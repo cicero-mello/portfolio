@@ -16,6 +16,11 @@ export const Section = styled.section`
         padding-left: unset;
         gap: 2.4rem // 38.4px
     }
+
+    &.mobile {
+        min-height: unset;
+        padding: 3rem 0; // 48px48
+    }
 `
 
 export const TextContainer = styled.div`

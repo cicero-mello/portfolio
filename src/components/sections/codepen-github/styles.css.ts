@@ -18,6 +18,10 @@ export const Section = styled.section`
         padding: 3rem 1.5rem;   // 48px 24px
         gap: 1.5rem;            // 24px
     }
+
+    &.mobile {
+        min-height: unset;
+    }
 `
 
 export const Title = styled.h2`

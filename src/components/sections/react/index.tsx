@@ -1,4 +1,4 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { setupScrollTrigger } from "~/gsap/react-section"
 import { useDevice } from "~/context/device"
 import { startTyping } from "cm-typing-effect"
@@ -7,6 +7,8 @@ import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
 
 export const ReactSection = component$(() => {
+    const sectionRef = useSignal<HTMLElement>()
+
     const animationSetupIsDone = useSignal(false)
     const device = useDevice()
 
@@ -50,8 +52,15 @@ export const ReactSection = component$(() => {
     useOnWindow("scroll", setupAnimations)
     useOnWindow("keydown", setupAnimations)
 
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(() => {
+        if (device.type === "mobile") {
+            sectionRef.value?.classList.add("mobile")
+        }
+    })
+
     return (
-        <S.Section class="react-section">
+        <S.Section class="react-section" ref={sectionRef}>
             <SpinnerLogo />
             <S.TextContainer>
                 <S.MainText>

@@ -3,13 +3,15 @@ import { Colors } from "~/styles"
 
 export const Section = styled.section`
     gap: min(3.5rem, 15cqw);    // 56px
-    padding: 1.5rem;            // 24px
+    padding: 5rem 1.5rem;       // 48px 24px
+    margin-top: 3rem;           // 48px
 
     display: flex;
     flex-direction: column;
     background-color: ${Colors.Lavender13};
     align-items: center;
     justify-content: center;
+    min-height: unset;
 `
 
 export const ContactClass = style({

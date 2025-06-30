@@ -2,13 +2,14 @@ import { style, styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
 export const MainSection = styled.section`
-    padding: 8.75rem 1.5rem;    // 140px 24px
+    padding: 3rem 1.5rem;    // 140px 24px
     gap: 2.25rem;               // 36px
     width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: unset;
 `
 
 export const Title = styled.h2`

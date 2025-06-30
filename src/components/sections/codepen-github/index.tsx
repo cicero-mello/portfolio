@@ -1,4 +1,4 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { gsap } from "~/gsap/codepen-github-section"
 import { useDevice } from "~/context/device"
 import { CodePenSection } from "./codepen"
@@ -13,6 +13,7 @@ export const CodePenGitHubSection = component$(() => {
     const codePenSectionId = useId()
     const gitHubSectionId = useId()
 
+    const sectionRef = useSignal<HTMLElement>()
     const titleRef = useSignal<HTMLElement>()
     const codePenSectionRef = useSignal<HTMLElement>()
     const gitHubSectionRef = useSignal<HTMLElement>()
@@ -58,8 +59,15 @@ export const CodePenGitHubSection = component$(() => {
     useOnWindow("scroll", setupAnimations)
     useOnWindow("keydown", setupAnimations)
 
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(() => {
+        if (device.type === "mobile") {
+            sectionRef.value?.classList.add("mobile")
+        }
+    })
+
     return (
-        <S.Section class="codepen-github-section">
+        <S.Section class="codepen-github-section" ref={sectionRef}>
             <S.Title
                 id={titleId}
                 ref={titleRef}
