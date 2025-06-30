@@ -6,8 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Resolver Problema Codepen iframe no firefox
-- [ ] Trocar "trick" para useVisibleTask
 - [ ] Ajustar os tempos das animações
 - [ ] Corrigir altura das sections
 - [ ] Revisão ortográfica
@@ -24,6 +22,7 @@ kanban-plugin: board
 
 ## Feito
 
+- [ ] [[Resolver Problema Codepen iframe no firefox]]
 - [ ] [[Permitir navegação tab somente nos itens visiveis]]
 - [ ] [[Melhorar Anchor GitHub CodePen Section]]
 - [ ] [[Criar ou Adaptar Contact Section Para Mobile]] @{2025-06-26}

@@ -5,7 +5,6 @@ import { CodePenSection } from "./codepen"
 import { GitHubSection } from "./github"
 import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
-import { delay } from "~/utils"
 
 export const CodePenGitHubSection = component$(() => {
     const device = useDevice()
@@ -30,7 +29,6 @@ export const CodePenGitHubSection = component$(() => {
             maxDistortionX: 300
         })
 
-        await delay(800)
         codePenSectionRef.value!.style.visibility = "unset"
         await startGlitch(codePenSectionId, {
             animationTime: 400,
@@ -39,7 +37,6 @@ export const CodePenGitHubSection = component$(() => {
             maxDistortionY: 0
         })
 
-        await delay(800)
         gitHubSectionRef.value!.style.visibility = "unset"
         startGlitch(gitHubSectionId, {
             animationTime: 800

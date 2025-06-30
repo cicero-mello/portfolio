@@ -5,7 +5,7 @@ import { Colors } from "~/styles"
 import * as S from "./styles.css"
 
 export const CodePenSection = component$((
-    props: HTMLAttributes<HTMLElement>
+    textWrapperProps: HTMLAttributes<HTMLElement>
 ) => {
     const anchorRef = useSignal<HTMLElement>()
     const anchorEmphasis = useEmphasis(anchorRef)
@@ -24,8 +24,8 @@ export const CodePenSection = component$((
     })
 
     return (
-        <S.Section {...props}>
-            <S.TextWrapper>
+        <S.Section>
+            <S.TextWrapper {...textWrapperProps}>
                 <S.Text>
                     You can check <br />
                     my <S.Anchor
