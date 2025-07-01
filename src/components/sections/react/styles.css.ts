@@ -44,22 +44,22 @@ export const MainText = styled.p`
     }
 
     @media screen and (${Breakpoints.SmallWidth}) {
-        font-size: 2rem;        // 32px
-        min-width: 25.8rem;     // 413px
+        font-size: 1.8rem;  // 32px
+        min-width: 25.8rem; // 413px
     }
 
-    @media screen and (${Breakpoints.Mobile}) {
-        font-size: 1.5rem;      // 24px
-        min-width: 19.375rem;   // 310px
+    @media screen and (max-width: 33.125rem) {  // 530px
+        font-size: 1.4rem;                      // 24px
+        min-width: 19.375rem;                   // 310px
     }
 
-    @media screen and (max-width: 375px) {
-        font-size: 1.25rem;     // 20px
-        min-width: 16.125rem;   // 258px
+    @media screen and (max-width: 25.625rem) {  // 410px
+        font-size: 1.1rem;                      // 20px
+        min-width: 16.125rem;                   // 258px
     }
 
     @media screen and (${Breakpoints.SmallHeight}) {
-        font-size: 1.5rem;      // 24px
+        font-size: 1.4rem;      // 24px
         min-width: 19.375rem;   // 310px
     }
 `

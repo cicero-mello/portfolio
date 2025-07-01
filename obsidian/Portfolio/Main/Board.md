@@ -6,10 +6,10 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Caça a bugs / Revisão / Otimização
 - [ ] Configurações de SEO
 - [ ] Conversão para SSG
 - [ ] Usar domínio
+- [ ] Caça a bugs / Revisão / Otimização
 
 
 ## Fazendo
