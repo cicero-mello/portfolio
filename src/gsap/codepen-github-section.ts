@@ -7,7 +7,7 @@ const triggerInCodePenGitHubSection = (
     GSAP.to(".codepen-github-section", {
         scrollTrigger: {
             trigger: ".codepen-github-section",
-            start: "top 25%",
+            start: "top 50%",
             once: true,
             onEnter: onTrigger
         }
