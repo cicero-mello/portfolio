@@ -1,4 +1,4 @@
-import Image from "../../../../assets/images/me-brown.webp?w=3017&h=3017&jsx"
+import Image from "../../../../assets/images/me-brown.webp?w=1080&h=1080&jsx"
 import OptimizedImage from "../../../../assets/images/me-brown.webp?jsx"
 import { $, component$, useId } from "@builder.io/qwik"
 import { useDevice } from "~/context/device"
