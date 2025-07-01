@@ -31,7 +31,10 @@ export const Desktop = component$(() => {
 
     const redirectFirstFocus = $(() => {
         document.addEventListener("focusin", () => {
-            if (!emailButtonRef.value) return
+            if (
+                !emailButtonRef.value
+                || !sectionRef.value?.classList.contains("visible")
+            ) return
             emailButtonRef.value.focus()
         }, {
             capture: true,
