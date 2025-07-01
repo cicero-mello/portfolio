@@ -11,12 +11,19 @@ import IceCrud from "../../../../assets/images/ice-crud.webp?w=1920&h=1440&jsx"
 import IceCrudOptimized from "../../../../assets/images/ice-crud.webp?jsx"
 
 import { $ } from "@builder.io/qwik"
+import type { LanguageType } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import type { DeviceType } from "~/context/device/types"
 import * as DesktopStyles from "./desktop/section/styles.css"
 import * as MobileStyles from "./mobile/section/styles.css"
 
-export const getSectionDataBySectionName = (deviceType: DeviceType) => (
-    new Map<SectionName, SectionData>([
+export const getSectionDataBySectionName = (
+    deviceType: DeviceType,
+    language: LanguageType
+) => {
+    const text = getTextsByLanguage(language)
+
+    const sectionDataBySectionName = new Map<SectionName, SectionData>([
         ["c-streaming", {
             name: "C-Streaming",
             image: $(() => (
@@ -26,12 +33,12 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             )),
             site: "https://c-streaming.vercel.app/",
             features: [
-                "Streaming-Style UI",
-                "Hight Accessibility",
-                "Page Transitions",
-                "Responsive Layout",
-                "Web Storage",
-                "Original Design"
+                text.repos.cStreaming.f1,
+                text.repos.cStreaming.f2,
+                text.repos.cStreaming.f3,
+                text.repos.cStreaming.f4,
+                text.repos.cStreaming.f5,
+                text.repos.cStreaming.f6,
             ],
             anchorIcons: [
                 {
@@ -70,15 +77,15 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             )),
             site: "https://poke-info.vercel.app/",
             features: [
-                "Creative UI",
-                "Responsive Layout",
-                "Page Transitions",
-                "Web Storage",
-                "External API Use",
-                "Cache Management",
-                "Infinite Scroll",
-                "Virtualization",
-                "Original Design"
+                text.repos.pokeInfo.f1,
+                text.repos.pokeInfo.f2,
+                text.repos.pokeInfo.f3,
+                text.repos.pokeInfo.f4,
+                text.repos.pokeInfo.f5,
+                text.repos.pokeInfo.f6,
+                text.repos.pokeInfo.f7,
+                text.repos.pokeInfo.f8,
+                text.repos.pokeInfo.f9
             ],
             anchorIcons: [
                 {
@@ -127,13 +134,12 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             )),
             site: "https://github.com/cicero-mello/ice-crud-frontend",
             features: [
-                "Full Stack App",
-                "CRUD",
-                "Auth Management",
-                "Unit Tests",
-                "Documented Api",
-                "Data Validation",
-                "Original Design"
+                text.repos.iceCrud.f1,
+                text.repos.iceCrud.f2,
+                text.repos.iceCrud.f3,
+                text.repos.iceCrud.f4,
+                text.repos.iceCrud.f5,
+                text.repos.iceCrud.f6
             ],
             anchorIcons: [
                 {
@@ -204,4 +210,6 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             ]
         }]
     ])
-)
+
+    return sectionDataBySectionName
+}

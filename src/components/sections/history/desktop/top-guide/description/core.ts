@@ -2,6 +2,8 @@ import { BagSVG, RocketSVG, SuitCaseSVG, VitalsSVG } from "~/components/svg"
 import type { DescriptionTexts, DescriptionType } from "./types"
 import type { SVGComponentProps } from "~/components/svg/types"
 import type { Component } from "@builder.io/qwik"
+import type { LanguageType } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 
 export const svgComponentByDescriptionType = (
     new Map<DescriptionType, Component<SVGComponentProps>>([
@@ -12,47 +14,30 @@ export const svgComponentByDescriptionType = (
     ])
 )
 
-export const textByDescriptionType = (
-    new Map<DescriptionType, DescriptionTexts>([
+export const getTexts = (
+    descriptionType: DescriptionType,
+    language: LanguageType
+) => {
+    const texts = getTextsByLanguage(language)
+
+    const textByDescriptionType = new Map<DescriptionType, DescriptionTexts>([
         ["school", {
-            top: (
-                "First contact with programming " +
-                "(with electronics) in High School"
-            ),
-            bottom: (
-                "Most of the time was focused on " +
-                "microcontrollers"
-            )
+            top: texts.historySection.t1,
+            bottom: texts.historySection.t2
         }],
         ["work", {
-            top: (
-                "Knowledge expansion to web  " +
-                "development in internship/job"
-            ),
-            bottom: (
-                "Initially full-stack; later, focused on " +
-                "front-end"
-            )
+            top: texts.historySection.t3,
+            bottom: texts.historySection.t4
         }],
         ["health", {
-            top: (
-                "Stopping work to focus " +
-                "on health issues"
-            ),
-            bottom: (
-                "Gradually I returned to " +
-                "coding"
-            )
+            top: texts.historySection.t5,
+            bottom: texts.historySection.t6
         }],
         ["ascension", {
-            top: (
-                "Start projects with learning " +
-                "purposes by myself"
-            ),
-            bottom: (
-                "(Even the classics are built with " +
-                "my own ideas)"
-            )
+            top: texts.historySection.t7,
+            bottom: texts.historySection.t8
         }],
     ])
-)
+
+    return textByDescriptionType.get(descriptionType)!
+}

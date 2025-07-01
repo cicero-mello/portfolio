@@ -1,17 +1,22 @@
 import MyselfImage from "../../../../../assets/images/me-purple.webp?w=1080&h=1080&jsx"
 import { $, component$, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 import { InstagramSVG, LinkedInSVG } from "~/components/svg"
+import { useLanguageContext } from "~/context/language"
 import { TrianglesLayer } from "./triangles-layer"
 import { gsap } from "~/gsap/contact-section"
 import { DynamicText } from "./dynamic-text"
 import { ContactText } from "../contact-text"
+export { ContactTextPtBR } from "../contact-text-pt-br"
 import { startGlitch } from "cm-glitch"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
 import { Email } from "./email"
 import * as S from "./styles.css"
+import { ContactTextPtBR } from "../contact-text-pt-br"
 
 export const Desktop = component$(() => {
+    const language = useLanguageContext()
+
     const emailButtonRef = useSignal<HTMLElement>()
     const sectionRef = useSignal<HTMLElement>()
 
@@ -90,7 +95,10 @@ export const Desktop = component$(() => {
                 <TrianglesLayer />
                 <DynamicText />
                 <S.ContactWrapper>
-                    <ContactText class={S.ContactClass} />
+                    {language.value === "en" ?
+                        <ContactText class={S.ContactClass} /> :
+                        <ContactTextPtBR class={S.ContactClass} />
+                    }
                     <S.ContactContent>
                         <S.MeImageWrapper
                             id={imageWrapperId}

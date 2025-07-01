@@ -1,16 +1,21 @@
 import { $, component$, isServer, useSignal, useTask$ } from "@builder.io/qwik"
 import { getSectionDataBySectionName } from "../../core"
+import { useLanguageContext } from "~/context/language"
 import { AnchorIcon } from "~/components/anchor-icon"
 import { useEmphasis, useRotate3D } from "~/hooks"
 import type { SectionProps } from "./types"
 import * as S from "./styles.css"
 
-const sectionDataBySectionName = getSectionDataBySectionName("desktop")
-
 export const Section = component$(({
     sectionNameSignal
 }: SectionProps) => {
-    const data = useSignal(sectionDataBySectionName.get(sectionNameSignal.value)!)
+    const language = useLanguageContext()
+
+    const data = useSignal(getSectionDataBySectionName(
+        "desktop",
+        language.value
+    ).get(sectionNameSignal.value)!)
+
     const Image = data.value.image
 
     const anchorRef = useSignal<HTMLElement>()
@@ -40,7 +45,19 @@ export const Section = component$(({
     useTask$(({ track }) => {
         track(sectionNameSignal)
         if (isServer) return
-        data.value = sectionDataBySectionName.get(sectionNameSignal.value)!
+        data.value = getSectionDataBySectionName(
+            "desktop",
+            language.value
+        ).get(sectionNameSignal.value)!
+    })
+
+    useTask$(({ track }) => {
+        track(language)
+        if (isServer) return
+        data.value = getSectionDataBySectionName(
+            "desktop",
+            language.value
+        ).get(sectionNameSignal.value)!
     })
 
     useRotate3D(imageWrapperRef, {
@@ -75,7 +92,7 @@ export const Section = component$(({
                         />
                     ))}
                 </S.IconsWrapper>
-                <S.TextList>
+                <S.TextList key={language.value + "repos-desktop-text"}>
                     {data.value.features.map((feature, index) => (
                         <S.TextItem
                             key={data.value.name + "repos-sec-ti-key-" + index}

@@ -1,4 +1,6 @@
 import { component$, type HTMLAttributes, isServer, useSignal, useTask$ } from "@builder.io/qwik"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { GitHubSVG } from "~/components/svg"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
@@ -7,6 +9,9 @@ import * as S from "./styles.css"
 export const GitHubSection = component$((
     props: HTMLAttributes<HTMLElement>
 ) => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const anchorRef = useSignal<HTMLElement>()
     const anchorEmphasis = useEmphasis(anchorRef)
 
@@ -27,9 +32,9 @@ export const GitHubSection = component$((
     return (
         <S.Section {...props}>
             <S.Text>
-                <span>Or check my public repos </span>
+                <span>{texts.codePenGitHubSection.t3}</span>
                 <span>
-                    on <S.Anchor
+                    {texts.codePenGitHubSection.t4} <S.Anchor
                         children="GitHub"
                         target="_blank"
                         href="https://github.com/cicero-mello"

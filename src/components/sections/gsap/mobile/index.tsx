@@ -1,21 +1,23 @@
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { component$ } from "@builder.io/qwik"
 import { QwikSVG } from "~/components/svg"
 import { Colors } from "~/styles"
 import * as S from "./styles.css"
 
 export const Mobile = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
 
     return (
-        <S.Section>
+        <S.Section key={language.value + "-gsap-mobile-text"}>
             <S.TopText>
-                I enjoy learning on my own and use AI to
-                explore any tech that interests me
+                {texts.gsapSection.t1} {texts.gsapSection.t2} {texts.gsapSection.t3}
             </S.TopText>
             <S.Card>
                 <S.CardTextWrapper>
                     <p>
-                        For instance, this was my
-                        first time experimenting with
+                        {texts.gsapSection.t4} {texts.gsapSection.t5}
                     </p>
                     <S.Anchor
                         children="Qwik"

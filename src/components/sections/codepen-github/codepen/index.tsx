@@ -3,10 +3,15 @@ import { CodePenSVG } from "~/components/svg"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
 import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 
 export const CodePenSection = component$((
     textWrapperProps: HTMLAttributes<HTMLElement>
 ) => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const anchorRef = useSignal<HTMLElement>()
     const anchorEmphasis = useEmphasis(anchorRef)
 
@@ -27,8 +32,8 @@ export const CodePenSection = component$((
         <S.Section>
             <S.TextWrapper {...textWrapperProps}>
                 <S.Text>
-                    You can check <br />
-                    my <S.Anchor
+                    {texts.codePenGitHubSection.t1} <br />
+                    {texts.codePenGitHubSection.t2} <S.Anchor
                         children="CodePen"
                         target="_blank"
                         href="https://codepen.io/cicero-mello"

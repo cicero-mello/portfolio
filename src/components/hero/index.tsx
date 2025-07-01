@@ -3,9 +3,14 @@ import { useDevice } from "~/context/device"
 import { startTyping } from "cm-typing-effect"
 import { Background } from "./background"
 import { MyPicture } from './my-picture'
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import * as S from "./styles.css"
 
 export const Hero = component$(() => {
+    const language = useLanguageContext()
+    const text = getTextsByLanguage(language.value)
+
     const device = useDevice()
 
     const idText1 = useId()
@@ -13,7 +18,9 @@ export const Hero = component$(() => {
     const idText3 = useId()
 
     // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(async () => {
+    useVisibleTask$(async ({ track }) => {
+        track(language)
+
         if (device.type === "mobile") return
         await startTyping(idText1, {
             startDelay: 1200,
@@ -35,9 +42,9 @@ export const Hero = component$(() => {
         <S.Content>
             <S.Card>
                 <MyPicture />
-                <S.Text>
+                <S.Text key={language.value + "hero"}>
                     <span
-                        children="Hi"
+                        children={text.helloSection.t1}
                         id={idText1}
                         style={{
                             visibility: device.type === "desktop" ?
@@ -45,7 +52,7 @@ export const Hero = component$(() => {
                         }}
                     />
                     <span
-                        children="I'm Cícero"
+                        children={text.helloSection.t2}
                         id={idText2}
                         style={{
                             visibility: device.type === "desktop" ?
@@ -53,7 +60,7 @@ export const Hero = component$(() => {
                         }}
                     />
                     <span
-                        children="and I like to code"
+                        children={text.helloSection.t3}
                         id={idText3}
                         style={{
                             visibility: device.type === "desktop" ?

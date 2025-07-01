@@ -1,9 +1,14 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { startTyping } from "cm-typing-effect"
 import { gsap } from "~/gsap/gsap-section"
 import * as S from "./styles.css"
 
 export const TypingText = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const idText1 = useId()
     const idText2 = useId()
     const idText3 = useId()
@@ -28,7 +33,7 @@ export const TypingText = component$(() => {
         if (abortTypingAnimations.value) return
         await startTyping(idText3, {
             realisticTyping: true,
-            animationTime: 600
+            animationTime: language.value === "en" ? 600 : 1600
         })
     })
 
@@ -52,16 +57,22 @@ export const TypingText = component$(() => {
         }
     })
 
+    useTask$(({ track }) => {
+        track(language)
+        if (isServer) return
+        animationSetupIsDone.value = false
+    })
+
     return (
-        <S.Text>
+        <S.Text key={language.value + "-gsap-desktop-tt"}>
             <span id={idText1} style={{ visibility: "hidden" }}>
-                I enjoy learning on my own and
+                {texts.gsapSection.t1}
             </span>
             <span id={idText2} style={{ visibility: "hidden" }}>
-                use AI to explore any tech that
+                {texts.gsapSection.t2}
             </span>
             <span id={idText3} style={{ visibility: "hidden" }}>
-                interests me
+                {texts.gsapSection.t3}
             </span>
         </S.Text>
     )

@@ -1,11 +1,16 @@
 import { $, component$, isServer, useContext, useOnWindow, useSignal } from "@builder.io/qwik"
 import { BottomIconsContext } from "~/context/history-section/desktop"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { gsap } from "~/gsap/history-section"
 import { onElementHitWindow } from "~/utils"
 import { Description } from "./description"
 import * as S from "./styles.css"
 
 export const TopGuide = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const animationSetupIsDone = useSignal(false)
     const topGuideRef = useSignal<HTMLElement>()
     const finalMessageWrapperRef = useSignal<HTMLElement>()
@@ -207,8 +212,8 @@ export const TopGuide = component$(() => {
                     height: finalMessageHight.value + "px"
                 }}
             >
-                <S.FinalMessage>
-                    ...and the learning continues
+                <S.FinalMessage key={language.value + "history-section-fm"}>
+                    {texts.historySection.end1} {texts.historySection.end2}
                 </S.FinalMessage>
             </S.FinalMessageWrapper>
         </>

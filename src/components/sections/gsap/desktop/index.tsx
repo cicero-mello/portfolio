@@ -1,11 +1,16 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik"
 import { removeGlitch, startGlitch } from "cm-glitch"
 import { gsap } from "~/gsap/gsap-section"
 import { TypingText } from "./typing-text"
 import { GSAPIcon } from "./gsap-icon"
 import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 
 export const Desktop = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const cardId = useId()
     const gsapTextId = useId()
     const gsapAnchorId = useId()
@@ -65,8 +70,14 @@ export const Desktop = component$(() => {
     useOnWindow("scroll", setupAnimations)
     useOnWindow("keydown", setupAnimations)
 
+    useTask$(({ track }) => {
+        track(language)
+        if (isServer) return
+        animationSetupIsDone.value = false
+    })
+
     return (
-        <S.Section class="gsap-section">
+        <S.Section class="gsap-section" key={language.value + "-gsap-desktop"}>
             <S.Wrapper>
                 <TypingText />
                 <S.GSAPCard
@@ -79,8 +90,8 @@ export const Desktop = component$(() => {
                         ref={gsapTextRef}
                         style={{ visibility: "hidden" }}
                     >
-                        For instance, this was my <br />
-                        first time experimenting with
+                        {texts.gsapSection.t4} <br />
+                        {texts.gsapSection.t5}
                     </S.GSAPText>
                     <S.GSAPAnchor
                         children="GSAP"

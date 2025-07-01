@@ -1,5 +1,7 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik"
 import { setupScrollTrigger } from "~/gsap/react-section"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { useDevice } from "~/context/device"
 import { startTyping } from "cm-typing-effect"
 import { SpinnerLogo } from "./spinner-logo"
@@ -7,6 +9,9 @@ import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
 
 export const ReactSection = component$(() => {
+    const language = useLanguageContext()
+    const text = getTextsByLanguage(language.value)
+
     const sectionRef = useSignal<HTMLElement>()
 
     const animationSetupIsDone = useSignal(false)
@@ -59,19 +64,25 @@ export const ReactSection = component$(() => {
         }
     })
 
+    useTask$(({ track }) => {
+        track(language)
+        if (isServer) return
+        animationSetupIsDone.value = false
+    })
+
     return (
         <S.Section class="react-section" ref={sectionRef}>
             <SpinnerLogo />
-            <S.TextContainer>
+            <S.TextContainer key={language.value + "-react-section-text"}>
                 <S.MainText>
                     <span
                         id={textId1}
-                        children="I'm frontend developer"
+                        children={text.reactSection.t1}
                         style={{ visibility: device.type === "mobile" ? "unset" : "hidden" }}
                     />
                     <span
                         id={textId2}
-                        children="focused on REACT"
+                        children={text.reactSection.t2}
                         style={{ visibility: device.type === "mobile" ? "unset" : "hidden" }}
                     />
                 </S.MainText>
@@ -80,9 +91,9 @@ export const ReactSection = component$(() => {
                     ref={descriptionRef}
                     style={{ visibility: device.type === "mobile" ? "unset" : "hidden" }}
                 >
-                    <span>However, in my scope I have </span>
-                    <span>HTML, CSS, JS, TS, Styled-Components, Tailwind, </span>
-                    <span>Next.js, Qwik, Preact, Git, Vite, NodeJS, Fastify, Figma...</span>
+                    <span>{text.reactSection.t3}</span>
+                    <span>{text.reactSection.t4}</span>
+                    <span>{text.reactSection.t5}</span>
                 </S.DescriptionText>
             </S.TextContainer>
         </S.Section>

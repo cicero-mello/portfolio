@@ -1,5 +1,7 @@
-import { $, component$, isServer, useId, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { $, component$, isServer, useId, useOnWindow, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik"
+import { useLanguageContext } from "~/context/language"
 import { gsap } from "~/gsap/codepen-github-section"
+import { getTextsByLanguage } from "~/languages"
 import { useDevice } from "~/context/device"
 import { CodePenSection } from "./codepen"
 import { GitHubSection } from "./github"
@@ -7,6 +9,9 @@ import { startGlitch } from "cm-glitch"
 import * as S from "./styles.css"
 
 export const CodePenGitHubSection = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+
     const device = useDevice()
 
     const titleId = useId()
@@ -66,8 +71,18 @@ export const CodePenGitHubSection = component$(() => {
         }
     })
 
+    useTask$(({ track }) => {
+        track(language)
+        if (isServer) return
+        animationSetupIsDone.value = false
+    })
+
     return (
-        <S.Section class="codepen-github-section" ref={sectionRef}>
+        <S.Section
+            class="codepen-github-section"
+            ref={sectionRef}
+            key={language.value + "-codepen-github-section"}
+        >
             <S.Title
                 id={titleId}
                 ref={titleRef}
@@ -76,7 +91,7 @@ export const CodePenGitHubSection = component$(() => {
                         "unset" : "hidden"
                 }}
             >
-                Want to see my code?
+                {texts.codePenGitHubSection.title}
             </S.Title>
             <CodePenSection
                 id={codePenSectionId}

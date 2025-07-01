@@ -1,14 +1,18 @@
 import { $, component$, useId, useSignal, useVisibleTask$ } from "@builder.io/qwik"
-import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { startGlitch } from "cm-glitch"
-
-const purpleTexts = [
-    "me on your team?",
-    "to talk with me?",
-    "know me better?"
-]
+import * as S from "./styles.css"
 
 export const DynamicText = component$(() => {
+    const language = useLanguageContext()
+    const texts = getTextsByLanguage(language.value)
+    const purpleTexts = [
+        texts.contact.tp1,
+        texts.contact.tp2,
+        texts.contact.tp3
+    ]
+
     const textId = useId()
     const purpleTextIndex = useSignal(0)
 
@@ -34,7 +38,7 @@ export const DynamicText = component$(() => {
 
     return (
         <S.Wrapper>
-            Want <S.ChangeableText id={textId}>
+            {texts.contact.prologue} <S.ChangeableText id={textId}>
                 {purpleTexts[purpleTextIndex.value]}
             </S.ChangeableText>
         </S.Wrapper>

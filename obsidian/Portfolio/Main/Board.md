@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Adicionar suporte a linguagem ptBR
 - [ ] Caça a bugs / Revisão / Otimização
 - [ ] Configurações de SEO
 - [ ] Conversão para SSG
@@ -19,6 +18,7 @@ kanban-plugin: board
 
 ## Feito
 
+- [ ] [[Adicionar suporte a linguagem ptBR]]
 - [ ] [[Fazer Tela de Loading Inicial]]
 - [ ] [[Revisão ortográfica]]
 - [ ] [[Ajustar os tempos das animações]]

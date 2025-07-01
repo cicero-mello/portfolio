@@ -2,17 +2,21 @@ import { HistoryCard } from "~/components/history-card"
 import { component$ } from "@builder.io/qwik"
 import * as Icon from "../../../svg"
 import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 
 export const Mobile = component$(() => {
+    const language = useLanguageContext()
+    const text = getTextsByLanguage(language.value)
 
     return (
-        <S.MainSection>
-            <S.Title>TIMELINE</S.Title>
+        <S.MainSection key={language.value + "history-mobile"}>
+            <S.Title>{text.historySection.title}</S.Title>
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2017"
-                description1="First contact with programming (with electronics) in High School"
-                description2="Most of the time was focused on microcontrollers"
+                description1={text.historySection.t1}
+                description2={text.historySection.t2}
                 descriptionIcon={Icon.BagSVG}
                 anchorIcons={[
                     {
@@ -25,8 +29,8 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2020"
-                description1="Knowledge expansion to web development in internship/job"
-                description2="Initially full-stack; later, focused on front-end"
+                description1={text.historySection.t3}
+                description2={text.historySection.t4}
                 descriptionIcon={Icon.SuitCaseSVG}
                 anchorIcons={[
                     {
@@ -46,12 +50,12 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "Javascript",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+                        href: "https://developer.mozilla.org/docs/Web/JavaScript",
                         icon: Icon.JavaScriptSVG
                     },
                     {
                         ariaLabel: "Axios",
-                        href: "https://axios-http.com/ptbr/docs/intro",
+                        href: "https://axios-http.com/docs/intro",
                         icon: Icon.AxiosSVG
                     },
                     {
@@ -66,7 +70,7 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "HTML",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
+                        href: "https://developer.mozilla.org/docs/Web/HTML",
                         icon: Icon.HTML5SVG
                     },
                     {
@@ -84,8 +88,8 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2022"
-                description1="Stopping work to focus on health issues"
-                description2="Gradually I returned to coding"
+                description1={text.historySection.t5}
+                description2={text.historySection.t6}
                 descriptionIcon={Icon.VitalsSVG}
                 anchorIcons={[
                     {
@@ -95,7 +99,7 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "CSS",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
+                        href: "https://developer.mozilla.org/docs/Web/CSS",
                         icon: Icon.CSS3SVG
                     },
                     {
@@ -105,12 +109,12 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "Javascript",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+                        href: "https://developer.mozilla.org/docs/Web/JavaScript",
                         icon: Icon.JavaScriptSVG
                     },
                     {
                         ariaLabel: "Axios",
-                        href: "https://axios-http.com/ptbr/docs/intro",
+                        href: "https://axios-http.com/docs/intro",
                         icon: Icon.AxiosSVG
                     },
                     {
@@ -143,8 +147,8 @@ export const Mobile = component$(() => {
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <HistoryCard
                 title="2024/2025"
-                description1="Start projects with learning purposes by myself"
-                description2="(Even the classics are built with my own ideas)"
+                description1={text.historySection.t7}
+                description2={text.historySection.t8}
                 descriptionIcon={Icon.RocketSVG}
                 anchorIcons={[
                     {
@@ -154,7 +158,7 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "CSS",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/CSS",
+                        href: "https://developer.mozilla.org/docs/Web/CSS",
                         icon: Icon.CSS3SVG
                     },
                     {
@@ -184,7 +188,7 @@ export const Mobile = component$(() => {
                     },
                     {
                         ariaLabel: "HTML",
-                        href: "https://developer.mozilla.org/pt-BR/docs/Web/HTML",
+                        href: "https://developer.mozilla.org/docs/Web/HTML",
                         icon: Icon.HTML5SVG
                     },
                     {
@@ -291,8 +295,8 @@ export const Mobile = component$(() => {
             />
             <Icon.TriangleSVG class={S.TriangleSVGClass} />
             <S.FinalMessage>
-                ...and the learning<br />
-                continues
+                {text.historySection.end1}<br />
+                {text.historySection.end2}
             </S.FinalMessage>
         </S.MainSection>
     )

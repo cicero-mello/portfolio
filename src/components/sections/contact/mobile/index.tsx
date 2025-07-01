@@ -1,6 +1,8 @@
 import MyselfImage from "../../../../../assets/images/me-purple.webp?quality=100&jsx"
 import { InstagramSVG, LinkedInSVG } from "~/components/svg"
 import { component$, useSignal } from "@builder.io/qwik"
+import { useLanguageContext } from "~/context/language"
+import { ContactTextPtBR } from "../contact-text-pt-br"
 import { ContactText } from "../contact-text"
 import { useEmphasis } from "~/hooks"
 import { Colors } from "~/styles"
@@ -8,6 +10,8 @@ import * as S from "./styles.css"
 import { Email } from "./email"
 
 export const Mobile = component$(() => {
+    const language = useLanguageContext()
+
     const linkedInAnchorRef = useSignal<HTMLElement>()
     const instagramAnchorRef = useSignal<HTMLElement>()
 
@@ -16,7 +20,10 @@ export const Mobile = component$(() => {
 
     return (
         <S.Section>
-            <ContactText class={S.ContactClass} />
+            {language.value === "en" ?
+                <ContactText class={S.ContactClass} /> :
+                <ContactTextPtBR class={S.ContactClass} />
+            }
             <Email />
             <S.BottomWrapper>
                 <MyselfImage class={S.ImageClass} alt="Cícero Mello" />

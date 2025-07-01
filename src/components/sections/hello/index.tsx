@@ -1,10 +1,15 @@
 import { $, component$, useOnWindow, useSignal, useVisibleTask$ } from "@builder.io/qwik"
+import { useLanguageContext } from "~/context/language"
+import { getTextsByLanguage } from "~/languages"
 import { useDevice } from "~/context/device"
 import { Header } from "../../header"
 import { Hero } from "../../hero"
 import * as S from "./styles.css"
 
 export const HelloSection = component$(() => {
+    const language = useLanguageContext()
+    const text = getTextsByLanguage(language.value)
+
     const device = useDevice()
     const showScrollDownTip = useSignal(false)
     const tipTimeout = useSignal<NodeJS.Timeout>()
@@ -39,7 +44,7 @@ export const HelloSection = component$(() => {
             <Hero />
             {device.type === "desktop" && (
                 <S.ScrollDownTip
-                    children="Scroll Down"
+                    children={text.helloSection.tip}
                     class={{ [S.show]: showScrollDownTip.value }}
                 />
             )}
