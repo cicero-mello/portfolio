@@ -19,7 +19,7 @@ export const Mobile = component$(() => {
             <ContactText class={S.ContactClass} />
             <Email />
             <S.BottomWrapper>
-                <MyselfImage class={S.ImageClass} />
+                <MyselfImage class={S.ImageClass} alt="Cícero Mello" />
                 <S.Anchor
                     ref={linkedInAnchorRef}
                     aria-label="LinkedIn"

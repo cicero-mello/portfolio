@@ -21,8 +21,8 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             name: "C-Streaming",
             image: $(() => (
                 deviceType === "desktop" ?
-                    <CStreaming class={DesktopStyles.ImageClass} />
-                    : <CStreamingOptimized class={MobileStyles.ImageClass} />
+                    <CStreaming class={DesktopStyles.ImageClass} alt="C-Streaming" />
+                    : <CStreamingOptimized class={MobileStyles.ImageClass} alt="C-Streaming" />
             )),
             site: "https://c-streaming.vercel.app/",
             features: [
@@ -62,11 +62,11 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             ]
         }],
         ["poke-info", {
-            name: "Poke-Info",
+            name: "PokéInfo",
             image: $(() => (
                 deviceType === "desktop" ?
-                    <PokeInfo class={DesktopStyles.ImageClass} />
-                    : <PokeInfoOptimized class={MobileStyles.ImageClass} />
+                    <PokeInfo class={DesktopStyles.ImageClass} alt="PokéInfo" />
+                    : <PokeInfoOptimized class={MobileStyles.ImageClass} alt="PokéInfo" />
             )),
             site: "https://poke-info.vercel.app/",
             features: [
@@ -122,8 +122,8 @@ export const getSectionDataBySectionName = (deviceType: DeviceType) => (
             name: "Ice-CRUD",
             image: $(() => (
                 deviceType === "desktop" ?
-                    <IceCrud class={DesktopStyles.ImageClass} />
-                    : <IceCrudOptimized class={MobileStyles.ImageClass} />
+                    <IceCrud class={DesktopStyles.ImageClass} alt="Ice-CRUD" />
+                    : <IceCrudOptimized class={MobileStyles.ImageClass} alt="Ice-CRUD" />
             )),
             site: "https://github.com/cicero-mello/ice-crud-frontend",
             features: [
