@@ -1,12 +1,12 @@
-import { $, isServer, type Signal, useOnWindow, useSignal } from "@builder.io/qwik"
+import { $, type QRL, type Signal, useSignal, useVisibleTask$ } from "@builder.io/qwik"
 
 export const useEmphasis = (
     elementRef: Signal<HTMLElement | undefined>
 ): Signal<boolean> => {
-    const isListenersAdded = useSignal(false)
     const needEmphasis = useSignal(false)
     const onHover = useSignal(false)
     const onFocus = useSignal(false)
+    const removeListeners = useSignal<QRL>()
 
     const updateEmphasis = $(() => {
         const shouldHaveEmphasis = onHover.value || onFocus.value
@@ -17,36 +17,45 @@ export const useEmphasis = (
     const addEventListeners = $(() => {
         if (!elementRef.value) return
 
-        elementRef.value.addEventListener("mouseenter", () => {
+        const onMouseEnter = $(() => {
             onHover.value = true
             updateEmphasis()
         })
-        elementRef.value.addEventListener("mouseleave", () => {
+        const onMouseLeave = $(() => {
             onHover.value = false
             updateEmphasis()
         })
-        elementRef.value.addEventListener("focus", () => {
+        const onHandleFocus = $(() => {
             onFocus.value = true
             updateEmphasis()
         })
-        elementRef.value.addEventListener("blur", () => {
+        const onBlur = $(() => {
             onFocus.value = false
             updateEmphasis()
         })
+
+        elementRef.value.addEventListener("mouseenter", onMouseEnter)
+        elementRef.value.addEventListener("mouseleave", onMouseLeave)
+        elementRef.value.addEventListener("focus", onHandleFocus)
+        elementRef.value.addEventListener("blur", onBlur)
+
+        removeListeners.value = $(() => {
+            elementRef.value!.removeEventListener("mouseenter", onMouseEnter)
+            elementRef.value!.removeEventListener("mouseleave", onMouseLeave)
+            elementRef.value!.removeEventListener("focus", onHandleFocus)
+            elementRef.value!.removeEventListener("blur", onBlur)
+        })
     })
 
-    const setup = $(() => {
-        if (
-            isServer
-            || isListenersAdded.value
-            || !elementRef.value
-        ) return
-        isListenersAdded.value = true
+    // eslint-disable-next-line qwik/no-use-visible-task
+    useVisibleTask$(({ cleanup }) => {
         addEventListeners()
+        cleanup(() => {
+            if (removeListeners.value) {
+                removeListeners.value()
+            }
+        })
     })
-
-    useOnWindow("mousemove", setup)
-    useOnWindow("keydown", setup)
 
     return needEmphasis
 }
