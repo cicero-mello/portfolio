@@ -14,6 +14,11 @@ export const Button = styled.button`
     @media screen and (${Breakpoints.SmallHeight}) {
         font-size: 1rem; // 16px
     }
+
+    &:focus-visible {
+        outline-offset: 0.25rem;                    // 4px
+        outline: 0.125rem solid ${Colors.Cloud};    // 2px
+    }
 `
 
 export const selected = style({})
