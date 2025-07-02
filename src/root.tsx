@@ -1,10 +1,10 @@
-import { component$, useContextProvider, useSignal } from "@builder.io/qwik"
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city"
 import { RouterHead } from "./components/router-head/router-head"
+import { component$ } from "@builder.io/qwik"
 import { isDev } from "@builder.io/qwik"
 
 import "./global.css"
-import { LanguageContext, type LanguageType } from "./context/language"
+import { useLanguageContextSetup } from "./context/language"
 import { useDeviceContextSetup } from "./context/device"
 
 export default component$(() => {
@@ -15,8 +15,7 @@ export default component$(() => {
      * Don't remove the `<head>` and `<body>` elements.
      */
 
-    const languageSignal = useSignal<LanguageType>("en")
-    useContextProvider(LanguageContext, languageSignal)
+    useLanguageContextSetup()
     useDeviceContextSetup()
 
     return (
@@ -28,7 +27,7 @@ export default component$(() => {
                 )}
                 <RouterHead />
             </head>
-            <body lang={languageSignal.value}>
+            <body>
                 <RouterOutlet />
                 {!isDev && <ServiceWorkerRegister />}
             </body>

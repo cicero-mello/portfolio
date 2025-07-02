@@ -35,11 +35,54 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-    title: "Cícero Mello",
+    title: "Cícero Mello | Front-End Developer",
     meta: [
         {
             name: "description",
-            content: "Description Content",
+            content:
+                "I'm Cícero Mello, a front-end developer focused on React, animations, and building modern web interfaces."
+        },
+        {
+            property: "og:title",
+            content: "Cícero Mello - Front-End Developer"
+        },
+        {
+            property: "og:description",
+            content: "Explore my projects and know more about me!"
+        },
+        {
+            property: "og:type",
+            content: "website"
+        },
+        {
+            property: "og:url",
+            content: "https://ciceromello.com"
+        },
+        {
+            property: "og:image",
+            content: "https://ciceromello.com/og-image.jpg"
+        },
+        {
+            name: "twitter:card",
+            content: "summary_large_image"
+        },
+        {
+            name: "twitter:title",
+            content: "Cícero Mello | Front-End Developer"
+        },
+        {
+            name: "twitter:description",
+            content: "Explore my projects and know more about me!"
+        },
+        {
+            name: "twitter:image",
+            content: "https://ciceromello.com/og-image.jpg"
         },
     ],
+    links: [
+        {
+            rel: "canonical",
+            href: "https://ciceromello.com",
+        },
+    ]
 }

@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Configurações de SEO
 - [ ] Conversão para SSG
 - [ ] Usar domínio
 - [ ] Caça a bugs / Revisão / Otimização
@@ -14,6 +13,7 @@ kanban-plugin: board
 
 ## Fazendo
 
+- [ ] Configurações de SEO
 
 
 ## Feito
