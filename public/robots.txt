@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://portfolio-mu-gules-21.vercel.app/og-image.jpg
+Sitemap: https://ciceromello.com/sitemap.xml
