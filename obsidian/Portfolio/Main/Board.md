@@ -6,18 +6,18 @@ kanban-plugin: board
 
 ## A Fazer
 
-- [ ] Conversão para SSG
-- [ ] Usar domínio
 - [ ] Caça a bugs / Revisão / Otimização
 
 
 ## Fazendo
 
-- [ ] Configurações de SEO
 
 
 ## Feito
 
+- [ ] [[Usar domínio]]
+- [ ] [[Configurações de SEO]]
+- [ ] [[Conversão para SSG]]
 - [ ] [[Adicionar suporte a linguagem ptBR]]
 - [ ] [[Fazer Tela de Loading Inicial]]
 - [ ] [[Revisão ortográfica]]

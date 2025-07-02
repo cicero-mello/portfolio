@@ -48,7 +48,7 @@ export const head: DocumentHead = {
         },
         {
             property: "og:description",
-            content: "Explore my projects and know more about me!"
+            content: "Explore my projects and learn more about me!"
         },
         {
             property: "og:type",
@@ -72,7 +72,7 @@ export const head: DocumentHead = {
         },
         {
             name: "twitter:description",
-            content: "Explore my projects and know more about me!"
+            content: "Explore my projects and learn more about me!"
         },
         {
             name: "twitter:image",
