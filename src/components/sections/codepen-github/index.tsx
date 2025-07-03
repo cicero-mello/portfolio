@@ -32,7 +32,8 @@ export const CodePenGitHubSection = component$(() => {
             direction: "reverse",
             distortionIntensity: 80,
             maxDistortionY: 30,
-            maxDistortionX: 300
+            maxDistortionX: 300,
+            earlyCleanup: true
         })
 
         codePenSectionRef.value!.style.visibility = "unset"
@@ -40,12 +41,14 @@ export const CodePenGitHubSection = component$(() => {
             animationTime: 400,
             distortionIntensity: 90,
             maxDistortionX: 40,
-            maxDistortionY: 0
+            maxDistortionY: 0,
+            earlyCleanup: true
         })
 
         gitHubSectionRef.value!.style.visibility = "unset"
         startGlitch(gitHubSectionId, {
-            animationTime: 800
+            animationTime: 800,
+            earlyCleanup: true
         })
     })
 

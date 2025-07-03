@@ -29,7 +29,7 @@ export const Desktop = component$(() => {
 
     const sectionChangeGlitch = $(() => {
         startGlitch(glitchWrapperId, {
-            noObservers: true,
+            earlyCleanup: true,
             distortionIntensity: 100,
             maxDistortionY: 100
         })
@@ -62,7 +62,7 @@ export const Desktop = component$(() => {
     const showAll = $(() => {
         sectionRef.value!.style.visibility = "unset"
         startGlitch(sectionId, {
-            noObservers: true,
+            earlyCleanup: true,
             direction: "reverse",
             animationTime: 300,
             maxDistortionX: 100,

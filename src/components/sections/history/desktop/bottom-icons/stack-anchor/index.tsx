@@ -31,7 +31,7 @@ export const StackAnchor = component$(({
             distortionIntensity: 40,
             maxDistortionX: 40,
             maxDistortionY: 30,
-            noObservers: true
+            earlyCleanup: true
         })
     })
 

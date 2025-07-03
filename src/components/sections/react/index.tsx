@@ -39,7 +39,7 @@ export const ReactSection = component$(() => {
             descriptionRef.value!.style.visibility = "unset"
             startGlitch(descriptionId, {
                 distortionIntensity: 100,
-                noObservers: true
+                earlyCleanup: true
             })
         }, 300)
     })

@@ -85,7 +85,7 @@ export const Desktop = component$(() => {
 
     const handleClickImageWrapper = $(() => {
         startGlitch(imageWrapperId, {
-            noObservers: true
+            earlyCleanup: true
         })
     })
 

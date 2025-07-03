@@ -106,6 +106,7 @@ export const ImageClass = style({
     width: "100%",
     height: "auto",
     objectFit: "cover",
+    color: Colors.Fawn
 })
 
 export const RightWrapper = styled.div`

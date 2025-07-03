@@ -12,8 +12,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.3(@types/node@20.14.11)(vite@5.3.5(@types/node@20.14.11))
       cm-glitch:
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.1.0
+        version: 1.1.0
       cm-typing-effect:
         specifier: ^1.0.8
         version: 1.0.8
@@ -2099,8 +2099,8 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
 
-  cm-glitch@1.0.2:
-    resolution: {integrity: sha512-CCTvx2NaVdv3jUdk7Qy1SMRzslVxYX07G61JK8EPbMOZeAN18kL/zS21UWUgHE8ypMqN1JW12otQQ5g+2tQ5Pw==}
+  cm-glitch@1.1.0:
+    resolution: {integrity: sha512-e2CBnluAV+fWGy9KBTzJr/leMVRkFbVKPSoB1PN5BVjP4+5ismf9rlrx5MpPqrmkUdnoLiylc1zfUrSPKgrGZQ==}
 
   cm-typing-effect@1.0.8:
     resolution: {integrity: sha512-20v98n2ugGh1wnbVaQCqeuNBQiIBTRVcSzvwZ1Rwhm9uI+4qz0EZ3eXQlj0s2u5xHZmJ7m+t6BB0WN3qqnrEKQ==}
@@ -6182,7 +6182,7 @@ snapshots:
   '@npmcli/fs@1.1.1':
     dependencies:
       '@gar/promisify': 1.1.3
-      semver: 7.3.8
+      semver: 7.7.2
 
   '@npmcli/move-file@1.1.2':
     dependencies:
@@ -6786,7 +6786,7 @@ snapshots:
       recast: 0.21.5
       remark-frontmatter: 4.0.1
       remark-mdx-frontmatter: 1.1.1
-      semver: 7.3.8
+      semver: 7.7.2
       sort-package-json: 1.57.0
       tar-fs: 2.1.3
       tsconfig-paths: 4.2.0
@@ -7167,7 +7167,7 @@ snapshots:
 
   clone@1.0.4: {}
 
-  cm-glitch@1.0.2: {}
+  cm-glitch@1.1.0: {}
 
   cm-typing-effect@1.0.8: {}
 
@@ -8181,7 +8181,7 @@ snapshots:
       '@types/glob': 7.2.0
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.3.3
       glob: 7.2.3
       ignore: 5.3.2
       merge2: 1.4.1

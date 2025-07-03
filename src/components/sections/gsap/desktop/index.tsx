@@ -1,5 +1,5 @@
 import { $, component$, isServer, useId, useOnWindow, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik"
-import { removeGlitch, startGlitch } from "cm-glitch"
+import { startGlitch } from "cm-glitch"
 import { gsap } from "~/gsap/gsap-section"
 import { TypingText } from "./typing-text"
 import { GSAPIcon } from "./gsap-icon"
@@ -23,30 +23,26 @@ export const Desktop = component$(() => {
 
     const animationSetupIsDone = useSignal(false)
 
-    const startAnimations = $(async () => {
-        timeoutId1.value = setTimeout(async () => {
+    const startAnimations = $(() => {
+        timeoutId1.value = setTimeout(() => {
             cardRef.value!.style.visibility = "unset"
-            await startGlitch(cardId, {
+            startGlitch(cardId, {
                 maxDistortionX: 20,
                 distortionIntensity: 90,
                 animationTime: 500,
-                noObservers: true
+                earlyCleanup: true
             })
-            removeGlitch(cardId)
         }, 1500)
 
-        timeoutId2.value = setTimeout(async () => {
+        timeoutId2.value = setTimeout(() => {
             gsapTextRef.value!.style.visibility = "unset"
             gsapAnchorRef.value!.style.visibility = "unset"
             startGlitch(gsapTextId, {
-                noObservers: true
+                earlyCleanup: true
             })
-            await startGlitch(gsapAnchorId, {
-                noObservers: true
+            startGlitch(gsapAnchorId, {
+                earlyCleanup: true
             })
-
-            removeGlitch(gsapTextId)
-            removeGlitch(gsapAnchorId)
         }, 4500)
     })
 

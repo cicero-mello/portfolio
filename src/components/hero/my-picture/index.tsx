@@ -11,7 +11,7 @@ export const MyPicture = component$(() => {
 
     const handleClick = $(() => {
         if (device.type === "mobile") return
-        startGlitch(imageId, { noObservers: true })
+        startGlitch(imageId, { earlyCleanup: true })
     })
 
     return (

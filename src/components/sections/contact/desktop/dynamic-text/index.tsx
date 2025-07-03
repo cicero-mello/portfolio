@@ -21,7 +21,8 @@ export const DynamicText = component$(() => {
             animationTime: 600,
             direction: "reverse",
             distortionIntensity: 100,
-            maxDistortionY: 40
+            maxDistortionY: 40,
+            earlyCleanup: true
         })
 
         if (purpleTextIndex.value === purpleTexts.length - 1) {
