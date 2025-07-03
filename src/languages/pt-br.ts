@@ -14,7 +14,7 @@ export const ptBr = {
     },
     historySection: {
         title: "TIMELINE",
-        t1: "Primeiro contato com programação (+ eletrônica) no Ensino Médio",
+        t1: "Primeiro contato com programação no Ensino Médio",
         t2: "Maior parte do tempo, focado em microcontroladores",
         t3: "Me aprofundo em desenvolvimento web no estágio/trabalho",
         t4: "Inicialmente full-stack; depois, foco no front-end",

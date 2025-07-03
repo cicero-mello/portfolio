@@ -14,7 +14,7 @@ export const en = {
     },
     historySection: {
         title: "TIMELINE",
-        t1: "First contact with programming (+ electronics) in High School",
+        t1: "First contact with programming in High School",
         t2: "Most of the time was focused on microcontrollers",
         t3: "Knowledge expansion to web development in internship/job",
         t4: "Initially full-stack; later, focused on front-end",
