@@ -12,5 +12,7 @@ export const HistorySection = component$(() => {
         || device.isSmallHeight
     )
 
+    if (device.isOverFullHDWidth) return <></>
+
     return mobileMode ? <Mobile /> : <Desktop />
 })

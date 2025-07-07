@@ -10,4 +10,5 @@ export interface Device {
     isReposSectionMinWidth: boolean
     isReposSectionMobileMinWidth: boolean
     isContactSectionMinWidth: boolean
+    isOverFullHDWidth: boolean
 }

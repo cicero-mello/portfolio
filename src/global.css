@@ -94,3 +94,9 @@ body {
     color: var(--color-cloud);
     -webkit-text-stroke-color: var(--color-cloud);
 }
+
+.ScrollSmoother-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -65,6 +65,12 @@ export const useDeviceContextSetup = () => {
         ).matches
     ))
 
+    const getIsOverFullHDWidth = $(() => (
+        window.matchMedia(
+            `(min-width: 120rem)` // 1920px
+        ).matches
+    ))
+
     const device = useContext(DeviceContext)
 
     // eslint-disable-next-line qwik/no-use-visible-task
@@ -77,11 +83,12 @@ export const useDeviceContextSetup = () => {
             getIsGSAPSectionMinWidth(),
             getIsReposSectionMinWidth(),
             getIsReposSectionMobileMinWidth(),
-            getIsContactSectionMinWidth()
+            getIsContactSectionMinWidth(),
+            getIsOverFullHDWidth()
         ]).then(([
             touch, portrait, mobileW, smallH,
             gsapMinWidth, reposMinWidth, reposMobileMinWidth,
-            contactMinWidth
+            contactMinWidth, overFullHDWidth
         ]) => {
             device.type = touch ? "mobile" : "desktop"
             device.isPortrait = portrait
@@ -91,6 +98,7 @@ export const useDeviceContextSetup = () => {
             device.isReposSectionMinWidth = reposMinWidth
             device.isReposSectionMobileMinWidth = reposMobileMinWidth
             device.isContactSectionMinWidth = contactMinWidth
+            device.isOverFullHDWidth = overFullHDWidth
             device.isLoadingData = false
         })
     })
@@ -104,6 +112,7 @@ export const useDeviceContextSetup = () => {
         device.isReposSectionMinWidth = await getIsReposSectionMinWidth()
         device.isReposSectionMobileMinWidth = await getIsReposSectionMobileMinWidth()
         device.isContactSectionMinWidth = await getIsContactSectionMinWidth()
+        device.isOverFullHDWidth = await getIsOverFullHDWidth()
     }))
 }
 
