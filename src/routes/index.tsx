@@ -56,11 +56,11 @@ export const head: DocumentHead = {
         },
         {
             property: "og:url",
-            content: "https://ciceromello.com"
+            content: "https://www.ciceromello.com"
         },
         {
             property: "og:image",
-            content: "https://ciceromello.com/og-image.jpg"
+            content: "https://www.ciceromello.com/og-image.jpg"
         },
         {
             name: "twitter:card",
@@ -76,13 +76,7 @@ export const head: DocumentHead = {
         },
         {
             name: "twitter:image",
-            content: "https://ciceromello.com/og-image.jpg"
-        },
-    ],
-    links: [
-        {
-            rel: "canonical",
-            href: "https://ciceromello.com",
-        },
+            content: "https://www.ciceromello.com/og-image.jpg"
+        }
     ]
 }
