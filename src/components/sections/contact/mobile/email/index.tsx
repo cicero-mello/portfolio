@@ -1,7 +1,10 @@
 import { $, component$, useSignal } from "@builder.io/qwik"
 import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
 
 export const Email = component$(() => {
+    const language = useLanguageContext()
+
     const showCopiedWarning = useSignal(false)
     const timeoutId = useSignal<NodeJS.Timeout>()
 
@@ -18,7 +21,7 @@ export const Email = component$(() => {
     return (
         <S.Wrapper>
             <S.TextTip
-                children="Copied!"
+                children={language.value === "en" ? "Copied!" : "Copiado!"}
                 style={{
                     opacity: showCopiedWarning.value ? "1" : "0"
                 }}

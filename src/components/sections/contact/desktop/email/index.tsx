@@ -3,14 +3,17 @@ import { startGlitch } from "cm-glitch"
 import { useEmphasis } from "~/hooks"
 import type { EmailProps } from "./types"
 import * as S from "./styles.css"
+import { useLanguageContext } from "~/context/language"
 
 export const Email = component$((props: EmailProps) => {
+    const language = useLanguageContext()
+
     // eslint-disable-next-line qwik/use-method-usage
     const buttonRef = props.buttonRef ?? useSignal<HTMLElement>()
     const showTip = useEmphasis(buttonRef)
     const tipId = useId()
     const tipTextRef = useSignal<HTMLElement>()
-    const tipText = useSignal("copy")
+    const tipText = useSignal(language.value === "en" ? "copy" : "copiar")
     const timeoutId = useSignal<NodeJS.Timeout>()
 
     const applyGlitch = $(() => (
@@ -36,17 +39,17 @@ export const Email = component$((props: EmailProps) => {
         navigator.clipboard.writeText("ciceromello.dev@gmail.com")
         clearTimeout(timeoutId.value)
         applyGlitch()
-        tipText.value = "copied!"
+        tipText.value = language.value === "en" ? "copied!" : "copiado!"
         timeoutId.value = setTimeout(async () => {
             applyGlitch()
-            tipText.value = "copy"
+            tipText.value = language.value === "en" ? "copy" : "copiar"
         }, 1500)
     })
 
     useTask$(async ({ track }) => {
         track(showTip)
         if (isServer) return
-        tipText.value = "copy"
+        tipText.value = language.value === "en" ? "copy" : "copiar"
         clearTimeout(timeoutId.value)
         if (showTip.value) shotTip()
         else hideTip()
