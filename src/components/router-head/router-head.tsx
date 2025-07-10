@@ -14,6 +14,7 @@ export const RouterHead = component$(() => {
 
             <link rel="canonical" href={`https://www.ciceromello.com${loc.url.pathname}`} />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="msvalidate.01" content="0777FA82A07C603B679CB620841DE3BB" />
             <link
                 rel="icon"
                 type="image/png"

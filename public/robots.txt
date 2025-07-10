@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ciceromello.com/sitemap.xml
+Sitemap: https://www.ciceromello.com/sitemap.xml
