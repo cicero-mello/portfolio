@@ -3,8 +3,9 @@ import { Colors } from "~/styles"
 
 export const Section = styled.section`
     width: 100%;
-    margin: 6.25rem 0;  // 100px
-    padding: 0 3rem;    // 48px
+    margin: 6.25rem 0;                  // 100px
+    padding: 0 3rem;                    // 48px
+    min-height: min(100svh, 67.5rem);   // 1080px
 
     display: flex;
     flex-direction: column;

@@ -40,7 +40,7 @@ export const head: DocumentHead = {
         {
             name: "description",
             content:
-                "I'm Cícero Mello, a front-end developer focused on React, animations, and building modern web interfaces."
+                "I'm Cícero Mello, a front-end developer fascinated by programming."
         },
         {
             property: "og:title",

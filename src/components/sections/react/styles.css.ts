@@ -7,8 +7,8 @@ export const Section = styled.section`
     align-items: center;
 
     min-width: 100%;
-    min-height: 100svh;
-    gap: 3rem;  // 48px
+    gap: 3rem;                          // 48px
+    min-height: min(100svh, 67.5rem);   // 1080px
     padding: 2.25rem 0 2.25rem 2.5rem;  // 36px 0px 36px 40px
 
     @media screen and (max-width: 68.75rem) {   // 1100px

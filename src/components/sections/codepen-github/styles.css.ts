@@ -2,8 +2,9 @@ import { styled } from "styled-vanilla-extract/qwik"
 import { Breakpoints, Colors } from "~/styles"
 
 export const Section = styled.section`
-    padding: 3rem 4rem; // 48px 64px
-    gap: 3rem;          // 48px 64px
+    padding: 3rem 4rem;                 // 48px 64px
+    gap: 3rem;                          // 48px 64px
+    min-height: min(100svh, 67.5rem);   // 1080px
 
     display: flex;
     flex-direction: column;
