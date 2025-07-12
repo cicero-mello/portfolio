@@ -19,43 +19,45 @@ export const Mobile = component$(() => {
     const instagramEmphasis = useEmphasis(instagramAnchorRef)
 
     return (
-        <S.Section>
-            {language.value === "en" ?
-                <ContactText class={S.ContactClass} /> :
-                <ContactTextPtBR class={S.ContactClass} />
-            }
-            <Email />
-            <S.BottomWrapper>
-                <MyselfImage class={S.ImageClass} alt="Cícero Mello" />
-                <S.Anchor
-                    ref={linkedInAnchorRef}
-                    aria-label="LinkedIn"
-                    href="https://www.linkedin.com/in/cicero-mello"
-                    target="_blank"
-                >
-                    <LinkedInSVG
-                        class={S.SVGClass}
-                        pathColor={
-                            linkedInEmphasis.value ?
-                                Colors.Cloud : Colors.Lavender
-                        }
-                    />
-                </S.Anchor>
-                <S.Anchor
-                    ref={instagramAnchorRef}
-                    aria-label="Instagram"
-                    href="https://www.instagram.com/umcicero/"
-                    target="_blank"
-                >
-                    <InstagramSVG
-                        class={S.SVGClass}
-                        pathColor={
-                            instagramEmphasis.value ?
-                                Colors.Cloud : Colors.Lavender
-                        }
-                    />
-                </S.Anchor>
-            </S.BottomWrapper>
-        </S.Section>
+        <S.SectionWrapper>
+            <S.Section>
+                {language.value === "en" ?
+                    <ContactText class={S.ContactClass} /> :
+                    <ContactTextPtBR class={S.ContactClass} />
+                }
+                <Email />
+                <S.BottomWrapper>
+                    <MyselfImage class={S.ImageClass} alt="Cícero Mello" />
+                    <S.Anchor
+                        ref={linkedInAnchorRef}
+                        aria-label="LinkedIn"
+                        href="https://www.linkedin.com/in/cicero-mello"
+                        target="_blank"
+                    >
+                        <LinkedInSVG
+                            class={S.SVGClass}
+                            pathColor={
+                                linkedInEmphasis.value ?
+                                    Colors.Cloud : Colors.Lavender
+                            }
+                        />
+                    </S.Anchor>
+                    <S.Anchor
+                        ref={instagramAnchorRef}
+                        aria-label="Instagram"
+                        href="https://www.instagram.com/umcicero/"
+                        target="_blank"
+                    >
+                        <InstagramSVG
+                            class={S.SVGClass}
+                            pathColor={
+                                instagramEmphasis.value ?
+                                    Colors.Cloud : Colors.Lavender
+                            }
+                        />
+                    </S.Anchor>
+                </S.BottomWrapper>
+            </S.Section>
+        </S.SectionWrapper>
     )
 })

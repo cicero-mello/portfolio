@@ -18,7 +18,6 @@ export const Section = styled.section`
     }
 
     &.mobile {
-        min-height: unset;
         padding: 3rem 0; // 48px48
     }
 `

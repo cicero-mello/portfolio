@@ -21,6 +21,7 @@ export const Section = styled.section`
     }
 
     &.mobile {
+        margin: 5.5vh 0 36vh 0;
         min-height: unset;
     }
 `

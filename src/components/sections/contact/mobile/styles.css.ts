@@ -1,6 +1,12 @@
 import { style, styled } from "styled-vanilla-extract/qwik"
 import { Colors } from "~/styles"
 
+export const SectionWrapper = styled.div`
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+`
+
 export const Section = styled.section`
     gap: min(3.5rem, 15cqw);    // 56px
     padding: 5rem 1.5rem;       // 48px 24px
