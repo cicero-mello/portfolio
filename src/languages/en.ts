@@ -72,6 +72,6 @@ export const en = {
         prologue: "Want",
         tp1: "me on your team?",
         tp2: "to talk with me?",
-        tp3: "know me better?",
+        tp3: "to share ideas?",
     }
 }
