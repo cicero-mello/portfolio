@@ -17,11 +17,17 @@ export const useDeviceContextSetup = () => {
         })
     )
 
-    const getIsTouchDevice = $(() => (
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia("(pointer: coarse)").matches
-    ))
+    const getIsTouchDevice = $(() => {
+        const nav = navigator as any
+        const isAgentDataAvailable = nav.userAgentData
+
+        if(isAgentDataAvailable) {
+            return nav.userAgentData.mobile as boolean
+        }
+
+        const deviceRegex = /Android|iPhone|iPad|iPod/i
+        return deviceRegex.test(navigator.userAgent)
+    })
 
     const getIsPortrait = $(() => (
         window.matchMedia(
