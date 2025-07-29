@@ -64,5 +64,6 @@ export const DescriptionText = styled.p`
 
 export const IconClass = style({
     maxWidth: "3.75rem",    // 60px
-    minWidth: "3.75rem"     // 60px
+    minWidth: "3.75rem",     // 60px
+    height: "unset !important"
 })

@@ -3,6 +3,10 @@ import { Colors } from "~/styles"
 
 export const SectionWrapper = styled.div`
     height: 1px;
+
+    @media screen and (min-height: 1080px){
+        height: 2px;
+    }
 `
 
 export const Section = styled.section`
