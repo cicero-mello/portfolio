@@ -73,7 +73,7 @@ export const useDeviceContextSetup = () => {
 
     const getIsOverFullHDWidth = $(() => (
         window.matchMedia(
-            `(min-width: 120rem)` // 1920px
+            `(min-width: calc(120rem + 1px))` // 1920px + 1px for Firefox issue
         ).matches
     ))
 
